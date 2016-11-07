@@ -164,13 +164,4 @@ Examples-1:
 * [postcss-sprites](https://github.com/2createStudio/postcss-sprites) : Generate sprites from stylesheets.
 * [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) : The webpack-dev-server is a little node.js Express server
 
-以及其他引用的第三方库
-- Zepto [参考地址](http://zeptojs.com/)
-- Motion 组件库 [参考地址](http://tgideas.github.io/motion/)
-- swiper组件 [参考地址](https://github.com/nolimits4web/Swiper)
-- Greensock 动画库 [参考地址](https://greensock.com/)
-- anime 动画库 [参考地址](http://anime-js.com/)
-- 重力感应 [参考地址](https://github.com/shrekshrek/orienter)
-- Threejs WebGl，3D动画库 [参考地址](https://threejs.org/)
-
 ｂ（￣▽￣）ｄ 感谢！~

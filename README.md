@@ -19,27 +19,11 @@
 - [x] sass
 - [x] autoprefixer
 
-**『 相关组件 』** 
+**『 相关组件依赖 』** 
 
 - [x] Zepto [参考地址](http://zeptojs.com/)
-- [x] Motion 组件库（横屏，资源预加载，滚动加载等）[参考地址](http://tgideas.github.io/motion/)
-- [x] swiper组件 [参考地址](https://github.com/nolimits4web/Swiper)
-- [x] Greensock 动画库 [参考地址](https://greensock.com/)
-- [x] anime 动画库 [参考地址](http://anime-js.com/)
-- [x] 重力感应 [参考地址](https://github.com/shrekshrek/orienter)
-- [x] Threejs WebGl，3D动画库 [参考地址](https://threejs.org/)
-- [x] slider 轻量级自定义翻屏库，每一屏都包含out和in的进出场动画衔接
-- [x] 微信组件（分享 + 发邮件 + 关闭当前view + 获取网络类型 + 图片查看器）
-- [x] Launcher, 快速配置组件，直接包含（微信分享 + loading + PC端展示样式 + 背景音乐 + 预加载）
 
 Zepto，会默认引入，其他可根据项目需求引入
-
-**『 UI组件 』** (后面会引用更多的UI组件)
-
-- [x] loading 
-- [x] 横屏样式 
-- [x] 微信分享样式 
-- [x] 移动端页面PC端打开显示扫描二维码 
 
 ### 『 系统配置说明 』
 
@@ -110,38 +94,6 @@ Zepto，会默认引入，其他可根据项目需求引入
 └── webpack.config.build.js     # webpack构建项目配置文件  
 ```
 
-### 『 项目基本配置（可选，如果非微信可自行配置） 』
-```javascript
-
-// 基本配置， 可使用公共组建Launcher， 使用后可直接进行配置无需关心基础功能实现
-var Launcher = require('../../common/js/Launcher.js')
-Launcher({
-    PCQRcode:'', // PC端访问展示的二维码, 默认为连接地址
-    
-    bgMusic: 'plugin/bg.mp3', // 背景音乐
-    
-    hasMusic:false, //是否添加背景音乐
-    
-    loadResources: ['../img/sprite.icon.png','../img/spritesheet_grant.png','../img/logo.png','plugin/bg.mp3'], // 预加载图片
-
-    isMusicPlay: false, // 默认是否打开背景音乐
-
-    loadType: 0,//0为并行， 1为串行 预加载
-
-    concurrency: 2, //并行图片同时加载数
-
-    share_data: { // 微信分享, 因为微信分享是有域名限制的，所以请去微信官网申请
-        'img': 'http://h5.m.jd.com/active/2G81HfPDtVb2HtcNrvka9ikam56u/pages/14313/img/logo.jpeg',   // 选填，默认为空或者当前页面第一张图片
-        'link': window.location.href,
-        'desc': '感谢支持',
-        'title': 'O2H5-Boilerplate'
-    },
-
-    callback : start // 加载完后的回调函数
-})
-
-```
-
 ### 『 使用说明 』
 
 开发中可直接复制 example-base 作为基础开发模板，迭代项目。
@@ -161,27 +113,6 @@ PS： node-sass 可能安装会比较慢，如果不行可以用淘宝镜像。
 ```bash
 SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
 ```
-
-#### Slider 组件使用说明
-做活动经常不是翻屏动画，而是进出场衔接动画，所以开发了此库，参看 example-inout-slider
-```javascript
-// slider 调用方式，页面都是从 in -> out 
-function start(){
-    //TODO 初始化滑屏幕组件
-    new Slider('.slider', {
-        sliderOut: function(slider, idx){
-            page.get(idx).slideOut($.proxy(slider.countinue, slider))
-        },
-        sliderIn: function(slider, idx){
-            page.get(idx).slideIn()
-        },
-        resetSlider: function(slider, idx){
-            page.get(idx).reset()
-        }
-    })
-}
-```
-常规的翻屏可以用回swiper
 
 ### 『 发布说明 』
 ```bash

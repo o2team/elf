@@ -9,9 +9,7 @@ var path = require('path'),
 
 
 var baseConfig = {
-    entry: {
-        //'bundle':path.resolve('./src/js/entry.js')
-    },
+    entry: {},
     output: {
         path: path.resolve(__Config.OUTPUT_PATH),
         publicPath: '/',

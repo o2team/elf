@@ -1,0 +1,13 @@
+@font-face {font-family: 'mo-icon';src: url('http://ossweb-img.qq.com/images/iconfonts/mo.woff') format('woff'), url('http://ossweb-img.qq.com/images/iconfonts/mo.ttf')  format('truetype');}
+.mo-pop-dialog{padding: 15px;font-size: 14px;}
+.mo-pop-dialog .mo-pop-body{text-align: left;}
+.mo-pop-dialog .mo-pop-body p{-webkit-box-flex:1;box-flex:1;}
+.mo-pop-dialog [class*="mo-info-"] .mo-icon:before {-webkit-align-self:center;display: inline-block;width: 40px;height: 40px;margin-right: 10px;vertical-align: middle;font-family: "mo-icon";font-style: normal;font-weight: normal;text-align: center;speak: none; margin-left: .2em;font-size: 40px;height: 40px;line-height: 40px;}
+.mo-pop-dialog .mo-info-alert .mo-icon:before{content:'\e805';color: #d00}
+.mo-pop-dialog .mo-info-success .mo-icon:before{content:'\e810';color: #fff;background-color: #0d0;border-radius: 20px;}
+.mo-pop-dialog .mo-info-error .mo-icon:before{content:'\e811';background-color: #d00;color:#fff;border-radius: 20px;}
+.mo-pop-foot{margin-top: 20px;}
+[class*="mo-btn-"]{display: inline-block;margin: 0 10px;padding: 5px 15px;font-weight: bold;border-radius: 5px; }
+.mo-btn-strong{background: #d00;color: #fff;}
+.mo-btn-normal{background: #d00;color: #fff;}
+.mo-btn-weak{background: #888;color: #fff;}

@@ -1,0 +1,93 @@
+@charset "UTF-8";
+@import "../../common/css/base/base.scss";
+
+/* 添加横屏提示组件 */
+@import "../../common/css/landscape/style.scss";
+
+/* 添加Loading组件 */
+@import "../../common/css/loading/style.scss";
+
+/* shareMask */
+@import "../../common/css/sharemask/style.scss";
+
+body {
+   overflow: hidden;
+   font-size: 30px;
+   background-color: #363535;
+}  
+
+.audio{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 9;
+  width: 100px; 
+  height: 100px;
+  &:before{
+    content: '';
+    background-image: url(../img/icon/audio_on.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.off{
+    &:before{
+      background-image: url(../img/icon/audio_off.png);
+    }
+  }
+}
+
+/* 箭头 */
+.arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    margin-left: -11px;
+    border: 3px solid transparent;
+    border-top: 3px solid #ccc;
+    border-left: 3px solid #ccc;
+    z-index: 99;
+    opacity: .8;
+    -webkit-transform: rotate(45deg);
+    -webkit-animation: arrow 1.5s infinite ease-in-out;
+}
+ 
+@-webkit-keyframes arrow {
+  0% {
+    opacity:0;
+    -webkit-transform:translate(0, 0px) rotate(45deg)
+    }
+    50% {
+    opacity:1;
+    -webkit-transform:translate(0, -5px) rotate(45deg)
+    }
+    100% {
+    opacity:0;
+    -webkit-transform:translate(0, -10px) rotate(45deg)
+  }
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}

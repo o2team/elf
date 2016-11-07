@@ -1,0 +1,49 @@
+{
+  "name": "O2h5-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "project/js/bundle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "rm -rf project/ & NODE_ENV=production webpack --config webpack.config.build.js --progress --colors",
+    "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:l-zhi/O2H5-Boilerplate.git"
+  },
+  "keywords": [
+    "HTML5 Event Boilerplate"
+  ],
+  "author": "Fan Lizhi",
+  "bugs": {
+    "url": "https://github.com/l-zhi/O2H5-Boilerplate/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "css-loader": "^0.25.0",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "image-webpack-loader": "^2.0.0",
+    "lodash": "^4.16.4",
+    "node-sass": "^3.10.1",
+    "open-browser-webpack-plugin": "0.0.2",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.13.0",
+    "postcss-mixins": "^5.2.0",
+    "postcss-plugin-px2rem": "^0.6.0",
+    "postcss-sprites": "^4.0.0",
+    "precss": "^1.4.0",
+    "sass-loader": "^4.0.2",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  }
+}

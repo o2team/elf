@@ -3,15 +3,15 @@ var path = require('path'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"), // Extract text from bundle into a file
     HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var __Config = require('./config/index.js')
+var __config = require('./config/index.js')
 
 var webpackConfig = require('./webpack.base.js')
 
 
-if(!__Config.PUBLICPATH || __Config.PUBLICPATH == './'){
-    webpackConfig.output.publicPath = '../'
+if(!__config.PUBLIC_PATH || __config.PUBLIC_PATH == './'){
+    webpackConfig.output.PUBLIC_PATH = '../'
 }else{
-    webpackConfig.output.publicPath = __Config.PUBLICPATH 
+    webpackConfig.output.PUBLIC_PATH = __config.PUBLIC_PATH
 }
 
 webpackConfig.module.loaders.push({
@@ -28,12 +28,12 @@ webpackConfig.module.loaders.push({
 
 //项目目录
 var _HtmlPluginOptions = {
-    title:__Config.TITLE || 'O2H5_Boilerplate',
-    DESIGN_WIDTH:__Config.DESIGN_WIDTH,
-    RESPONSIVE_REM: __Config.RESPONSIVE_REM,
-    RESPONSIVE_ZOOM:__Config.RESPONSIVE_ZOOM,
-    ISCSSINTERNAL: __Config.CSSINTERNAL,
-    publicPath: __Config.PUBLICPATH || './',
+    title:__config.TITLE,
+    DESIGN_WIDTH:__config.DESIGN_WIDTH,
+    RESPONSIVE_REM: __config.RESPONSIVE_REM,
+    RESPONSIVE_ZOOM:__config.RESPONSIVE_ZOOM,
+    ISCSS_INTERNAL: __config.CSS_INTERNAL,
+    PUBLIC_PATH: __config.PUBLIC_PATH || './',
     ASSETS: {
         "js" : "js/bundle.js",
         "css"  : "css/app.css",
@@ -41,8 +41,8 @@ var _HtmlPluginOptions = {
     inject: false,
     template: path.resolve('./src/common/template/index.ejs')
 }
-webpackConfig.entry[__Config.PROJECTPATH] = './src/' + __Config.PROJECTPATH + '/js/entry.js';
-_HtmlPluginOptions.templatePath = __Config.PROJECTPATH
+webpackConfig.entry[__config.PROJECTPATH] = './src/' + __config.PROJECTPATH + '/js/entry.js';
+_HtmlPluginOptions.templatePath = __config.PROJECTPATH
 webpackConfig.plugins.push(new HtmlWebpackPlugin(_HtmlPluginOptions));
 
 //css 外链方式
@@ -58,6 +58,6 @@ webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
 }))
 
 // 图片压缩
-webpackConfig.imageWebpackLoader = __Config.PUBLISH_IMAGEMIN || {progressive:true}
+webpackConfig.imageWebpackLoader = __config.PUBLISH_IMAGEMIN || {progressive:true}
 
 module.exports = webpackConfig;

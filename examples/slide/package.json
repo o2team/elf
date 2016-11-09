@@ -1,25 +1,10 @@
 {
-  "name": "h5-boilerplate",
+  "name": "h5-mobile-boilerplate",
   "version": "1.0.0",
-  "description": "h5-boilerplate",
+  "description": "h5 mobile boilerplate",
   "scripts": {
     "build": "rm -rf project/ & NODE_ENV=production webpack --config webpack.config.build.js --progress --colors",
     "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/o2team/h5-boilerplate.git"
-  },
-  "keywords": [
-    "HTML5 Event Boilerplate"
-  ],
-  "contributors": [{
-    "name": "Fan Lizhi"
-  }, {
-    "name": "Liucw"
-  }],
-  "bugs": {
-    "url": "https://github.com/o2team/h5-boilerplate/issues"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -46,5 +31,10 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "0.15.0"
+  },
+  "dependencies": {
+    "animejs": "1.1.1",
+    "swiper": "3.4.0",
+    "zepto": "1.2.0"
   }
 }

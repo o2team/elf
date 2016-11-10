@@ -6,12 +6,8 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 999;
+    z-index: 9999;
     background-color: #363535;
-    svg {
-        width: 216px;
-        height: 216px;
-    }
     .inner {
         display: block;
         position: absolute;

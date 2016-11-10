@@ -1,11 +1,11 @@
 var path = require('path'),
     //ExtractTextPlugin = require("extract-text-webpack-plugin"), // Extract text from bundle into a file
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
-    HtmlWebpackPlugin = require('html-webpack-plugin')
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    __config = require('config')
 
-var __config = require('./config/index.js')
 var webpackConfig = require('./webpack.base.js')
-var ROOT = path.resolve('.')
+var ROOT = __config.PROJECT_ROOT
 
 webpackConfig.module.loaders.push({
     test: /\.scss$/,

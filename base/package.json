@@ -1,13 +1,14 @@
 {
-  "name": "h5-mobile-boilerplate",
+  "name": "h5-boilerplate",
   "version": "1.0.0",
-  "description": "h5 mobile boilerplate",
+  "description": "h5 boilerplate",
   "scripts": {
-    "build": "rm -rf project/ & NODE_ENV=production webpack --config webpack.config.build.js --progress --colors",
-    "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
+    "build": "NODE_ENV=build node webpack/build.js",
+    "start": "NODE_ENV=development webpack-dev-server --history-api-fallback --config webpack/webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
+    "config": "1.24.0",
     "css-loader": "^0.25.0",
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -26,13 +27,13 @@
     "precss": "^1.4.0",
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
+    "shelljs": "0.7.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "0.15.0"
-  },
-  "dependencies": {
+    "webpack-merge": "0.15.0",
     "zepto": "1.2.0"
-  }
+  },
+  "dependencies": {}
 }

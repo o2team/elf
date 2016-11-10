@@ -4,12 +4,14 @@ var path = require('path'),
     autoprefixer = require('autoprefixer'), // add vendor prefixes to CSS rules
     sprites = require('postcss-sprites'), // generates spritesheets from your stylesheets
     postcssImport = require('postcss-import'), // inline @import rules content
-    __config = require('./config/index.js'),
+    __config = require('config'),
     __postcss_plugins = []
 
-var ROOT = path.resolve('.')
+var ROOT = __config.PROJECT_ROOT
+
 var zeptoPath = path.join(ROOT, 'node_modules/zepto/dist/zepto.js')
 var bodyHtmlPath = path.join(ROOT, 'src/body.html')
+
 var baseConfig = {
     entry: {},
     output: {

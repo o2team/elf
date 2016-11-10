@@ -12,7 +12,7 @@
     </script>
     <!-- end REM Zoom 计算 -->
 
-    <% if(htmlWebpackPlugin.options.IS_CSS_INTERNAL) { %>
+    <% if (htmlWebpackPlugin.options.IS_CSS_INTERNAL) { %>
         <style>
             <%=compilation.assets[(htmlWebpackPlugin.files.css + '').substr(htmlWebpackPlugin.files.PUBLIC_PATH.length)].source() %>
         </style>

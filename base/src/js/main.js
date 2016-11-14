@@ -2,6 +2,6 @@ require('src/body.html')
 require('src/css/main.scss')
 
 setTimeout(function () {
-    $('#J_loading').remove()
-    $('#J_main').removeClass('hide')
+    $('#o2_loading').remove()
+    $('#o2_main').removeClass('hide')
 }, 1000)

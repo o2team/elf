@@ -4,7 +4,7 @@
   "description": "h5 boilerplate",
   "scripts": {
     "build": "NODE_ENV=build node webpack/build.js",
-    "start": "NODE_ENV=development webpack-dev-server --history-api-fallback --config webpack/webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
+    "start": "NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack/webpack.config.dev.js --hot"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -31,6 +31,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
+    "webpack-dashboard": "0.2.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "0.15.0",
     "zepto": "1.2.0"

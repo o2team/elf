@@ -2,6 +2,7 @@ var path = require('path'),
     //ExtractTextPlugin = require("extract-text-webpack-plugin"), // Extract text from bundle into a file
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
+    DashboardPlugin = require('webpack-dashboard/plugin'),
     __config = require('config')
 
 var webpackConfig = require('./webpack.base.js')
@@ -42,13 +43,22 @@ webpackConfig.plugins.push(new HtmlWebpackPlugin(_HtmlPluginOptions));
 //     url: 'http://' + (__config.IP || 'localhost') + ':' + __config.PORT
 // }))
 
+webpackConfig.plugins.push(new DashboardPlugin())
+
 /**
  * 本地服务器
  */
 webpackConfig.devServer = {
     port: __config.PORT,
-    hot: true,
+    host: '0.0.0.0',
+    // hot: true,  // enable must command line set
     inline: true,
+    stats: { colors: true },
+    historyApiFallback: true,
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000
+    },
     contentBase: './' + __config.OUTPUT_PATH
 }
 

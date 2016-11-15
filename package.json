@@ -4,7 +4,8 @@
   "description": "h5-boilerplate",
   "scripts": {
     "build": "rm -rf project/ & NODE_ENV=production webpack --config webpack.config.build.js --progress --colors",
-    "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0"
+    "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0",
+    "create": "node src/create.js "
   },
   "repository": {
     "type": "git",

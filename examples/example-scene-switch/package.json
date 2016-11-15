@@ -1,0 +1,44 @@
+{
+  "name": "h5-boilerplate",
+  "version": "1.0.0",
+  "description": "h5 boilerplate",
+  "scripts": {
+    "build": "NODE_ENV=build node webpack/build.js",
+    "start": "NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack/webpack.config.dev.js --hot"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "config": "1.24.0",
+    "css-loader": "^0.25.0",
+    "exports-loader": "^0.6.3",
+    "extract-loader": "0.0.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "image-webpack-loader": "^2.0.0",
+    "lodash": "^4.16.4",
+    "node-sass": "^3.10.1",
+    "open-browser-webpack-plugin": "0.0.2",
+    "postcss-import": "^8.1.2",
+    "postcss-loader": "^0.13.0",
+    "postcss-mixins": "^5.2.0",
+    "postcss-plugin-px2rem": "^0.6.0",
+    "postcss-sprites": "^4.0.0",
+    "precss": "^1.4.0",
+    "sass-loader": "^4.0.2",
+    "script-loader": "^0.7.0",
+    "shelljs": "0.7.5",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "0.2.0",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "0.15.0",
+    "zepto": "1.2.0"
+  },
+  "dependencies": {
+    "animejs": "^1.1.1",
+    "swiper": "^3.4.0"
+  }
+}

@@ -3,40 +3,10 @@ require('src/css/main.scss')
 
 require('swiper/dist/css/swiper.css')
 require('swiper/dist/js/swiper.js')
-
 window.anime = require('animejs/anime.js')
+var Preloader = require('./lib/preloader.js')
 
-// var loader = require('./loader.js')
-
-// preloader
 // require('../plugin/bg.mp3')
-
-var loadImages = [
-    '../img/flow-2.jpg',
-    '../img/flow-step-3.jpg',
-    '../img/city-1.jpg',
-    '../img/flow-3.jpg',
-    '../img/gift-1.jpg',
-    '../img/city-2.jpg',
-    '../img/flow-btn.jpg',
-
-    '../img/city-map.jpg',
-    '../img/flow-step-1.jpg',
-
-    '../img/flow-1.jpg',
-    '../img/flow-step-2.jpg',
-    'plugin/bg.mp3'
-]
-
-/**
- * loading
- */
-var loading = {}
-loading.$ = $('#o2_loading')
-loading.handleOver = function (done) {
-    loading.$.hide()
-    done && done()
-}
 
 /**
  * home
@@ -204,68 +174,50 @@ meet1.setEnd = function (done) {
 var meet2 = {}
 meet2.$pic = $('.meet2 .meet-pic')
 meet2.start = function (done) {
-    anime({
-        targets: '.meet2 .meet-bubble',
-        scale: {
-            value: [0, 1.2],
-            duration: 1400,
-            elasticity: 600,
-            easing: 'easeInOutExpo'
-        }
-    })
+        anime({
+            targets: '.meet2 .meet-bubble',
+            scale: {
+                value: [0, 1.2],
+                duration: 1400,
+                elasticity: 600,
+                easing: 'easeInOutExpo'
+            }
+        })
 
-    anime({
-        targets: ['.meet2 .meet-txt-2', '.meet2 .meet-coffee' ],
-        scale: {
-            value: [0, 1],
-            duration: 1000,
-            easing: 'easeInOutExpo'
-        },
-        opacity: {
-            value: [0, 1],
-            duration: 1000,
-            easing: 'easeInOutExpo'
-        },
-        complete: function () {
-            meet2.$pic.addClass('air-active')
-            done && done()
-        }
-    })
-}
-// meet2.end = function (done) {
-// }
+        anime({
+            targets: ['.meet2 .meet-txt-2', '.meet2 .meet-coffee'],
+            scale: {
+                value: [0, 1],
+                duration: 1000,
+                easing: 'easeInOutExpo'
+            },
+            opacity: {
+                value: [0, 1],
+                duration: 1000,
+                easing: 'easeInOutExpo'
+            },
+            complete: function () {
+                meet2.$pic.addClass('air-active')
+                done && done()
+            }
+        })
+    }
+    // meet2.end = function (done) {
+    // }
 meet2.setBegin = function () {
-    $('.meet2 .meet-bubble').css({'transform': 'scale(0)'})
-    $('.meet2 .meet-txt-2, .meet2 .meet-coffee').css({'transform': 'scale(0)'})
-    meet2.$pic.removeClass('air-active')
-}
-// meet2.setEnd = function (done) {
-//     done && done()
-// }
+        $('.meet2 .meet-bubble').css({
+            'transform': 'scale(0)'
+        })
+        $('.meet2 .meet-txt-2, .meet2 .meet-coffee').css({
+            'transform': 'scale(0)'
+        })
+        meet2.$pic.removeClass('air-active')
+    }
+    // meet2.setEnd = function (done) {
+    //     done && done()
+    // }
 
-
-
-/**
- * start
- **/
-var $J_main = $('#o2_main'), audio
-
-setTimeout(function() {
-    loading.handleOver(function () {
-
-        home.start()
-
-        // audio = loader.get('plugin/bg.mp3')
-        // audio.loop = true
-        //audio.play()
-    })
-
-    $J_main.removeClass('hide')
-    requestAnimationFrame(start)
-}, 1000)
-
-
-function start(){
+function start() {
     var isSwipering = false;
 
     var mySwiper = new Swiper('#o2_swiper', {
@@ -274,14 +226,7 @@ function start(){
         direction: 'vertical',
         followFinger: false,
         speed: 0,
-        // virtualTranslate: true,
-        // onTouchStart: function (swiper) {
-        //     // mySwiper.unlockSwipes()
-        //     console.log('onTouchStart:', swiper.swipeDirection, swiper.previousIndex, swiper.activeIndex)
-        // },
         onTouchEnd: function (swiper) {
-            // console.log('1 onTouchEnd:', swiper.swipeDirection, swiper.previousIndex, swiper.activeIndex)
-            // console.log('2 isSwipering:', isSwipering)
             if (isSwipering) return
             isSwipering = true
             mySwiper.lockSwipes()
@@ -304,9 +249,6 @@ function start(){
                         meet2.start()
                         meet1.setEnd()
                     })
-                    // mySwiper.unlockSwipes()
-                    // mySwiper.slideNext(true, 0)
-                    // meet2.start()
                 } else if (swiper.activeIndex === 5) {
                     mySwiper.unlockSwipes()
                     mySwiper.slideNext(true, 300)
@@ -319,10 +261,9 @@ function start(){
             } else {
                 isSwipering = false
             }
-            // mySwiper.lockSwipes()
+
         },
         onTransitionEnd: function (swiper) {
-            // console.log('3 onTransitionEnd:', swiper.swipeDirection, swiper.previousIndex, swiper.activeIndex)
             var activeIndex = swiper.activeIndex
 
             if (swiper.swipeDirection === 'prev') {
@@ -333,23 +274,59 @@ function start(){
                 }
             }
             if (activeIndex === 0 || activeIndex === 1 || activeIndex === 2) {
-                $J_main.removeClass('audio-r')
+                $o2_main.removeClass('audio-r')
             } else {
-                $J_main.addClass('audio-r')
+                $o2_main.addClass('audio-r')
             }
 
             isSwipering = false
         }
     })
 
-    $(document).on('touchstart', '.audio', function(){
-        if($J_main.hasClass('audio-off')){
-            $J_main.removeClass('audio-off')
+    $(document).on('touchstart', '.audio', function () {
+        if ($o2_main.hasClass('audio-off')) {
+            $o2_main.removeClass('audio-off')
             audio.play()
-        }else{
-            $J_main.addClass('audio-off')
+        } else {
+            $o2_main.addClass('audio-off')
             audio.pause()
         }
     })
 }
 
+
+
+/**
+ * loading
+ */
+
+var loading = {}
+loading.$ = $('#o2_loading')
+loading.handleOver = function (done) {
+    loading.$.hide()
+    done && done()
+}
+
+/**
+ * start
+ **/
+var $o2_main = $('#o2_main'),
+    audio
+
+var preloader = new Preloader({
+    perMinTime: 2000
+})
+preloader.addCompletionListener(function () {
+    loading.handleOver(function () {
+
+        home.start()
+
+        // audio = loader.get('plugin/bg.mp3')
+        // audio.loop = true
+        //audio.play()
+    })
+
+    $o2_main.removeClass('hide')
+    requestAnimationFrame(start)
+})
+preloader.start()

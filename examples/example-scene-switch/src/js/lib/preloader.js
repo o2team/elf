@@ -20,7 +20,7 @@
     var Preloader = function (options) {
         this.opts = assign({
             resources: [],
-            // minTime: 0,
+            perMinTime: 0,
             attr: 'preload',
             onProgress: function () {},
             onCompletion: function () {}
@@ -34,8 +34,9 @@
 
         this.length = this.opts.resources.length
         this.loaded = 0
-        this.done = function () {
+        this.done = function (resource, element) {
             this.loaded += 1
+
             this.onProgress && this.onProgress(this.loaded, this.length)
             if (this.loaded >= this.length) {
                 this.onCompletion && this.onCompletion()
@@ -56,11 +57,19 @@
         for (var i = 0; i < self.length; i++) {
             var resource = self.opts.resources[i]
             var image = new Image()
-            image.onload = image.onerror = function () { self.done() }
+            var startTime = new Date()
+            image.onload = image.onerror = function () {
+                var duration = new Date() - startTime
+                var diff = self.opts.perMinTime - duration
+
+                diff > 0 ? setTimeout(function () {
+                    self.done(resource, image)
+                }, diff) : self.done(resource, image)
+            }
             image.src = resource
         }
 
-        if (!self.length) self.done()
+        if (!self.length) self.done(null, null)
     }
 
     return Preloader

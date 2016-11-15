@@ -8,20 +8,20 @@ var webpackConfig = require('./webpack.base.js')
 var ROOT = __config.PROJECT_ROOT
 
 if (!__config.PUBLIC_PATH || __config.PUBLIC_PATH === './') {
-    webpackConfig.output.PUBLIC_PATH = '../'
+    webpackConfig.output.publicPath = '../'
 } else {
-    webpackConfig.output.PUBLIC_PATH = __config.PUBLIC_PATH
+    webpackConfig.output.publicPath = __config.PUBLIC_PATH
 }
 
 webpackConfig.module.loaders.push({
     test: /\.scss$/,
-    exclude: /node_modules/,
+    // exclude: /node_modules/,
     loader: ExtractTextPlugin.extract('style-loader', ['css-loader?minimize', 'postcss-loader', 'sass-loader'])
 })
 
 webpackConfig.module.loaders.push({
     test: /\.css$/,
-    exclude: /node_modules/,
+    // exclude: /node_modules/,
     loader: ExtractTextPlugin.extract('style-loader', ['css-loader?minimize'])
 })
 

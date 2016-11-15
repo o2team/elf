@@ -1,15 +1,16 @@
 @charset "UTF-8";
 @import "./base.css";
 @import "./loading.scss";
-
 .main {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     .title {
+        height: 400px;
+        line-height: 400px;
         font-size: 48px;
+        text-align: center;
+    }
+    .logo {
+        text-align: center;
     }
 }

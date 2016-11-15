@@ -10,13 +10,13 @@ var ROOT = __config.PROJECT_ROOT
 
 webpackConfig.module.loaders.push({
     test: /\.scss$/,
-    exclude: /node_modules/,
+    // exclude: /node_modules/,
     loaders: ['style', 'css', 'postcss', 'sass']
 })
 
 webpackConfig.module.loaders.push({
     test: /\.css$/,
-    exclude: /node_modules/,
+    // exclude: /node_modules/,
     loaders: ['style', 'css']
 })
 

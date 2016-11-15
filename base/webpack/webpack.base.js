@@ -13,10 +13,11 @@ var zeptoPath = path.join(ROOT, 'node_modules/zepto/dist/zepto.js')
 var bodyHtmlPath = path.join(ROOT, 'src/body.html')
 
 var baseConfig = {
+    context: path.join(ROOT, 'src'),
     entry: {},
     output: {
         path: path.join(ROOT, __config.OUTPUT_PATH),
-        PUBLIC_PATH: '/',
+        publicPath: '/',
         filename: 'js/bundle.js'
     },
     module: {
@@ -110,12 +111,12 @@ if (__config.RESPONSIVE_REM) {
                 value: 'no-repeat'
             }))
 
-            ['width', 'height'].forEach(function (prop) {
-                rule.insertAfter(rule.last, postcss.decl({
-                    prop: prop,
-                    value: Math.round((image.coords[prop] + 1) / (__config.DESIGN_WIDTH / 20) * 100000) / 100000 + 'rem'
-                }))
-            })
+            // ['width', 'height'].forEach(function (prop) {
+            //     rule.insertAfter(rule.last, postcss.decl({
+            //         prop: prop,
+            //         value: Math.round((image.coords[prop] + 1) / (__config.DESIGN_WIDTH / 20) * 100000) / 100000 + 'rem'
+            //     }))
+            // })
         }
     }
 }

@@ -2,8 +2,15 @@ const path = require('path')
 const fs = require('fs-extra')
 const sync = require('./sync.js')
 
-const asserts = require('../base/asserts.json').asserts
-const srcRootPath = path.join(__dirname, '../base')
-const destRootPath = path.join(__dirname, '../examples/slide')
+const exampleRoot = path.join(__dirname, '../examples')
+const srcPath = path.join(__dirname, '../base')
+const asserts = require(path.join(srcPath, 'asserts.json')).asserts
 
-sync(asserts, srcRootPath, destRootPath)
+const examples = fs.readdirSync(exampleRoot)
+
+examples.forEach(example => {
+    const destPath = path.join(exampleRoot, example)
+
+    sync(asserts, srcPath, destPath)
+})
+

@@ -11,8 +11,8 @@ const examplesRoot = path.join(__dirname, '../examples')
 program.version(package.version)
 
 program
-    .command('init [example]')
-    .description('Init one project')
+    .command('init [case]')
+    .description('Init project')
     .option('-d, --dest [dir]', 'Set destination directory')
     .action(function (example, options) {
         console.log('example:', example, '; options.dest:', options.dest)
@@ -30,16 +30,16 @@ program
 program
     .command('list')
     .alias('ls')
-    .description('list all examples')
+    .description('List all cases')
     .action(function () {
         const dirs = fs.readdirSync(examplesRoot)
 
         console.log()
-        console.log('    All examples:')
+        console.log('    All cases:')
         console.log()
         dirs.forEach(dir => console.log('        - ' + dir))
         console.log()
-        console.log('    You can base on example init project:')
+        console.log('    You can base on case init project:')
         console.log()
         console.log('        mspa init ' + dirs[0])
         console.log()

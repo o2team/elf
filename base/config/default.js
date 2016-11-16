@@ -1,7 +1,7 @@
 var path = require('path')
 
 module.exports = {
-    TITLE: 'h5 boilerplate', // 页面标题
+    TITLE: 'HTML5 SPA Boilerplate', // 页面标题
     PUBLIC_PATH: '/', // 静态资源地址
     PORT: '8000', // dev server 运行的端口
     DESIGN_WIDTH: 750, // 设计稿的宽度 默认750,如果开启 Zoom 则直接按照设计稿和屏幕宽度进行缩放

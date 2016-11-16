@@ -4,7 +4,7 @@ require('src/css/main.scss')
 var Preloader = require('./lib/preloader.js')
 
 var preloader = new Preloader({
-    resources: ['aa', 'bb'],
+    resources: [],
     perMinTime: 1000 // 加载每个资源所需的最小时间，一般用来测试 loading
 })
 preloader.addProgressListener(function (loaded, length) {

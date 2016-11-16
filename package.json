@@ -1,35 +1,31 @@
 {
-  "name": "h5-boilerplate",
+  "name": "html5-spa-boilerplate",
   "version": "1.0.0",
-  "description": "h5-boilerplate",
+  "description": "HTML5 Modern SPA Boilerplate",
   "scripts": {
-    "build": "rm -rf project/ & NODE_ENV=production webpack --config webpack.config.build.js --progress --colors",
-    "start": "webpack-dev-server --history-api-fallback --config webpack.config.dev.js --inline --hot --progress --colors --host 0.0.0.0",
-    "create": "node src/create.js ",
+    "sync": "node src/create.js base ",
     "sync:all": "node src/sync-base-to-examples.js"
+  },
+  "bin": {
+    "mspa": "./bin/mspa"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/o2team/h5-boilerplate.git"
   },
-  "keywords": [
-    "HTML5 Event Boilerplate"
-  ],
-  "contributors": [
-    {
-      "name": "Fan Lizhi"
-    },
-    {
-      "name": "Liucw"
-    }
-  ],
   "bugs": {
     "url": "https://github.com/o2team/h5-boilerplate/issues"
   },
-  "devDependencies": {
-  },
+  "keywords": [
+    "HTML5",
+    "SPA",
+    "Boilerplate"
+  ],
+  "author": "o2team",
+  "devDependencies": {},
   "dependencies": {
     "chalk": "1.1.3",
+    "commander": "2.9.0",
     "fs-extra": "1.0.0",
     "lodash": "4.16.6",
     "shelljs": "^0.7.5"

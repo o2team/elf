@@ -39,7 +39,7 @@
         "path": "package.json",
         "type": "json",
         "action": "assignFields",
-        "assignFields": ["devDependencies"]
+        "assignFields": ["devDependencies", "dependencies"]
     }, {
         "path": "yarn.lock",
         "type": "file"

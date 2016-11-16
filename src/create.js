@@ -11,11 +11,11 @@ srcPath = path.resolve(srcPath)
 destPath = path.resolve(destPath)
 
 try {
-    require(path.join(srcPath, 'asserts.json'))
+    require(path.join(srcPath, '.asserts.json'))
 } catch (err) {
     console.error('src must include asserts.json')
     process.exit(1)
 }
 
-const asserts = require(path.join(srcPath, 'asserts.json')).asserts
+const asserts = require(path.join(srcPath, '.asserts.json')).asserts
 sync(asserts, srcPath, destPath)

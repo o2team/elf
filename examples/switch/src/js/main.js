@@ -6,15 +6,13 @@ require('swiper/dist/js/swiper.js')
 window.anime = require('animejs/anime.js')
 var Preloader = require('./lib/preloader.js')
 
-// require('../plugin/bg.mp3')
-
 /**
  * home
  */
 var home = {}
 home.$ = $('.home')
 home.$txt = $('.home .home-txt')
-home.start = function () {
+home.enter = function () {
     anime({
         targets: '.home-4',
         scale: {
@@ -39,17 +37,12 @@ home.start = function () {
                     value: [0, 1],
                     duration: 500,
                     easing: 'easeInOutExpo'
-                },
-                complete: function () {
-                    // home.$txt.addClass('bounceIn')
                 }
             })
         }
     })
 }
-home.end = function (done) {
-    // if (!home.$.hasClass('swiper-slide-prev')) return
-
+home.leave = function (done) {
     anime({
         targets: '.home-4',
         scale: {
@@ -67,16 +60,14 @@ home.end = function (done) {
             value: [1, 0],
             duration: 800,
             easing: 'easeInOutExpo'
-        },
-        complete: function () {
-            // home.$txt.addClass('bounceIn')
         }
     })
-
-    meet1.setBegin()
 }
-home.setEnd = function () {
-    $('.home .home-4, .home .home-txt').css({
+home.stage = function () {
+    $('.home .home-4').css({
+        'transform': 'scale(1.2)'
+    })
+    $('.home .home-txt').css({
         'transform': 'scale(1)'
     })
 }
@@ -86,7 +77,17 @@ home.setEnd = function () {
  */
 var meet1 = {}
 meet1.$pic = $('.meet1 .meet-pic')
-meet1.start = function (done) {
+
+meet1.prepare = function () {
+    $('.meet1 .meet-bubble').css({
+        'transform': 'scale(3)'
+    })
+    $('.meet1 .meet-txt-1, .meet1 .meet-coffee').css({
+        'transform': 'scale(0)'
+    })
+    meet1.$pic.removeClass('air-active')
+}
+meet1.enter = function (done) {
     anime({
         targets: '.meet1 .meet-bubble',
         scale: {
@@ -122,11 +123,11 @@ meet1.start = function (done) {
         }
     })
 }
-meet1.end = function (done) {
+meet1.leave = function (done) {
     anime({
         targets: ['.meet1 .meet-bubble'],
         scale: {
-            value: [1.2, 0],
+            value: [1.2, 0.3],
             duration: 1000,
             easing: 'easeInOutExpo'
         }
@@ -148,24 +149,12 @@ meet1.end = function (done) {
             done && done()
         }
     })
-
-    meet2.setBegin()
 }
-meet1.setBegin = function () {
-    $('.meet1 .meet-bubble').css({
-        'transform': 'scale(3)'
-    })
-    $('.meet1 .meet-txt-1, .meet1 .meet-coffee').css({
-        'transform': 'scale(0)'
-    })
-    meet1.$pic.removeClass('air-active')
-}
-meet1.setEnd = function (done) {
+meet1.stage = function () {
     $('.meet1 .meet-bubble, .meet1 .meet-txt-1, .meet1 .meet-coffee').css({
         'transform': 'scale(1.2)',
         'opacity': '1'
     })
-    done && done()
 }
 
 /**
@@ -173,51 +162,48 @@ meet1.setEnd = function (done) {
  */
 var meet2 = {}
 meet2.$pic = $('.meet2 .meet-pic')
-meet2.start = function (done) {
-        anime({
-            targets: '.meet2 .meet-bubble',
-            scale: {
-                value: [0, 1.2],
-                duration: 1400,
-                elasticity: 600,
-                easing: 'easeInOutExpo'
-            }
-        })
+meet2.prepare = function () {
+    $('.meet2 .meet-bubble').css({
+        'transform': 'scale(0.3) translateZ(0)'
+    })
+    $('.meet2 .meet-txt-2, .meet2 .meet-coffee').css({
+        'transform': 'scale(0)'
+    })
+    meet2.$pic.removeClass('air-active')
+}
+meet2.enter = function (done) {
+    anime({
+        targets: '.meet2 .meet-bubble',
+        scale: {
+            value: [0.3, 1.2],
+            duration: 1400,
+            elasticity: 600,
+            easing: 'easeInOutExpo'
+        },
+        translateZ: 0
+    })
 
-        anime({
-            targets: ['.meet2 .meet-txt-2', '.meet2 .meet-coffee'],
-            scale: {
-                value: [0, 1],
-                duration: 1000,
-                easing: 'easeInOutExpo'
-            },
-            opacity: {
-                value: [0, 1],
-                duration: 1000,
-                easing: 'easeInOutExpo'
-            },
-            complete: function () {
-                meet2.$pic.addClass('air-active')
-                done && done()
-            }
-        })
-    }
-    // meet2.end = function (done) {
-    // }
-meet2.setBegin = function () {
-        $('.meet2 .meet-bubble').css({
-            'transform': 'scale(0)'
-        })
-        $('.meet2 .meet-txt-2, .meet2 .meet-coffee').css({
-            'transform': 'scale(0)'
-        })
-        meet2.$pic.removeClass('air-active')
-    }
-    // meet2.setEnd = function (done) {
-    //     done && done()
-    // }
+    anime({
+        targets: ['.meet2 .meet-txt-2', '.meet2 .meet-coffee'],
+        scale: {
+            value: [0, 1],
+            duration: 1000,
+            easing: 'easeInOutExpo'
+        },
+        opacity: {
+            value: [0, 1],
+            duration: 1000,
+            easing: 'easeInOutExpo'
+        },
+        complete: function () {
+            meet2.$pic.addClass('air-active')
+            done && done()
+        }
+    })
+}
 
-function start() {
+
+function init(done) {
     var isSwipering = false;
 
     var mySwiper = new Swiper('#o2_swiper', {
@@ -236,23 +222,20 @@ function start() {
                 isSwipering = false
             } else if (swiper.swipeDirection === 'next') {
                 if (swiper.activeIndex === 0) {
-                    home.end(function () {
+                    home.leave(function () {
                         mySwiper.unlockSwipes()
                         mySwiper.slideNext(true, 0)
-                        meet1.start()
-                        home.setEnd()
+                        meet1.enter()
+                        home.stage()
+                        meet2.prepare()
                     })
                 } else if (swiper.activeIndex === 1) {
-                    meet1.end(function () {
+                    meet1.leave(function () {
                         mySwiper.unlockSwipes()
                         mySwiper.slideNext(true, 0)
-                        meet2.start()
-                        meet1.setEnd()
+                        meet2.enter()
+                        meet1.stage()
                     })
-                } else if (swiper.activeIndex === 5) {
-                    mySwiper.unlockSwipes()
-                    mySwiper.slideNext(true, 300)
-                    isSwipering = false
                 } else {
                     mySwiper.unlockSwipes()
                     mySwiper.slideNext(true, 300)
@@ -268,65 +251,30 @@ function start() {
 
             if (swiper.swipeDirection === 'prev') {
                 if (activeIndex === 0) {
-                    meet1.setBegin()
+                    meet1.prepare()
                 } else if (activeIndex === 1) {
-                    meet2.setBegin()
+                    meet2.prepare()
                 }
-            }
-            if (activeIndex === 0 || activeIndex === 1 || activeIndex === 2) {
-                $o2_main.removeClass('audio-r')
-            } else {
-                $o2_main.addClass('audio-r')
             }
 
             isSwipering = false
         }
     })
 
-    $(document).on('touchstart', '.audio', function () {
-        if ($o2_main.hasClass('audio-off')) {
-            $o2_main.removeClass('audio-off')
-            audio.play()
-        } else {
-            $o2_main.addClass('audio-off')
-            audio.pause()
-        }
-    })
-}
-
-
-
-/**
- * loading
- */
-
-var loading = {}
-loading.$ = $('#o2_loading')
-loading.handleOver = function (done) {
-    loading.$.hide()
     done && done()
 }
 
 /**
- * start
- **/
-var $o2_main = $('#o2_main'),
-    audio
-
-var preloader = new Preloader({
-    perMinTime: 2000
-})
+ * preloader && start
+ */
+var preloader = new Preloader()
 preloader.addCompletionListener(function () {
-    loading.handleOver(function () {
-
-        home.start()
-
-        // audio = loader.get('plugin/bg.mp3')
-        // audio.loop = true
-        //audio.play()
-    })
-
-    $o2_main.removeClass('hide')
-    requestAnimationFrame(start)
+    $('#o2_main').removeClass('hide')
+    init()
+    setTimeout(function () {
+        $('#o2_loading').hide()
+        home.enter()
+        meet1.prepare()
+    }, 200)
 })
 preloader.start()

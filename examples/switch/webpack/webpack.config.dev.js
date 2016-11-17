@@ -8,6 +8,8 @@ var path = require('path'),
 var webpackConfig = require('./webpack.base.js')
 var ROOT = __config.PROJECT_ROOT
 
+webpackConfig.devtool =  '#eval-source-map'
+
 webpackConfig.module.loaders.push({
     test: /\.scss$/,
     // exclude: /node_modules/,

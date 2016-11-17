@@ -5,84 +5,13 @@ $red: #fc2441;
 body {
     overflow: hidden;
     font-size: 30px;
-    background-color: #FFF;
+    background-color: $red;
 }
 
 .main {
     width: 100%;
     height: 100%;
 }
-
-.audio {
-    padding: 22px;
-    position: absolute;
-    top: 30px;
-    right: 10px;
-    z-index: 99;
-    width: 64px;
-    height: 26px;
-    i {
-        margin-right: 6px;
-        display: inline-block;
-        width: 8px;
-        height: 24px;
-        background-color: #FFF;
-        &:nth-child(odd) {
-            animation: music-ani 1.2s 0.6s ease-in-out infinite;
-        }
-        &:nth-child(even) {
-            animation: music1-ani 1.2s ease-in-out infinite;
-        }
-    }
-}
-
-.audio-r {
-    .audio {
-        i {
-            background-color: $red;
-        }
-    }
-}
-
-.audio-off {
-    .audio {
-        i {
-            &:nth-child(odd) {
-                animation: none;
-            }
-            &:nth-child(even) {
-                animation: none;
-            }
-        }
-    }
-}
-
-@keyframes music-ani {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(2px);
-    }
-    75% {
-        transform: translateY(-2px);
-    }
-}
-
-@keyframes music1-ani {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(2px);
-    }
-    75% {
-        transform: translateY(-2px);
-    }
-}
-
 
 /* 箭头 */
 
@@ -124,8 +53,6 @@ body {
 }
 
 
-/* page */
-
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -133,8 +60,6 @@ body {
 
 .swiper-slide {
     overflow: hidden;
-    // visibility: hidden;
-    // display: none;
     .page {
         position: absolute;
         top: 0;
@@ -147,7 +72,6 @@ body {
     &.swiper-slide-next,
     &.swiper-slide-prev {
         .page {
-            background-color: $red;
             display: block;
         }
     }
@@ -202,6 +126,8 @@ body {
     }
 }
 
+
+
 @mixin moveAndFadeAnimation($distance, $duration, $delay) {
     animation: move-and-fade $duration linear infinite;
     animation-delay: $delay;
@@ -244,6 +170,9 @@ body {
         background-image: url(../img/icon/meet-2.png);
     }
     .meet-bubble {
+        // filter: blur(0);
+        // backface-visibility: hidden;
+        display: block;
         margin: 120px auto 0;
         padding: 1px;
         width: 533px;
@@ -289,16 +218,11 @@ body {
         }
     }
     &-coffee {
-        // margin: 82px auto 0;
-        // position: absolute;
-        // top: 489px;
-        // left: 50%;
-        // margin-left: -30.5px;
         width: 61px;
         height: 46px;
     }
     &-txt-1 {
-        // margin: 58px auto 0;
+        // margin: 58px auto 0
         position: absolute;
         top: 590px;
         left: 50%;
@@ -316,18 +240,6 @@ body {
         width: 332px;
         height: 178px;
         // transform: scale(0);
-    }
-}
-
-.meet1 {
-    .meet-bubble {
-        transform: scale(3.8);
-    }
-    .meet-coffee {
-        transform: scale(0);
-    }
-    .meet-txt-1 {
-        transform: scale(0);
     }
 }
 
@@ -366,7 +278,6 @@ body {
                 background-color: #ff1e3b;
                 border-radius: 100%;
                 opacity: 0.5;
-                // animation: flash-ani 3s infinite ease;
             }
             &:after {
                 content: " ";
@@ -467,151 +378,5 @@ body {
                 }
             }
         }
-    }
-}
-
-.gift {
-    background-color: #FFF;
-    &>div>div {
-        background-repeat: no-repeat;
-    }
-    &-1 {
-        margin: 102px auto 0;
-        width: 467px;
-        height: 909px;
-        background-image: url(../img/gift-1.jpg);
-        background-size: 100% 100%;
-    }
-    &-2 {
-        position: absolute;
-        left: 80px;
-        bottom: 68px;
-        width: 14px;
-        height: 135px;
-        background-image: url(../img/gift-2.jpg);
-        background-size: 100% 100%;
-    }
-}
-
-.flow {
-    background-color: #FFF;
-    &>div>div {
-        background-repeat: no-repeat;
-    }
-    &>div>img {
-        display: block;
-    }
-    &-1 {
-        margin: 106px auto 0;
-        width: 318px;
-        height: 69px;
-        background-image: url(../img/flow-1.jpg);
-        background-size: 100% 100%;
-    }
-    &-2 {
-        position: absolute;
-        left: 50px;
-        bottom: 50px;
-        width: 15px;
-        height: 195px;
-        background-image: url(../img/flow-2.jpg);
-        background-size: 100% 100%;
-    }
-    &-pic {
-        margin: 86px auto 0;
-        width: 153px;
-        height: 54px;
-        background-image: url(../img/flow-3.jpg);
-        background-size: 100% 100%;
-    }
-    &-step {
-        &-1 {
-            margin: 68px auto 0;
-            width: 288px;
-            height: 68px;
-            // background-image: url(../img/flow-step-1.jpg);
-        }
-        &-2 {
-            margin: 40px auto 0;
-            width: 237px;
-            height: 72px;
-            // background-image: url(../img/flow-step-2.jpg);
-        }
-        &-3 {
-            margin: 40px auto 0;
-            width: 361px;
-            height: 74px;
-            // background-image: url(../img/flow-step-3.jpg);
-        }
-        &-line {
-            width: 2PX;
-            height: 68px;
-            background-image: url(../img/flow-step-line.jpg);
-        }
-        &.line-1 {
-            margin: 44px auto 0;
-        }
-        &.line-2 {
-            margin: 44px auto 0;
-        }
-    }
-    &-btn {
-        display: block;
-        margin: 110px auto 0;
-        width: 318px;
-        height: 70px;
-        background-image: url(../img/flow-btn.jpg);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-    }
-}
-
-.flow.swiper-slide-active {
-    .flow-pic {
-        animation: bounceIn 1s ease;
-    }
-    .flow-step-1 {
-        animation: move1-ani 1s 1s ease both;
-    }
-    .line-1 {
-        animation: move1-ani 1s 1.5s ease both;
-    }
-    .flow-step-2 {
-        animation: move1-ani 1s 2s ease both;
-    }
-    .line-2 {
-        animation: move1-ani 1s 2.5s ease both;
-    }
-    .flow-step-3 {
-        animation: move1-ani 1s 3s ease both;
-    }
-    .flow-btn {
-        animation: move1-ani 1s 3s ease both;
-    }
-}
-
-@keyframes flash-ani {
-    0% {
-        opacity: 0.5;
-        transform: scale(1, 1);
-    }
-    50% {
-        opacity: 0.1;
-        transform: scale(.8, .8);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(1, 1);
-    }
-}
-
-@keyframes move1-ani {
-    0% {
-        opacity: 0;
-        transform: translateY(1334px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
     }
 }

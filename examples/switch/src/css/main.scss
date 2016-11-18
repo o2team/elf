@@ -36,23 +36,6 @@ body {
     background-image: url(../img/icon/arrow_r.png);
 }
 
-@keyframes arrow-ani {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -126,8 +109,6 @@ body {
     }
 }
 
-
-
 @mixin moveAndFadeAnimation($distance, $duration, $delay) {
     animation: move-and-fade $duration linear infinite;
     animation-delay: $delay;
@@ -173,12 +154,10 @@ body {
         // filter: blur(0);
         // backface-visibility: hidden;
         display: block;
-        margin: 120px auto 0;
+        margin: 66px auto 0;
         padding: 1px;
         width: 533px;
         height: 533px;
-        background-image: url(../img/bubble-w.png);
-        background-size: contain;
     }
     &-pic {
         position: absolute;
@@ -378,5 +357,41 @@ body {
                 }
             }
         }
+    }
+}
+
+
+/**
+ * keyframes
+ */
+
+@keyframes arrow-ani {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes flash-ani {
+    0% {
+        opacity: 0.5;
+        transform: scale(1, 1);
+    }
+    50% {
+        opacity: 0.1;
+        transform: scale(.8, .8);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1, 1);
     }
 }

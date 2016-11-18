@@ -28,6 +28,7 @@ home.enter = function () {
                 scale: {
                     value: [0.5, 1.2],
                     duration: 1000,
+                    easing: 'easeOutElastic',
                     elasticity: 600,
                 },
             })
@@ -95,17 +96,15 @@ meet1.enter = function (done) {
             delay: 0,
             duration: 500,
             easing: 'easeInOutExpo',
-            elasticity: 800
         },
         complete: function () {
             anime({
                 targets: '.meet1 .meet-bubble',
                 scale: {
-                    value: [0.5, 1.2],
-                    // duration: 500,
+                    value: [0.5, 1],
                     duration: 1000,
-                    elasticity: 600,
-                    // easing: 'easeInOutExpo'
+                    easing: 'easeOutElastic',
+                    elasticity: 600
                 },
             })
             anime({
@@ -127,7 +126,7 @@ meet1.leave = function (done) {
     anime({
         targets: ['.meet1 .meet-bubble'],
         scale: {
-            value: [1.2, 0.3],
+            value: [1, 0],
             duration: 1000,
             easing: 'easeInOutExpo'
         }
@@ -152,7 +151,7 @@ meet1.leave = function (done) {
 }
 meet1.stage = function () {
     $('.meet1 .meet-bubble, .meet1 .meet-txt-1, .meet1 .meet-coffee').css({
-        'transform': 'scale(1.2)',
+        'transform': 'scale(1)',
         'opacity': '1'
     })
 }
@@ -164,7 +163,7 @@ var meet2 = {}
 meet2.$pic = $('.meet2 .meet-pic')
 meet2.prepare = function () {
     $('.meet2 .meet-bubble').css({
-        'transform': 'scale(0.3) translateZ(0)'
+        'transform': 'scale(0) translateZ(0)'
     })
     $('.meet2 .meet-txt-2, .meet2 .meet-coffee').css({
         'transform': 'scale(0)'
@@ -175,10 +174,10 @@ meet2.enter = function (done) {
     anime({
         targets: '.meet2 .meet-bubble',
         scale: {
-            value: [0.3, 1.2],
-            duration: 1400,
-            elasticity: 600,
-            easing: 'easeInOutExpo'
+            value: [0, 1],
+            duration: 1200,
+            easing: 'easeOutElastic',
+            elasticity: 600
         },
         translateZ: 0
     })
@@ -187,12 +186,7 @@ meet2.enter = function (done) {
         targets: ['.meet2 .meet-txt-2', '.meet2 .meet-coffee'],
         scale: {
             value: [0, 1],
-            duration: 1000,
-            easing: 'easeInOutExpo'
-        },
-        opacity: {
-            value: [0, 1],
-            duration: 1000,
+            duration: 600,
             easing: 'easeInOutExpo'
         },
         complete: function () {

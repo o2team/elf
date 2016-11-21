@@ -1,11 +1,11 @@
-require('shelljs/global')
 var path = require('path')
+var fs = require('fs-extra')
 var webpack = require('webpack')
 var buildWebpackConfig = require('./webpack.config.build')
 
 var buildPath = buildWebpackConfig.output.path
-rm('-rf', buildPath)
-mkdir('-p', buildPath)
+fs.removeSync(buildPath)
+fs.mkdirsSync(buildPath)
 
 webpack(buildWebpackConfig, function (err, stats) {
     if (err) throw err

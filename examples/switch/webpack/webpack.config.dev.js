@@ -40,7 +40,7 @@ var _HtmlPluginOptions = {
 webpackConfig.entry = path.join(ROOT, 'src/js/main.js')
 webpackConfig.plugins.push(new HtmlWebpackPlugin(_HtmlPluginOptions));
 
-// 辨已完成后打开浏览器
+// 打开浏览器
 // webpackConfig.plugins.push(new OpenBrowserPlugin({
 //     url: 'http://' + (__config.IP || 'localhost') + ':' + __config.PORT
 // }))

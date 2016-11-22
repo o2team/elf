@@ -32,7 +32,8 @@
     "webpack": "1.13.3",
     "webpack-dashboard": "0.2.0",
     "webpack-dev-server": "1.16.2",
-    "webpack-merge": "0.17.0"
+    "webpack-merge": "0.17.0",
+    "ip": "1.1.4"
   },
   "dependencies": {
     "three": "0.82.1",

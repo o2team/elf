@@ -17,6 +17,7 @@
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
     "image-webpack-loader": "3.0.0",
+    "ip": "1.1.4",
     "node-sass": "3.13.0",
     "open-browser-webpack-plugin": "0.0.3",
     "postcss-import": "8.2.0",

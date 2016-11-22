@@ -1,4 +1,5 @@
 var path = require('path'),
+    ip = require('ip'),
     //ExtractTextPlugin = require("extract-text-webpack-plugin"), // Extract text from bundle into a file
     OpenBrowserPlugin = require('open-browser-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
@@ -41,9 +42,9 @@ webpackConfig.entry = path.join(ROOT, 'src/js/main.js')
 webpackConfig.plugins.push(new HtmlWebpackPlugin(_HtmlPluginOptions));
 
 // 打开浏览器
-// webpackConfig.plugins.push(new OpenBrowserPlugin({
-//     url: 'http://' + (__config.IP || 'localhost') + ':' + __config.PORT
-// }))
+webpackConfig.plugins.push(new OpenBrowserPlugin({
+    url: 'http://' + ip.address() + ':' + __config.PORT
+}))
 
 webpackConfig.plugins.push(new DashboardPlugin())
 

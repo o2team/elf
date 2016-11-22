@@ -8,20 +8,16 @@ require('three/examples/js/renderers/CanvasRenderer.js')
 var Preloader = require('./lib/preloader.js')
 
 var images = [
-    'img/px.jpg',
-    'img/nx.jpg',
-    'img/py.jpg',
-    'img/ny.jpg',
-    'img/pz.jpg',
-    'img/nz.jpg'
+    'img/pano1-s.jpg',
+    'img/pano2-s.jpg',
+    'img/pano3-s.jpg',
+    'img/pano4-s.jpg',
 ]
 
-require('../img/px.jpg')
-require('../img/nx.jpg')
-require('../img/py.jpg')
-require('../img/ny.jpg')
-require('../img/pz.jpg')
-require('../img/nz.jpg')
+require('../img/pano1-s.jpg')
+require('../img/pano2-s.jpg')
+require('../img/pano3-s.jpg')
+require('../img/pano4-s.jpg')
 
 var camera, scene, renderer
 var texture_placeholder,
@@ -43,7 +39,7 @@ function init() {
     console.log('init ok')
     var container, mesh
     container = document.getElementById('container')
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100)
+    camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1100)
 
     scene = new THREE.Scene()
     texture_placeholder = document.createElement('canvas')
@@ -53,18 +49,23 @@ function init() {
     context.fillStyle = 'rgb( 200, 200, 200 )'
     context.fillRect(0, 0, texture_placeholder.width, texture_placeholder.height)
     var materials = [
-        loadTexture('img/px.jpg'), // right
-        loadTexture('img/nx.jpg'), // left
-        loadTexture('img/py.jpg'), // top
-        loadTexture('img/ny.jpg'), // bottom
-        loadTexture('img/pz.jpg'), // back
-        loadTexture('img/nz.jpg') // front
+        loadTexture('img/pano3-s.jpg'), // right
+        loadTexture('img/pano2-s.jpg'), // left
+        new THREE.MeshBasicMaterial( {color: 0x90C0C0} ), // top
+        new THREE.MeshBasicMaterial( {color: 0x9F5D3B} ), // bottom
+        loadTexture('img/pano4-s.jpg'), // back
+        loadTexture('img/pano1-s.jpg') // front
     ]
     mesh = new THREE.Mesh(new THREE.BoxGeometry(300, 300, 300, 7, 7, 7), new THREE.MultiMaterial(materials))
     mesh.scale.x = -1
     scene.add(mesh)
 
-    renderer = new THREE.CanvasRenderer()
+	if ( webglAvailable() ) {
+		renderer = new THREE.WebGLRenderer();
+	} else {
+		renderer = new THREE.CanvasRenderer();
+	}
+
     renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setSize(window.innerWidth, window.innerHeight)
     container.appendChild(renderer.domElement)
@@ -77,6 +78,18 @@ function init() {
     document.addEventListener('touchmove', onDocumentTouchMove, false)
     //
     window.addEventListener('resize', onWindowResize, false)
+}
+
+function webglAvailable() {
+    try {
+        var canvas = document.createElement( 'canvas' );
+        return !!( window.WebGLRenderingContext && (
+            canvas.getContext( 'webgl' ) ||
+            canvas.getContext( 'experimental-webgl' ) )
+        );
+    } catch ( e ) {
+        return false;
+    }
 }
 
 function onWindowResize() {
@@ -156,7 +169,7 @@ function update() {
     phi = THREE.Math.degToRad(90 - lat)
     theta = THREE.Math.degToRad(lon)
     target.x = 500 * Math.sin(phi) * Math.cos(theta)
-    target.y = 500 * Math.cos(phi)
+    target.y = 700 * Math.cos(phi)
     target.z = 500 * Math.sin(phi) * Math.sin(theta)
     camera.lookAt(target)
     renderer.render(scene, camera)

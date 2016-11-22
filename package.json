@@ -9,6 +9,9 @@
   "bin": {
     "mspa": "./bin/mspa"
   },
+  "engines" : {
+    "node": ">=6"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/o2team/h5-boilerplate.git"

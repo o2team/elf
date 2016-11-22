@@ -1,3 +1,4 @@
 module.exports = {
-    OUTPUT_PATH: 'dist'
+    OUTPUT_PATH: 'dist',
+    PUBLIC_PATH: '/'
 }

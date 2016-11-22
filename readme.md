@@ -68,30 +68,59 @@ Zepto，会默认引入，其他可根据项目需求引入
 
 ### config 说明
 
-开发相关配置 `config/development.js`
+#### 开发配置
+文件： `config/development.js`
 ```javascript
 {
     TITLE: 'HTML5 SPA Boilerplate DEV',
-    PUBLIC_PATH: '/',
     PORT: '8000',
     DESIGN_WIDTH: 750,
 }
 
 ```
 
-构建相关配置 `config/build.js`
+**配置项说明**
+- TITLE
+
+    设置标题
+
+- PORT
+
+    开发服务器监听的端口
+
+- DESIGN_WIDTH
+
+    设计稿的宽度。用于计算 REM，设置了之后，样式直接使用设计稿的尺寸。
+    例如：设计稿的宽度是 750px，其中有个按钮是的宽度是 80px，在设置这个按钮的宽度样式时，直接按 80px 设置。
+
+#### 构建配置
+文件： `config/build.js`
 ```javascript
 {
-    OUTPUT_PATH: 'dist'
+    OUTPUT_PATH: 'dist',
+    PUBLIC_PATH: '/'
 }
 ```
 
-默认配置 `config/default.js`
+**配置项说明**
+- OUTPUT_PATH
+
+    构建完成后的输出目录
+
+- PUBLIC_PATH
+
+    静态资源的路径
+
+
+#### 默认配置 
+文件：`config/default.js`
+
+默认配置文件提供了默认值，`如果需要修改某个配置项，不要修改默认配置文件，请修改开发配置文件或者构建配置文件`
+
 ```javascript
 
 {
     TITLE: 'HTML5 SPA Boilerplate', // 页面标题
-    PUBLIC_PATH: '/', // 静态资源地址
     PORT: '8000', // dev server 运行的端口
     DESIGN_WIDTH: 750, // 设计稿的宽度 默认750,如果开启 Zoom 则直接按照设计稿和屏幕宽度进行缩放
     RESPONSIVE_REM: true, // 是否用rem做适配
@@ -99,9 +128,10 @@ Zepto，会默认引入，其他可根据项目需求引入
     NODE_ENV: process.env.NODE_ENV || 'development',
     PROJECT_ROOT: path.resolve(__dirname, '..'),
 
+    OUTPUT_PATH: 'dist', // build 时，生成的文件夹
+    PUBLIC_PATH: '/', // 静态资源路径
     CSS_INTERNAL: false, // build 时，样式是否内联，默认为 false；如果为 true，则将样式附加到 html header 中作为内联样式
     EXTERNALS: {},
-    OUTPUT_PATH: 'dist', // build 时，生成的文件夹
     PUBLISH_IMAGEMIN: { // build 时，图片的压缩配置
         optimizationLevel: 7,
         interlaced: false,
@@ -118,7 +148,7 @@ Zepto，会默认引入，其他可根据项目需求引入
 ```bash
 # node6.2.2 +
 
-npm install
+npm install # 安装依赖
 
 npm start # 项目开发
 

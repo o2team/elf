@@ -5,7 +5,7 @@ window.THREE = require('three/build/three.min.js')
 require('three/examples/js/renderers/Projector.js')
 require('three/examples/js/renderers/CanvasRenderer.js')
 
-var Preloader = require('./lib/preloader.js')
+var Preloader = require('preloader.js')
 
 var images = [
     'img/pano1-s.jpg',

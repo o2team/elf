@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "three": "0.82.1",
-    "zepto": "1.2.0"
+    "zepto": "1.2.0",
+    "preloader.js": "1.0.0"
   }
 }

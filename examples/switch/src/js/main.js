@@ -4,7 +4,7 @@ require('src/css/main.scss')
 require('swiper/dist/css/swiper.css')
 require('swiper/dist/js/swiper.js')
 window.anime = require('animejs/anime.js')
-var Preloader = require('./lib/preloader.js')
+var Preloader = require('preloader.js')
 
 /**
  * home

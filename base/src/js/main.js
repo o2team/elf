@@ -1,8 +1,7 @@
 require('src/body.html')
 require('src/css/main.scss')
 
-var Preloader = require('./lib/preloader.js')
-
+var Preloader = require('preloader.js')
 
 /**
  * init
@@ -17,6 +16,7 @@ function init () {
  */
 var preloader = new Preloader({
     resources: [],
+    concurrency: 4,
     perMinTime: 1000 // 加载每个资源所需的最小时间，一般用来测试 loading
 })
 preloader.addProgressListener(function (loaded, length) {

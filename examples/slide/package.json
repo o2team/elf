@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "swiper": "3.4.0",
-    "zepto": "1.2.0"
+    "zepto": "1.2.0",
+    "preloader.js": "1.0.0"
   }
 }

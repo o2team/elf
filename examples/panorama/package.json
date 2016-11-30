@@ -36,8 +36,9 @@
     "ip": "1.1.4"
   },
   "dependencies": {
+    "orientation.js": "1.0.0",
+    "preloader.js": "1.0.0",
     "three": "0.82.1",
-    "zepto": "1.2.0",
-    "preloader.js": "1.0.0"
+    "zepto": "1.2.0"
   }
 }

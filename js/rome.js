@@ -132,77 +132,77 @@ jQuery(document).ready(function ($) {
 	//Navigation Menu
 
 	//Home
-	$(".home .download li").click(function () {
-		var url = $(this).attr("data-url");
-		window.open(url, '_blank');
-	});
+	// $(".home .download li").click(function () {
+	// 	var url = $(this).attr("data-url");
+	// 	window.open(url, '_blank');
+	// });
 
-	$(".home .watch").magnificPopup({
-		disableOn: 700,
-		type: 'iframe',
-		mainClass: 'mfp-fade',
-		removalDelay: 160,
-		preloader: false,
+	// $(".home .watch").magnificPopup({
+	// 	disableOn: 700,
+	// 	type: 'iframe',
+	// 	mainClass: 'mfp-fade',
+	// 	removalDelay: 160,
+	// 	preloader: false,
 
-		fixedContentPos: false
-	});
+	// 	fixedContentPos: false
+	// });
 
-	$(".home .more").click(function () {
-		var y = $('section.about').position().top - 60;
-		$('html,body').animate({
-			scrollTop: y
-		}, 1000);
-		return false;
-	});
+	// $(".home .more").click(function () {
+	// 	var y = $('section.about').position().top - 60;
+	// 	$('html,body').animate({
+	// 		scrollTop: y
+	// 	}, 1000);
+	// 	return false;
+	// });
 	//Home
 
 	//About 
-	$('.about .screen').flexslider({
-		animation: "slide",
-		animationLoop: true,
-		animationSpeed: 400,
-		easing: "easeOutBack",
-		slideshow: false,
-		pauseOnHover: false,
-		controlNav: false,
-		directionNav: false
-	});
+	// $('.about .screen').flexslider({
+	// 	animation: "slide",
+	// 	animationLoop: true,
+	// 	animationSpeed: 400,
+	// 	easing: "easeOutBack",
+	// 	slideshow: false,
+	// 	pauseOnHover: false,
+	// 	controlNav: false,
+	// 	directionNav: false
+	// });
 
-	$('.about .text').flexslider({
-		animation: "slide",
-		animationLoop: true,
-		animationSpeed: 400,
-		easing: "easeOutBack",
-		slideshow: true,
-		slideshowSpeed: 3000,
-		controlNav: true,
-		directionNav: false,
-		before: function () {
-			var currentID = $('.about .text li').index($(".flex-active-slide"));
-			$('.about .screen').flexslider(currentID);
-		}
-	});
+	// $('.about .text').flexslider({
+	// 	animation: "slide",
+	// 	animationLoop: true,
+	// 	animationSpeed: 400,
+	// 	easing: "easeOutBack",
+	// 	slideshow: true,
+	// 	slideshowSpeed: 3000,
+	// 	controlNav: true,
+	// 	directionNav: false,
+	// 	before: function () {
+	// 		var currentID = $('.about .text li').index($(".flex-active-slide"));
+	// 		$('.about .screen').flexslider(currentID);
+	// 	}
+	// });
 
-	$(".home .arrow, notfound .back").css('left', (windowWidth - 50) / 2);
+	// $(".home .arrow, notfound .back").css('left', (windowWidth - 50) / 2);
 
-	$(".about .text .slides li").each(function () {
-		$(this).css('margin-top', (387 - $(this).height()) / 2);
-	});
+	// $(".about .text .slides li").each(function () {
+	// 	$(this).css('margin-top', (387 - $(this).height()) / 2);
+	// });
 	//About
 
 	//Features
-	$('.features .feature').hover(function () {
-		$('.features .feature').stop().animate({
-			opacity: 0.3
-		}, 'fast');
-		$(this).stop().animate({
-			opacity: 1
-		}, 'fast');
-	}, function () {
-		$('.features .feature').stop().animate({
-			opacity: 1
-		}, 'fast');
-	});
+	// $('.features .feature').hover(function () {
+	// 	$('.features .feature').stop().animate({
+	// 		opacity: 0.3
+	// 	}, 'fast');
+	// 	$(this).stop().animate({
+	// 		opacity: 1
+	// 	}, 'fast');
+	// }, function () {
+	// 	$('.features .feature').stop().animate({
+	// 		opacity: 1
+	// 	}, 'fast');
+	// });
 	//Features
 
 	//Featured
@@ -272,21 +272,21 @@ $(window).load(function () {
 	// 	offset: '50'
 	// });
 
-	$('#features .main').waypoint(function () {
-		setTimeout(function () {
-			$('#features .main .feature-list').addClass('animated fadeInDown')
-		}, 0);
-	}, {
-		offset: '50'
-	});
+	// $('#features .main').waypoint(function () {
+	// 	setTimeout(function () {
+	// 		$('#features .main .feature-list').addClass('animated fadeIn')
+	// 	}, 0);
+	// }, {
+	// 	offset: '50'
+	// });
 
-	$('#features .more').waypoint(function () {
-		setTimeout(function () {
-			$('#features .more .feature').addClass('animated fadeInDown')
-		}, 0);
-	}, {
-		offset: '50'
-	});
+	// $('#features .more').waypoint(function () {
+	// 	setTimeout(function () {
+	// 		$('#features .more .feature').addClass('animated fadeInDown')
+	// 	}, 0);
+	// }, {
+	// 	offset: '50'
+	// });
 
 	// $('#gallery').waypoint(function () {
 	// 	setTimeout(function () {

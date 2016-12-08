@@ -4675,6 +4675,10 @@ precss@1.4.0:
     postcss-selector-matches "^2.0.0"
     postcss-selector-not "^2.0.0"
 
+preloader.js@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/preloader.js/-/preloader.js-1.0.0.tgz#e1cd3bcd8ee1194902a91f64bdfdf6490e4d9059"
+
 prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"

@@ -13,21 +13,27 @@ npm install -g html5-spa-boilerplate
 mkdir demo && cd demo
 
 # 初始化项目
-mspa init  
+mspa init
+
+# 查看已有示例
+mspa list
+
+# 查看 help
+mspa --help 
 ```
 
 ## Boilerplate 介绍 
 
 ### 主要功能
 
-- [x] 页面响应式REM px自动转换REM （可选）
-- [x] 页面响应式Zoom 对需要缩放部分引用class="__z" （可选）
-- [x] 主要针对移动端H5网页开发，并专门针对微信做了兼容
+- [x] 页面响应式 REM px 自动转换 REM （可选）
+- [x] 页面响应式 Zoom 对需要缩放部分引用 class="__z" （可选）
+- [x] 主要针对移动端 HTML5 网页开发，并专门针对微信做了兼容
 - [x] 打包发布，快速配置
-- [x] hot reload
 - [x] 图片自动分组合并雪碧图
 - [x] 图片压缩
 - [x] 代码打包压缩
+- [x] 样式 hot reload
 - [x] sass
 - [x] autoprefixer
 

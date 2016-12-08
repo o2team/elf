@@ -46,5 +46,8 @@
     }, {
         "path": ".asserts.json",
         "type": "file"
+    }, {
+        "path": "README.md",
+        "type": "file"
     }]
 }

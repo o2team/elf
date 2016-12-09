@@ -1,6 +1,6 @@
 {
   "name": "html5-spa-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "HTML5 Modern SPA Boilerplate",
   "scripts": {
     "sync": "node src/create.js base ",

@@ -33,9 +33,6 @@
         "path": ".editorconfig",
         "type": "file"
     }, {
-        "path": ".gitignore",
-        "type": "file"
-    }, {
         "path": "package.json",
         "type": "json",
         "action": "assignFields",

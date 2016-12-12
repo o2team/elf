@@ -1,6 +1,6 @@
 {
   "name": "elf-cli",
-  "version": "1.0.0-bate",
+  "version": "1.0.0",
   "description": "HTML5 Boilerplate",
   "scripts": {
     "sync": "node src/create.js base ",

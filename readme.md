@@ -1,28 +1,44 @@
-# HTML5 活动脚手架
+# ELF
 
 针对移动 web 场景的动效模板脚手架，可用来制作翻页动画，各种推广宣传 HTHML5 页面。包括移动端自适应（rem 或 zoom），雪碧图合并，样式 hot reload 等功能，通过 webpack 进行打包发布。
 另外还提供翻屏，重力感应等示例项目。
 
 ## 安装
 
-```bash
+```sh
 # 全局安装
-npm install -g html5-spa-boilerplate
-
-# 创建项目目录
-mkdir demo && cd demo
-
-# 初始化项目
-mspa init
-
-# 查看已有示例
-mspa list
+$ npm install -g elf-cli
 
 # 查看 help
-mspa --help 
+$ elf --help
+
+  Usage: elf [options] [command]
+
+
+  Commands:
+
+    init|i [options]  init project
+    list|ls           list all cases
+
+  Options:
+
+    -h, --help         output usage information
+    -V, --version      output the version number
+    -d, --dest [dir]   set destination directory when init, default: .
+    -c, --case [case]  set extend case when init
+
+
+# 创建项目目录
+$ mkdir demo && cd demo
+
+# 初始化项目
+$ elf init
+
+# 查看已有示例
+$ elf list
 ```
 
-## Boilerplate 介绍 
+## Boilerplate 介绍
 
 ### 主要功能
 
@@ -37,7 +53,7 @@ mspa --help
 - [x] sass
 - [x] autoprefixer
 
-### 相关组件依赖 
+### 相关组件依赖
 
 - [x] Zepto [参考地址](http://zeptojs.com/)
 
@@ -118,7 +134,7 @@ Zepto，会默认引入，其他可根据项目需求引入
     静态资源的路径
 
 
-#### 默认配置 
+#### 默认配置
 文件：`config/default.js`
 
 默认配置文件提供了默认值，`如果需要修改某个配置项，不要修改默认配置文件，请修改开发配置文件或者构建配置文件`
@@ -188,5 +204,3 @@ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
 * [postcss-plugin-px2rem](https://github.com/ant-tool/postcss-plugin-px2rem) : postcss plugin px2rem
 * [postcss-sprites](https://github.com/2createStudio/postcss-sprites) : Generate sprites from stylesheets.
 * [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) : The webpack-dev-server is a little node.js Express server
-
-ｂ（￣▽￣）ｄ 感谢！~

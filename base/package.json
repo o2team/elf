@@ -1,7 +1,7 @@
 {
-  "name": "h5-boilerplate",
+  "name": "html5-boilerplate",
   "version": "1.0.0",
-  "description": "h5 boilerplate",
+  "description": "html5 boilerplate",
   "scripts": {
     "build": "NODE_ENV=build node webpack/build.js",
     "start": "NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack/webpack.config.dev.js --hot"

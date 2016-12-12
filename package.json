@@ -1,28 +1,29 @@
 {
-  "name": "html5-spa-boilerplate",
-  "version": "0.1.2",
-  "description": "HTML5 Modern SPA Boilerplate",
+  "name": "elf-cli",
+  "version": "1.0.0-bate",
+  "description": "HTML5 Boilerplate",
   "scripts": {
     "sync": "node src/create.js base ",
     "sync:all": "node src/sync-base-to-examples.js"
   },
   "bin": {
-    "mspa": "./bin/mspa"
+    "elf": "./bin/elf.js"
   },
   "engines" : {
     "node": ">=6"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/o2team/h5-boilerplate.git"
+    "url": "https://github.com/o2team/elf.git"
   },
   "bugs": {
-    "url": "https://github.com/o2team/h5-boilerplate/issues"
+    "url": "https://github.com/o2team/elf/issues"
   },
   "keywords": [
+    "elf",
+    "cli",
     "HTML5",
-    "SPA",
-    "Boilerplate"
+    "boilerplate"
   ],
   "author": "o2team",
   "devDependencies": {},
@@ -31,5 +32,6 @@
     "commander": "2.9.0",
     "fs-extra": "1.0.0",
     "lodash": "4.17.2"
-  }
+  },
+  "license": "MIT"
 }

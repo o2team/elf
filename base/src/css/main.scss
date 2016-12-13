@@ -4,13 +4,21 @@
 .main {
     width: 100%;
     height: 100%;
-    .title {
-        height: 400px;
-        line-height: 400px;
-        font-size: 48px;
+    background-color: #282B56;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .info {
         text-align: center;
-    }
-    .logo {
-        text-align: center;
+        .name {
+            margin: 0 auto 30px;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            background-color: #FFF;
+            border-radius: 100%;
+            font-size: 60px;
+            text-transform: uppercase;
+        }
     }
 }

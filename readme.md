@@ -94,7 +94,7 @@ Zepto，会默认引入，其他可根据项目需求引入
 文件： `config/development.js`
 ```javascript
 {
-    TITLE: 'HTML5 SPA Boilerplate DEV',
+    TITLE: 'ELF DEV',
     PORT: '8000',
     DESIGN_WIDTH: 750,
 }
@@ -142,7 +142,7 @@ Zepto，会默认引入，其他可根据项目需求引入
 ```javascript
 
 {
-    TITLE: 'HTML5 SPA Boilerplate', // 页面标题
+    TITLE: 'ELF', // 页面标题
     PORT: '8000', // dev server 运行的端口
     DESIGN_WIDTH: 750, // 设计稿的宽度 默认750,如果开启 Zoom 则直接按照设计稿和屏幕宽度进行缩放
     RESPONSIVE_REM: true, // 是否用rem做适配

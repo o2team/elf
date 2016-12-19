@@ -1,4 +1,4 @@
-require('src/body.html')
+require('src/index.html')
 require('src/css/main.scss')
 
 require('swiper/dist/css/swiper.css')
@@ -269,6 +269,6 @@ preloader.addCompletionListener(function () {
         $('#o2_loading').hide()
         home.enter()
         meet1.prepare()
-    }, 200)
+    }, 1000)
 })
 preloader.start()

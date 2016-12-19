@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>ELF</title>
+  <!-- begin REM Zoom 计算 -->
+  <script type="text/javascript">
+    (function (win) {
+      var remCalc = {};
+      var docEl = win.document.documentElement,
+        tid,
+        hasRem = true,
+        hasZoom = true,
+        designWidth = 750;
+
+      function refresh() {
+        var width = docEl.getBoundingClientRect().width;
+        // if (width > 640) { width = 640 }
+        if (hasRem) {
+          var rem = width / 20;
+          docEl.style.fontSize = rem + "px";
+          remCalc.rem = rem;
+          var actualSize = parseFloat(window.getComputedStyle(document.documentElement)["font-size"]);
+          if (actualSize !== rem && actualSize > 0 && Math.abs(actualSize - rem) > 1) {
+            var remScaled = rem * rem / actualSize;
+            docEl.style.fontSize = remScaled + "px"
+          }
+        }
+        if (hasZoom) {
+          var style = document.getElementById('J__style')
+          if (!style) {
+            style = document.createElement('style')
+            style.id = 'J__style'
+          }
+          style.innerHTML = '.__z{zoom:' + width / designWidth + '}'
+          document.getElementsByTagName('head')[0].appendChild(style)
+        }
+      }
+
+      function dbcRefresh() {
+        clearTimeout(tid);
+        tid = setTimeout(refresh, 100)
+      }
+      win.addEventListener("resize", function () {
+        dbcRefresh()
+      }, false);
+
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          dbcRefresh()
+        }
+      }, false);
+      refresh();
+      if (hasRem) {
+        remCalc.refresh = refresh;
+        remCalc.rem2px = function (d) {
+          var val = parseFloat(d) * this.rem;
+          if (typeof d === "string" && d.match(/rem$/)) {
+            val += "px"
+          }
+          return val
+        };
+        remCalc.px2rem = function (d) {
+          var val = parseFloat(d) / this.rem;
+          if (typeof d === "string" && d.match(/px$/)) {
+            val += "rem"
+          }
+          return val
+        };
+        win.remCalc = remCalc
+      }
+    })(window);
+
+  </script>
+  <!-- end REM Zoom 计算 -->
+</head>
+
+<body>
+  <!-- begin loading 动画，对应的样式在 src/css/loading.scss -->
+  <div id="o2_loading" class="loading">
+    <div class="inner">
+      <i class="before"></i>
+      <i class="after"></i>
+    </div>
+    <div class="text">loading</div>
+  </div>
+  <!-- end loading -->
+  <!-- begin 主体内容 -->
+  <div id="o2_main" class="main hide">
+    <div class="info">
+      <p class="name">elf</p>
+      <img class="version" src="https://img.shields.io/npm/v/elf-cli.svg?style=flat-square" preload/>
+    </div>
+  </div>
+  <!-- end 主体内容 -->
+</body>
+
+</html>

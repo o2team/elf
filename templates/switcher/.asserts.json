@@ -1,50 +1,26 @@
 {
-    "asserts": [{
-        "path": "config",
-        "type": "dir"
-    }, {
-        "path": "config/default.js",
-        "type": "file",
-        "action": "force"
-    }, {
-        "path": "src/css",
-        "type": "dir"
-    }, {
-        "path": "src/img",
-        "type": "dir"
-    }, {
-        "path": "src/js/lib",
-        "type": "dir"
-    }, {
-        "path": "src/js/main.js",
-        "type": "file"
-    }, {
-        "path": "src/body.html",
-        "type": "file"
-    }, {
-        "path": "src/index.template.ejs",
-        "type": "file",
-        "action": "force"
-    }, {
-        "path": "webpack",
-        "type": "dir",
-        "action": "force"
-    }, {
-        "path": ".editorconfig",
-        "type": "file"
-    }, {
-        "path": "package.json",
-        "type": "json",
-        "action": "assignFields",
-        "assignFields": ["devDependencies", "dependencies"]
-    }, {
-        "path": "yarn.lock",
-        "type": "file"
-    }, {
-        "path": ".asserts.json",
-        "type": "file"
-    }, {
-        "path": "README.md",
-        "type": "file"
-    }]
+  "asserts": [{
+    "path": "src/css",
+    "type": "dir"
+  }, {
+    "path": "src/img",
+    "type": "dir"
+  }, {
+    "path": "src/js/lib",
+    "type": "dir"
+  }, {
+    "path": "src/js/main.js",
+    "type": "file"
+  }, {
+    "path": "src/index.html",
+    "type": "file"
+  }, {
+    "path": "package.json",
+    "type": "json",
+    "action": "assignFields",
+    "assignFields": ["devDependencies", "dependencies"]
+  }, {
+    "path": "README.md",
+    "type": "file"
+  }]
 }

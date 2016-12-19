@@ -3,6 +3,7 @@
 全景示例，基于 [three.js](three-repo) 和 [orientation.js](orientation-repo)，可基于该项目初始化实现重力感应配合全景的项目。
 
 ## 开始
+
 ```bash
 # 安装依赖 
 npm install # 或者使用 yarn install 
@@ -18,7 +19,7 @@ npm run build
 
 开发时，主要涉及到三个文件 
 
-- `src/body.html`
+- `src/index.html`
 
     整个网页的 HTML 文件
 

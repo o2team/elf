@@ -1,5 +1,5 @@
-require('src/body.html')
-require('src/css/main.scss')
+require('../index.html')
+require('../css/main.scss')
 
 window.THREE = require('three/build/three.min.js')
 require('three/examples/js/renderers/Projector.js')

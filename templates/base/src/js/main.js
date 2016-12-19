@@ -1,25 +1,21 @@
-require('src/index.html')
-require('src/css/main.scss')
+require('../index.html')
+require('../css/main.scss')
 
-require('swiper/dist/css/swiper.css')
-require('swiper/dist/js/swiper.js')
 var Preloader = require('preloader.js')
 
 /**
  * init
  */
 function init() {
-  var mySwiper = new Swiper('#o2_swiper', {
-    direction: 'vertical'
-  })
+  console.log('init ok')
 }
-
 
 /**
  * preloader && start
  */
 var preloader = new Preloader({
   resources: [],
+  concurrency: 4,
   perMinTime: 1000 // 加载每个资源所需的最小时间，一般用来测试 loading
 })
 preloader.addProgressListener(function (loaded, length) {

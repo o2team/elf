@@ -80,7 +80,7 @@ $ elf --help
 
   PS: 默认设计稿的宽度是 750px，如果有个按钮是的宽度是 80px，在设置这个按钮的宽度样式时，样式里直接按 80px 设置就好
 
-- 样式预处理
+- **样式预处理**
 
   支持 Sass、Less 或 Stylus 样式预处理语言及 autoprefixer
 
@@ -111,7 +111,7 @@ $ elf --help
 
 ## 感谢
 
-项目的灵感和某些 Webpack 的配置来至 [create-react-app](https://github.com/facebookincubator/create-react-app)
+项目的灵感和某些 Webpack 的配置来自 [create-react-app](https://github.com/facebookincubator/create-react-app)
 
 ## 许可
 

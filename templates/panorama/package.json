@@ -1,0 +1,16 @@
+{
+  "name": "elf-panorama-template",
+  "version": "1.0.0",
+  "description": "ELF Panorama Template",
+  "scripts": {
+    "start": "elf start",
+    "build": "elf build"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "orientation.js": "1.0.0",
+    "preloader.js": "1.0.0",
+    "three": "0.82.1"
+  }
+}

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import "./base.css";
+@import "./loading.scss";
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background-color: #e3e3e3;
+  &:nth-child(1) {
+    background-color: #f16529;
+  }
+  &:nth-child(2) {
+    background-color: #379ad6;
+  }
+  &:nth-child(3) {
+    background-color: #e6c906;
+  }
+  &:nth-child(4) {
+    background-color: #509001;
+  }
+  .title {
+    color: #FFF;
+    height: 400px;
+    line-height: 400px;
+    font-size: 48px;
+    text-align: center;
+  }
+  .logo {
+    text-align: center;
+    img {
+      width: 512px;
+      height: 512px;
+    }
+  }
+}

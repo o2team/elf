@@ -1,0 +1,16 @@
+{
+  "name": "elf-switcher-template",
+  "version": "1.0.0",
+  "description": "ELF Switcher Template",
+  "scripts": {
+    "start": "elf start",
+    "build": "elf build"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "animejs": "1.1.1",
+    "swiper": "3.4.0",
+    "preloader.js": "1.0.0"
+  }
+}

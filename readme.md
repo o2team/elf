@@ -1,14 +1,36 @@
-# ELF
+# ELF-CLI [![NPM version][npm-version-image]][npm-version-url]
 
-针对移动 web 场景的动效模板脚手架，可用来制作翻页动画，各种推广宣传 HTHML5 页面。包括移动端自适应（rem 或 zoom），雪碧图合并，样式 hot reload 等功能，通过 webpack 进行打包发布。
-另外还提供翻屏，重力感应等示例项目。
+面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行工具 elf（基于 Webpack），**无需配置并可进行开发构建**，
+可用来制作各种 HTML5 场景营销活动页面，也可自由的通过模板和组件的组合来快速定制开发。
 
 ## 安装
 
-```sh
-# 全局安装
-$ npm install -g elf-cli
+> **`提醒`**
+由于依赖的包比较多，第一次安装耗时很长很长，请稍微耐心等待一下。
+推荐使用淘宝的 npm 镜像进行安装，执行 npm 安装命令时带上 `--registry=https://registry.npm.taobao.org`。
+另外 `node-sass` 和 `phantomjs` 这两个包需要编译，可以设置 `SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/` 
+和 `PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/`，安装已经编译好的版本。
 
+```sh
+# 使用下面这行命令安装，可以加快进度
+SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npm.taobao.org
+```
+
+```sh
+# 全局安装 Node >= 4
+$ npm install -g elf-cli --registry=https://registry.npm.taobao.org
+
+# 初始化项目
+$ elf init demo
+
+# 安装依赖
+$ cd demo && npm install
+
+# 运行
+$ elf start
+```
+
+```sh
 # 查看 help
 $ elf --help
 
@@ -17,190 +39,84 @@ $ elf --help
 
   Commands:
 
-    init|i [options]  init project
-    list|ls           list all cases
+    init        init project
+    list        list all templates
+    start       run on develpoment mode
+    build       build for production
+    help [cmd]  display help for [cmd]
 
   Options:
 
-    -h, --help         output usage information
-    -V, --version      output the version number
-    -d, --dest [dir]   set destination directory when init, default: .
-    -c, --case [case]  set extend case when init
+    -h, --help     output usage information
+    -V, --version  output the version number
 
+  Examples:
 
-# 创建项目目录
-$ mkdir demo && cd demo
+    # Init project
+    $ elf init
 
-# 初始化项目
-$ elf init
+    # Base on template init project
+    $ elf init -t panorama
 
-# 查看已有示例
-$ elf list
+    # See all templates
+    $ elf list
+
+    # See subcommand help
+    $ elf help init
+
 ```
 
-## Boilerplate 介绍
+## 介绍
 
 ### 主要功能
 
-- [x] 页面响应式 REM px 自动转换 REM （可选）
-- [x] 页面响应式 Zoom 对需要缩放部分引用 class="__z" （可选）
-- [x] 主要针对移动端 HTML5 网页开发，并专门针对微信做了兼容
-- [x] 打包发布，快速配置
-- [x] 图片自动分组合并雪碧图
-- [x] 图片压缩
-- [x] 代码打包压缩
-- [x] 样式 hot reload
-- [x] sass
-- [x] autoprefixer
+- **微信友好性**
+
+  主要针对移动端 HTML5 网页开发，并专门针对微信做了兼容
+
+- **响应式**
+
+  提供了两种方案：基于 REM，px 自动转换 REM；基于 Zoom，对需要缩放部分引用 class="__z"
+
+  PS: 默认设计稿的宽度是 750px，如果有个按钮是的宽度是 80px，在设置这个按钮的宽度样式时，样式里直接按 80px 设置就好
+
+- 样式预处理
+
+  支持 Sass、Less 或 Stylus 样式预处理语言及 autoprefixer
+
+- **Webpack构建**
+
+  基于 Webpack 进行自动化构建。开发模式时，支持样式 hot reload；雪碧图合并。构建时，支持代码合并，代码压缩，图片压缩等特性
 
 ### 相关组件依赖
 
-- [x] Zepto [参考地址](http://zeptojs.com/)
+- [Zepto](http://zeptojs.com/)
 
-Zepto，会默认引入，其他可根据项目需求引入
+  默认引入，其他可根据项目需求引入
 
 ### 目录结构
-```bash
+
+```sh
 .
-├── config                                                                           
-│   ├── build.js                    # 构建配置                    
-│   ├── default.js                  # 默认配置
-│   └── development.js              # 开发配置
-├── package.json                                       
-├── src                                      
-│   ├── body.html                   # html body
-│   ├── css                                       
-│   │   ├── base.css    
-│   │   ├── loading.scss                                        
-│   │   └── main.scss               # 样式文件
-│   ├── img
-│   │   └── html5-logo.png
-│   ├── index.template.ejs          
-│   └── js                                        
-│       ├── lib                                       
-│       │   └── preloader.js                                        
-│       └── main.js                 # 入口 js 文件
-├── webpack                                       
-│   ├── build.js                                        
-│   ├── webpack.base.js             # webpack 基础配置文件                         
-│   ├── webpack.config.build.js     # webpack 构建项目配置文件                                 
-│   └── webpack.config.dev.js       # webpack 开发配置文件                               
-└── yarn.lock                                      
+├── README.md
+├── package.json
+└── src
+    ├── css
+    │   └── main.scss               # 引入的样式文件（在 main.js 中）
+    ├── img
+    ├── index.html                  # html 模板
+    └── js
+        └── main.js                 # 入口 js 文件
 ```
 
-### config 说明
+## 感谢
 
-#### 开发配置
-文件： `config/development.js`
-```javascript
-{
-    TITLE: 'HTML5 SPA Boilerplate DEV',
-    PORT: '8000',
-    DESIGN_WIDTH: 750,
-}
+项目的灵感和某些 Webpack 的配置来至 [create-react-app](https://github.com/facebookincubator/create-react-app)
 
-```
+## 许可
 
-**配置项说明**
-- TITLE
-
-    设置标题
-
-- PORT
-
-    开发服务器监听的端口
-
-- DESIGN_WIDTH
-
-    设计稿的宽度。用于计算 REM，设置了之后，样式直接使用设计稿的尺寸。
-    例如：设计稿的宽度是 750px，其中有个按钮是的宽度是 80px，在设置这个按钮的宽度样式时，直接按 80px 设置。
-
-#### 构建配置
-文件： `config/build.js`
-```javascript
-{
-    OUTPUT_PATH: 'dist',
-    PUBLIC_PATH: '/'
-}
-```
-
-**配置项说明**
-- OUTPUT_PATH
-
-    构建完成后的输出目录
-
-- PUBLIC_PATH
-
-    静态资源的路径
+MIT
 
 
-#### 默认配置
-文件：`config/default.js`
-
-默认配置文件提供了默认值，`如果需要修改某个配置项，不要修改默认配置文件，请修改开发配置文件或者构建配置文件`
-
-```javascript
-
-{
-    TITLE: 'HTML5 SPA Boilerplate', // 页面标题
-    PORT: '8000', // dev server 运行的端口
-    DESIGN_WIDTH: 750, // 设计稿的宽度 默认750,如果开启 Zoom 则直接按照设计稿和屏幕宽度进行缩放
-    RESPONSIVE_REM: true, // 是否用rem做适配
-    RESPONSIVE_ZOOM: true, // 是否用Zoom做适配
-    NODE_ENV: process.env.NODE_ENV || 'development',
-    PROJECT_ROOT: path.resolve(__dirname, '..'),
-
-    OUTPUT_PATH: 'dist', // build 时，生成的文件夹
-    PUBLIC_PATH: '/', // 静态资源路径
-    CSS_INTERNAL: false, // build 时，样式是否内联，默认为 false；如果为 true，则将样式附加到 html header 中作为内联样式
-    EXTERNALS: {},
-    PUBLISH_IMAGEMIN: { // build 时，图片的压缩配置
-        optimizationLevel: 7,
-        interlaced: false,
-        pngquant: {
-            quality: "65-90",
-            speed: 4
-        }
-    }
-}
-```
-
-### 使用说明
-
-```bash
-# node6.2.2 +
-
-npm install # 安装依赖
-
-npm start # 项目开发
-
-npm run build # 项目打包
-```
-
-PS： node-sass 可能安装会比较慢，如果不行可以用淘宝镜像。
-
-```bash
-SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
-```
-
-## 演示
-
-## 插件列表
-* [webpack](https://webpack.github.io/): is a module bundler
-* [css-loader](https://github.com/webpack/css-loader) : css loader module for webpack
-* [sass-loader](https://github.com/jtangelder/sass-loader) : SASS loader for Webpack
-* [file-loader](https://github.com/webpack/file-loader) : file loader for webpack
-* [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader) : Image loader module for webpack
-* [postcss-loader](https://github.com/postcss/postcss-loader) : PostCSS loader for webpack
-* [script-loader](https://github.com/webpack/script-loader) : script loader module for webpack
-* [style-loader](https://github.com/webpack/style-loader) : style loader module for webpack
-* [url-loader](https://github.com/webpack/url-loader) : url loader module for webpack
-* [exports-loader](https://github.com/webpack/exports-loader) : exports loader module for webpack
-* [autoprefixer](https://github.com/postcss/autoprefixer) : Parse CSS and add vendor prefixes to rules by Can I Use
-* [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) : Extract text from bundle into a file.
-* [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) : Simplifies creation of HTML files to serve your webpack bundles
-* [lodash](https://lodash.com/): A modern JavaScript utility library delivering modularity, performance & extras
-* [postcss-import](https://github.com/postcss/postcss-import) : PostCSS plugin to inline @import rules content
-* [postcss-plugin-px2rem](https://github.com/ant-tool/postcss-plugin-px2rem) : postcss plugin px2rem
-* [postcss-sprites](https://github.com/2createStudio/postcss-sprites) : Generate sprites from stylesheets.
-* [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) : The webpack-dev-server is a little node.js Express server
+[npm-version-image]: https://img.shields.io/npm/v/elf-cli.svg?style=flat-square
+[npm-version-url]: https://www.npmjs.com/package/elf-cli

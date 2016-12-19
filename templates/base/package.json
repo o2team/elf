@@ -1,0 +1,14 @@
+{
+  "name": "elf-base-template",
+  "version": "1.0.0",
+  "description": "ELF Base Template",
+  "scripts": {
+    "start": "elf start",
+    "build": "elf build"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "preloader.js": "1.0.0"
+  }
+}

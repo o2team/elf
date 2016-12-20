@@ -3,7 +3,7 @@ const _ = require('lodash')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 
-const allConfig = require('../config/default.js')
+const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
 
 const ROOT = process.cwd()

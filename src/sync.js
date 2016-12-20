@@ -2,6 +2,8 @@ const path = require('path')
 const fs = require('fs-extra')
 const chalk = require('chalk')
 const _ = require('lodash')
+const { isExist } = require('./utils.js')
+const { CONFIG_FILENAME } = require('../config/const.js')
 
 const SYNC_FUNC_MAP = {
   'dir': syncDirOrFile,
@@ -45,18 +47,6 @@ function syncJSON(assert, srcRootPath, destRootPath) {
   }
 }
 
-function isExist(path, type) {
-  let ok = false
-  try {
-    const stat = fs.statSync(path)
-    if (type === 'file' && stat.isFile()) ok = true
-    if (type === 'dir' && stat.isDirectory()) ok = true
-  } catch (e) {
-    ok = false
-  }
-  return ok
-}
-
 function sync(asserts, srcRootPath, destRootPath) {
   console.log('')
   console.log(chalk.cyan('  Begin generate project ...'))
@@ -71,6 +61,10 @@ function sync(asserts, srcRootPath, destRootPath) {
       console.error('No support type: ', assert)
     }
   })
+
+  // copy config file
+  fs.copySync(path.join(srcRootPath, '../../config/default.js'), path.join(destRootPath, CONFIG_FILENAME))
+  console.log('    ' + chalk.cyan(CONFIG_FILENAME))
 
   console.log('')
   console.log(chalk.cyan('  End.'))

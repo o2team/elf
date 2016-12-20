@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer')
 const sprites = require('postcss-sprites')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const allConfig = require('../config/default.js')
+const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])

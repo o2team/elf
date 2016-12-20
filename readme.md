@@ -8,7 +8,7 @@
 > **`提醒`**
 由于依赖的包比较多，第一次安装耗时很长很长，请稍微耐心等待一下。
 推荐使用淘宝的 npm 镜像进行安装，执行 npm 安装命令时带上 `--registry=https://registry.npm.taobao.org`。
-另外 `node-sass` 和 `phantomjs` 这两个包需要编译，可以设置 `SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/` 
+另外 `node-sass` 和 `phantomjs` 这两个包需要编译，可以设置 `SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/`
 和 `PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/`，安装已经编译好的版本。
 
 ```sh
@@ -116,7 +116,6 @@ $ elf --help
 ## 许可
 
 MIT
-
 
 [npm-version-image]: https://img.shields.io/npm/v/elf-cli.svg?style=flat-square
 [npm-version-url]: https://www.npmjs.com/package/elf-cli

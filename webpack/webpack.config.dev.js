@@ -11,11 +11,10 @@ const config = _.merge({}, allConfig, allConfig.DEVELOPMENT)
 
 module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-source-map',
-  entry: [
+  entry: [].concat([
     require.resolve('webpack-dev-server/client') + '?/',
     require.resolve('webpack/hot/dev-server'),
-    config.entry
-  ],
+  ], config.entry),
   module: {
     loaders: [{
       test: /\.css$/,

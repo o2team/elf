@@ -7,7 +7,9 @@ module.exports = {
   enableZoom: true, // 是否用Zoom做适配
 
   /*********** webpack base config ***********/
-  entry: 'src/js/main.js',
+  entry: [
+    'src/js/main.js'
+  ],
   output: {
     path: 'dist',
     publicPath: '/',

@@ -6,28 +6,32 @@ const autoprefixer = require('autoprefixer')
 const sprites = require('postcss-sprites')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const {
+  resolveApp,
+  resolveOwn
+} = require('./resolve.js')
 const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
-const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])
+const config = _.merge(allConfig, allConfig[NODE_ENV.toUpperCase()])
 
-const zeptoPath = path.resolve(__dirname, '../node_modules/zepto/dist/zepto.js')
+const zeptoPath = resolveOwn('../node_modules/zepto/dist/zepto.js')
 
 const baseConfig = {
   output: {
-    path: path.join(ROOT, config.output.path),
+    path: resolveApp(config.output.path),
     publicPath: config.output.publicPath,
     filename: config.output.filename
   },
   resolve: {
     extensions: ['', '.js', '.css', '.scss', '.less', '.styl'],
     alias: {
-      src: path.join(ROOT, 'src')
+      src: resolveApp('src')
     }
   },
   resolveLoader: {
     // moduleTemplates: ['*-loader', '*'],
-    root: path.resolve(__dirname, '../node_modules')
+    root: resolveOwn('../node_modules')
   },
   module: {
     loaders: [{
@@ -57,8 +61,8 @@ const baseConfig = {
       'window.Zepto': zeptoPath
     }),
     new HtmlWebpackPlugin({
-      template: path.join(ROOT, config.htmlWebpackPluginOptions.template)
-    })
+      template: resolveApp(config.htmlWebpackPluginOptions.template)
+    }),
   ],
   externals: config.externals || {}
 }

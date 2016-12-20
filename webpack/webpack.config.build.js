@@ -4,11 +4,10 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const merge = require('webpack-merge')
 
-const allConfig = require('../config/default.js')
+const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
 
-const ROOT = process.cwd()
-const config = _.merge({}, allConfig, allConfig.PRODUCTION)
+const config = _.merge(allConfig, allConfig.PRODUCTION)
 
 module.exports = merge(baseWebpackConfig, {
   entry: config.entry,

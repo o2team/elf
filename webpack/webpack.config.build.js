@@ -31,7 +31,7 @@ module.exports = merge(baseWebpackConfig, {
     }]
   },
   plugins: [
-    new ExtractTextPlugin("css/app.css", {
+    new ExtractTextPlugin(config.outputCss, {
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({

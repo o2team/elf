@@ -39,12 +39,14 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     port: config.devPort,
     // host: '0.0.0.0',
-    publicPath: config.output.publicPath,
+    // contentBase: '',
+    // publicPath: config.output.publicPath,
+    publicPath: '/', // 开发模式固定用 /
     hot: true,
     inline: true,
     quiet: true,
-    compress: true,
-    clientLogLevel: 'none',
+    // compress: true,
+    // clientLogLevel: 'none',
     historyApiFallback: true,
     watchOptions: {
       ignored: /node_modules/,

@@ -1,15 +1,16 @@
-const path = require('path')
 const _ = require('lodash')
 const webpack = require('webpack')
 const postcss = require('postcss')
 const autoprefixer = require('autoprefixer')
 const sprites = require('postcss-sprites')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 const {
   resolveApp,
   resolveOwn
 } = require('./resolve.js')
+const {
+  HeadJavascriptInjectPlugin
+} = require('./plugins.js')
 const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
@@ -63,6 +64,8 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       template: resolveApp(config.htmlWebpackPluginOptions.template)
     }),
+    // new webpack.DefinePlugin({}),
+    new HeadJavascriptInjectPlugin()
   ],
   externals: config.externals || {}
 }
@@ -74,9 +77,9 @@ let __postcss_plugins = []
 __postcss_plugins = [autoprefixer]
 
 // sprite
-var _spritesObj = {
-  stylesheetPath: path.join(ROOT, 'src/css/'),
-  spritePath: path.join(ROOT, 'src/img/'),
+let _spritesObj = {
+  stylesheetPath: resolveApp('src/css/'),
+  spritePath: resolveApp('src/img/'),
   retina: true,
   relativeTo: 'rule',
   spritesmith: {
@@ -84,8 +87,8 @@ var _spritesObj = {
     padding: 1
   },
   groupBy: function (image) {
-    var g = /img\/([a-z]+)\/[a-z A-Z _\- 1-9]+\.png/.exec(image.url)
-    var g_name = g ? g[1] : g
+    let g = /img\/([a-z]+)\/[a-z A-Z _\- 1-9]+\.png/.exec(image.url)
+    let g_name = g ? g[1] : g
     if (!g) {
       return Promise.reject()
     }
@@ -131,17 +134,9 @@ __postcss_plugins.push(sprites(_spritesObj))
 
 if (config.enableREM) {
   const px2rem = require('postcss-plugin-px2rem')
-  __postcss_plugins.push(px2rem({
-    rootValue: config.designLayoutWidth / 20,
-    unitPrecision: 5,
-    propWhiteList: [],
-    propBlackList: [],
-    selectorBlackList: ['ignore'],
-    ignoreIdentifier: false,
-    replace: true,
-    mediaQuery: false,
-    minPixelValue: 0
-  }))
+  __postcss_plugins.push(px2rem(_.assign(config.px2remOptions, {
+    rootValue: config.designLayoutWidth / config.baseSize,
+  })))
 }
 
 baseConfig.postcss = function () {

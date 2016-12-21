@@ -32,6 +32,22 @@ module.exports = {
   htmlWebpackPluginOptions: {
     template: 'src/index.html'
   },
+  // autoprefixer 的配置，详细描述参考：https://github.com/postcss/autoprefixer
+  autoprefixerOptions: {
+    browsers: ['iOS >= 5', 'Android >= 2.3'],
+    cascade: false
+  },
+  // postcss-sprites 的配置，详细描述参考：https://github.com/2createStudio/postcss-sprites
+  spritesOptions: {
+    stylesheetPath: 'src/css/',
+    spritePath: 'src/img/',
+    retina: true,
+    relativeTo: 'rule',
+    spritesmith: {
+      algorithm: 'left-right',
+      padding: 1
+    }
+  },
   // postcss-plugin-px2rem 的配置，详细描述参考：https://github.com/ant-tool/postcss-plugin-px2rem
   px2remOptions: {
     // rootValue 由 config.designLayoutWidth / config.baseSize 而来，不用配置
@@ -50,8 +66,7 @@ module.exports = {
    *
    * 只作用于 development 模式，会覆盖 base config 中相同的配置项
    **/
-  DEVELOPMENT: {
-  },
+  DEVELOPMENT: {},
 
   /**
    * webpack production config

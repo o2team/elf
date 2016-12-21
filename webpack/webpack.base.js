@@ -74,7 +74,7 @@ const baseConfig = {
 let __postcss_plugins = []
 
 // autoprefixer
-__postcss_plugins = [autoprefixer]
+__postcss_plugins = [autoprefixer(config.autoprefixerOptions)]
 
 // sprite
 let _spritesObj = {

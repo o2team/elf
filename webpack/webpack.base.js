@@ -77,15 +77,15 @@ let __postcss_plugins = []
 __postcss_plugins = [autoprefixer(config.autoprefixerOptions)]
 
 // sprite
-let _spritesObj = {
+let _spritesObj = _.merge(config.spritesOptions, {
   stylesheetPath: resolveApp('src/css/'),
   spritePath: resolveApp('src/img/'),
   retina: true,
   relativeTo: 'rule',
-  spritesmith: {
-    algorithm: 'left-right',
-    padding: 1
-  },
+  // spritesmith: {
+  //   algorithm: 'left-right',
+  //   padding: 1
+  // },
   groupBy: function (image) {
     let g = /img\/([a-z]+)\/[a-z A-Z _\- 1-9]+\.png/.exec(image.url)
     let g_name = g ? g[1] : g
@@ -100,7 +100,7 @@ let _spritesObj = {
     }
     return Promise.resolve()
   }
-}
+})
 
 // 如果通过rem来做缩放配置雪碧图的rem
 if (config.enableREM) {
@@ -116,10 +116,20 @@ if (config.enableREM) {
         value: image.spriteWidth / image.ratio + 'px ' + image.spriteHeight / image.ratio + 'px'
       }))
 
-      rule.insertAfter(rule.last, postcss.decl({
-        prop: 'background-repeat',
-        value: 'no-repeat'
-      }))
+      // rule.insertAfter(rule.last, postcss.decl({
+      //   prop: 'background-repeat',
+      //   value: 'no-repeat'
+      // }))
+
+      // rule.insertAfter(rule.last, postcss.decl({
+      //   prop: 'width',
+      //   value: image.coords.width + 'px'
+      // }))
+
+      // rule.insertAfter(rule.last, postcss.decl({
+      //   prop: 'height',
+      //   value: image.coords.height + 'px'
+      // }))
 
       // ['width', 'height'].forEach(function (prop) {
       //     rule.insertAfter(rule.last, postcss.decl({

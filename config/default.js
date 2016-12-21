@@ -39,10 +39,10 @@ module.exports = {
   },
   // postcss-sprites 的配置，详细描述参考：https://github.com/2createStudio/postcss-sprites
   spritesOptions: {
-    stylesheetPath: 'src/css/',
-    spritePath: 'src/img/',
-    retina: true,
-    relativeTo: 'rule',
+    // stylesheetPath 不可配置，值为 'src/css/'
+    // spritePath 不可配置，值为 'src/img/'，默认以该目录下的子目录作为分组，子目录下的 png 图片会合成雪碧图，非子目录下面的 png 不会合
+    // retina 不可配置，值为 true,
+    // relativeTo 不可配置，值为 'rule'
     spritesmith: {
       algorithm: 'left-right',
       padding: 1

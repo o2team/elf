@@ -46,9 +46,9 @@ const baseConfig = {
         'image-webpack'
       ]
     }, {
-      test: /\.(mp3)(\?\S*)?$/,
+      test: /\.(mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
       exclude: /node_modules/,
-      loader: 'url-loader?' + JSON.stringify(config.audioLoaderQuery),
+      loader: 'file-loader?' + JSON.stringify(config.audioLoaderQuery),
     }, {
       test: /\.html$/,
       exclude: /node_modules/,

@@ -37,6 +37,10 @@ module.exports = {
     browsers: ['iOS >= 5', 'Android >= 2.3'],
     cascade: false
   },
+  // postcss-assets 的配置，详细描述参考：https://github.com/assetsjs/postcss-assets
+  assetsOptions: {
+    loadPaths: ['src/img/']
+  },
   // postcss-sprites 的配置，详细描述参考：https://github.com/2createStudio/postcss-sprites
   spritesOptions: {
     // stylesheetPath 不可配置，值为 'src/css/'

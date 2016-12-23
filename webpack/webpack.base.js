@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const postcss = require('postcss')
 const autoprefixer = require('autoprefixer')
 const sprites = require('postcss-sprites')
+const assets = require('postcss-assets')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
   resolveApp,
@@ -76,7 +77,10 @@ let __postcss_plugins = []
 // autoprefixer
 __postcss_plugins = [autoprefixer(config.autoprefixerOptions)]
 
-// sprite
+// assets
+__postcss_plugins.push(assets(config.assetsOptions))
+
+// sprites
 let _spritesObj = _.merge(config.spritesOptions, {
   stylesheetPath: resolveApp('src/css/'),
   spritePath: resolveApp('src/img/'),

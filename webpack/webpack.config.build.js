@@ -9,25 +9,29 @@ const baseWebpackConfig = require('./webpack.base.js')
 
 const config = _.merge(allConfig, allConfig.PRODUCTION)
 
+const cssExtractQuery = {
+  publicPath: config.outputCssPublicPath || config.output.publicPath
+}
+
 module.exports = merge(baseWebpackConfig, {
   entry: config.entry,
   module: {
     loaders: [{
       test: /\.css$/,
       // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader'])
+      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader'], cssExtractQuery)
     }, {
       test: /\.scss$/,
       // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
+      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'], cssExtractQuery)
     }, {
       test: /\.less$/,
       // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'less-loader'])
+      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'less-loader'], cssExtractQuery)
     }, {
       test: /\.styl$/,
       // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'stylus-loader'])
+      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'stylus-loader'], cssExtractQuery)
     }]
   },
   plugins: [

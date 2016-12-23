@@ -80,6 +80,7 @@ module.exports = {
   PRODUCTION: {
     // 生成的 css 文件路径
     outputCss: 'css/app.css?[hash:6]',
+    outputCssPublicPath: '../',
     // image-webpack-loader 的配置，详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
     imageWebpackLoader: {
       progressive: true,

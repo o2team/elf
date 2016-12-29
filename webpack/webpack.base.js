@@ -91,7 +91,7 @@ let _spritesObj = _.merge(config.spritesOptions, {
   //   padding: 1
   // },
   groupBy: function (image) {
-    let g = /img\/([a-z]+)\/[a-z A-Z _\- 1-9]+\.png/.exec(image.url)
+    let g = /img\/([a-z A-Z _\- 0-9]+)\/[a-z A-Z _\- 0-9]+\.png/.exec(image.url)
     let g_name = g ? g[1] : g
     if (!g) {
       return Promise.reject()
@@ -99,7 +99,7 @@ let _spritesObj = _.merge(config.spritesOptions, {
     return Promise.resolve(g_name)
   },
   filterBy: function (image) {
-    if (!/img\/[a-z]+\/[a-z A-Z _\- 1-9]+\.png/.test(image.url)) {
+    if (!/img\/[a-z A-Z _\- 0-9]+\/[a-z A-Z _\- 0-9]+\.png/.test(image.url)) {
       return Promise.reject()
     }
     return Promise.resolve()

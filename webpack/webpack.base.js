@@ -41,9 +41,17 @@ const baseConfig = {
       loader: 'exports?window.$!script'
     }, {
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
-      exclude: /node_modules/,
+      exclude: [/node_modules/].concat(config.imgToBase64Dir),
       loaders: [
         'url-loader?' + JSON.stringify(config.imgLoaderQuery),
+        'image-webpack'
+      ]
+    }, {
+      test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
+      exclude: /node_modules/,
+      include: config.imgToBase64Dir,
+      loaders: [
+        'url-loader?limit=10000000',
         'image-webpack'
       ]
     }, {

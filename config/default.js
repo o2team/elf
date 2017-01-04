@@ -27,6 +27,8 @@ module.exports = {
   audioLoaderQuery: {
     name: 'plugin/[name].[ext]?[hash:6]'
   },
+  // 该目录下的的图片默认被转成 base64
+  imgToBase64Dir: /src\/img-base64/,
   externals: {},
   // html-webpack-plugin 的配置，详细描述参考：https://github.com/ampedandwired/html-webpack-plugin
   htmlWebpackPluginOptions: {

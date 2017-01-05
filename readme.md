@@ -94,20 +94,24 @@ $ elf --help
 
   默认引入，其他可根据项目需求引入
 
-### 目录结构
+### 基础目录结构
+
+很多预制的功能与目录结构相关，请确认项目包含以下文件和目录，否则可能执行失败。
 
 ```sh
 .
-├── README.md
 ├── package.json
 └── src
     ├── css
     │   └── main.scss               # 引入的样式文件（在 main.js 中）
-    ├── img
+    ├── img                         # 图片 资源的目录
+    ├── plugin                      # 音频 资源的目录（可选）
     ├── index.html                  # html 模板
     └── js
         └── main.js                 # 入口 js 文件
 ```
+
+[**查看更详细的说明**](https://github.com/o2team/elf/blob/master/doc/DETAIL.md)
 
 ## 感谢
 

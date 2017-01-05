@@ -16,6 +16,19 @@ module.exports = merge(baseWebpackConfig, {
   ], config.entry),
   module: {
     loaders: [{
+      test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
+      exclude: [/node_modules/].concat(config.imgToBase64Dir),
+      loaders: [
+        'url-loader?' + JSON.stringify(config.imgLoaderQuery)
+      ]
+    }, {
+      test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
+      exclude: /node_modules/,
+      include: config.imgToBase64Dir,
+      loaders: [
+        'url-loader?limit=10000000'
+      ]
+    }, {
       test: /\.css$/,
       // exclude: /node_modules/,
       loaders: ['style', 'css', 'postcss']

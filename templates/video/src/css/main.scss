@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@import "./base.css";
+
+$bg: #000;
+
+.IIV::-webkit-media-controls-play-button,
+.IIV::-webkit-media-controls-start-playback-button {
+  opacity: 0;
+  pointer-events: none;
+  width: 5px;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading,
+.main,
+.end {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: none;
+  background-color: $bg;
+  .wrapper {
+    .video.show {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .control {
+    position: absolute;
+    height: 20%;
+    width: 100%;
+    bottom: 0;
+    .btn {
+      display: none;
+    }
+  }
+  .poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: $bg;
+  }
+}
+
+.btns {
+  width: 100%;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 20px 40px;
+  border: 1PX solid white;
+  color: white;
+}
+
+.tip {
+  position: fixed;
+  top: 200px;
+  right: 20px;
+  font-size: 14PX;
+  background: black;
+  color: white;
+}

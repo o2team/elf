@@ -1,0 +1,15 @@
+{
+  "name": "elf-video-template",
+  "version": "1.0.0",
+  "description": "ELF Video Template",
+  "scripts": {
+    "start": "elf start",
+    "build": "elf build"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "iphone-inline-video": "1.9.4",
+    "zepto.js": "1.1.6"
+  }
+}

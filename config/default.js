@@ -84,6 +84,7 @@ module.exports = {
     outputCss: 'css/app.css?[hash:6]',
     outputCssPublicPath: '../',
     // image-webpack-loader 的配置，详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
+    enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
     imageWebpackLoader: {
       progressive: true,
       optimizationLevel: 7,

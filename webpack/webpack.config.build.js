@@ -13,24 +13,23 @@ const cssExtractQuery = {
   publicPath: config.outputCssPublicPath || config.output.publicPath
 }
 
+let imageLoaders = ['url-loader?' + JSON.stringify(config.imgLoaderQuery)]
+let imageToBase64Loaders = ['url-loader?limit=10000000']
+config.enableImageMin && imageLoaders.push('image-webpack')
+config.enableImageMin && imageToBase64Loaders.push('image-webpack')
+
 module.exports = merge(baseWebpackConfig, {
   entry: config.entry,
   module: {
     loaders: [{
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: [/node_modules/].concat(config.imgToBase64Dir),
-      loaders: [
-        'url-loader?' + JSON.stringify(config.imgLoaderQuery),
-        'image-webpack'
-      ]
+      loaders: imageLoaders
     }, {
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: /node_modules/,
       include: config.imgToBase64Dir,
-      loaders: [
-        'url-loader?limit=10000000',
-        'image-webpack'
-      ]
+      loaders: imageToBase64Loaders
     }, {
       test: /\.css$/,
       // exclude: /node_modules/,

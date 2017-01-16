@@ -77,12 +77,6 @@ __postcss_plugins.push(assets(config.assetsOptions))
 let _spritesObj = _.merge(config.spritesOptions, {
   stylesheetPath: resolveApp('src/css/'),
   spritePath: resolveApp('src/img/'),
-  retina: true,
-  relativeTo: 'rule',
-  // spritesmith: {
-  //   algorithm: 'left-right',
-  //   padding: 1
-  // },
   groupBy: function (image) {
     let g = /img\/([a-z A-Z _\- 0-9]+)\/[a-z A-Z _\- 0-9]+\.png/.exec(image.url)
     let g_name = g ? g[1] : g
@@ -105,39 +99,18 @@ if (config.enableREM) {
 
   _spritesObj.hooks = {
     onUpdateRule: function (rule, token, image) {
-      // Use built-in logic for background-image & background-position
       updateRule(rule, token, image)
 
       rule.insertAfter(rule.last, postcss.decl({
         prop: 'background-size',
-        value: image.spriteWidth / image.ratio + 'px ' + image.spriteHeight / image.ratio + 'px'
+        value: image.spriteWidth / image.ratio + 'px ' + image.spriteHeight / image.ratio + 'px;'
       }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'background-repeat',
-      //   value: 'no-repeat'
-      // }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'width',
-      //   value: image.coords.width + 'px'
-      // }))
-
-      // rule.insertAfter(rule.last, postcss.decl({
-      //   prop: 'height',
-      //   value: image.coords.height + 'px'
-      // }))
-
-      // ['width', 'height'].forEach(function (prop) {
-      //     rule.insertAfter(rule.last, postcss.decl({
-      //         prop: prop,
-      //         value: Math.round((image.coords[prop] + 1) / (config.designLayoutWidth / 20) * 100000) / 100000 + 'rem'
-      //     }))
-      // })
     }
   }
 }
-__postcss_plugins.push(sprites(_spritesObj))
+if (config.enableSpritesOnDev || NODE_ENV === 'production') {
+  __postcss_plugins.push(sprites(_spritesObj))
+}
 
 if (config.enableREM) {
   const px2rem = require('postcss-plugin-px2rem')

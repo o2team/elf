@@ -67,9 +67,6 @@ const baseConfig = {
 /*********** postcss plugin ***********/
 let __postcss_plugins = []
 
-// autoprefixer
-__postcss_plugins = [autoprefixer(config.autoprefixerOptions)]
-
 // assets
 __postcss_plugins.push(assets(config.assetsOptions))
 
@@ -118,6 +115,9 @@ if (config.enableREM) {
     rootValue: config.designLayoutWidth / config.baseSize,
   })))
 }
+
+// autoprefixer
+__postcss_plugins.push(autoprefixer(config.autoprefixerOptions))
 
 baseConfig.postcss = function () {
   return __postcss_plugins

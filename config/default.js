@@ -90,6 +90,22 @@ module.exports = {
     outputCss: 'css/app.css?[hash:6]',
     outputCssPublicPath: '../',
 
+    htmlWebpackPluginOptions: {
+      // 配置项参考：https://github.com/kangax/html-minifier
+      minify: {
+        removeAttributeQuotes: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true
+      }
+    },
+
     // image-webpack-loader 的配置，详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
     enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
     imageWebpackLoader: {

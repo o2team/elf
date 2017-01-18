@@ -55,9 +55,9 @@ const baseConfig = {
       Zepto: zeptoPath,
       'window.Zepto': zeptoPath
     }),
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin(_.merge(config.htmlWebpackPluginOptions, {
       template: resolveApp(config.htmlWebpackPluginOptions.template)
-    }),
+    })),
     // new webpack.DefinePlugin({}),
     new HeadJavascriptInjectPlugin()
   ],

@@ -12,13 +12,8 @@
 和 `PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/`，安装已经编译好的版本。
 
 ```sh
-# 使用下面这行命令安装，可以加快进度
-SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npm.taobao.org
-```
-
-```sh
 # 全局安装 Node >= 4
-$ npm install -g elf-cli --registry=https://registry.npm.taobao.org
+$ npm install -g elf-cli --registry=https://registry.npm.taobao.org --SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ --PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/
 
 # 初始化项目
 $ elf init demo

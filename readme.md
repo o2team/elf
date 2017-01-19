@@ -1,9 +1,14 @@
-# ELF-CLI [![NPM version][npm-version-image]][npm-version-url]
+<p align="center">
+  <a href="https://elf.auto.io">
+    <img alt="ELF" src="https://misc.aotu.io/booxood/elf/logo.png" width="200">
+  </a>
+</p>
 
-面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行工具 elf（基于 Webpack），**无需配置并可进行开发构建**，
-可用来制作各种 HTML5 场景营销活动页面，也可自由的通过模板和组件的组合来快速定制开发。
+ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行工具 elf（基于 Webpack），**无需构建配置文件并可进行开发**，可用来制作各种 HTML5 场景营销活动页面，也可自由的通过模板和组件的组合来快速定制开发。
 
-## 安装
+---
+
+## 安装 [![NPM version][npm-version-image]][npm-version-url]
 
 > **`提醒`**
 由于依赖的包比较多，第一次安装耗时很长很长，请稍微耐心等待一下。
@@ -53,7 +58,7 @@ $ elf --help
     # Base on template init project
     $ elf init -t panorama
 
-    # See all templates
+    # List all templates
     $ elf list
 
     # See subcommand help
@@ -65,23 +70,14 @@ $ elf --help
 
 ### 主要功能
 
-- **微信友好性**
-
-  主要针对移动端 HTML5 网页开发，并专门针对微信做了兼容
-
-- **响应式**
-
-  提供了两种方案：基于 REM，px 自动转换 REM；基于 Zoom，对需要缩放部分引用 class="__z"
-
-  PS: 默认设计稿的宽度是 750px，如果有个按钮是的宽度是 80px，在设置这个按钮的宽度样式时，样式里直接按 80px 设置就好
-
-- **样式预处理**
-
-  支持 Sass、Less 或 Stylus 样式预处理语言及 autoprefixer
-
-- **Webpack构建**
-
-  基于 Webpack 进行自动化构建。开发模式时，支持样式 hot reload；雪碧图合并。构建时，支持代码合并，代码压缩，图片压缩等特性
+- 开发时样式热加载
+- 支持 Sass、Less 和 Stylus 样式预处理自动编译
+- Autoprefixer 前缀补全
+- px -> rem 自动转换
+- 雪碧图合成
+- 自动获取图片 width 和 height
+- 部署构建时图片压缩
+- 部署构建时代码合并压缩
 
 ### 相关组件依赖
 

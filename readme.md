@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://elf.auto.io">
+  <a href="https://elf.aotu.io">
     <img alt="ELF" src="https://misc.aotu.io/booxood/elf/logo.png" width="200">
   </a>
 </p>

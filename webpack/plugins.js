@@ -13,7 +13,7 @@ const headJavascript = `
 
     function refresh() {
       var width = docEl.getBoundingClientRect().width;
-      // if (width > 640) { width = 640 }
+      if (width > 768) { width = 768 }
       if (hasRem) {
         var rem = width / ${allConfig.baseSize};
         docEl.style.fontSize = rem + "px";

@@ -31,19 +31,19 @@ module.exports = merge(baseWebpackConfig, {
     }, {
       test: /\.css$/,
       // exclude: /node_modules/,
-      loaders: ['style', 'css?sourceMap', 'postcss']
+      loaders: ['style', 'css', 'postcss']
     }, {
       test: /\.scss$/,
       // exclude: /node_modules/,
-      loaders: ['style', 'css?sourceMap', 'postcss', 'sass']
+      loaders: ['style', 'css', 'postcss', 'sass']
     }, {
       test: /\.less$/,
       // exclude: /node_modules/,
-      loaders: ['style', 'css?sourceMap', 'postcss', 'less']
+      loaders: ['style', 'css', 'postcss', 'less']
     }, {
       test: /\.styl$/,
       // exclude: /node_modules/,
-      loaders: ['style', 'css?sourceMap', 'postcss', 'stylus']
+      loaders: ['style', 'css', 'postcss', 'stylus']
     }]
   },
   plugins: [

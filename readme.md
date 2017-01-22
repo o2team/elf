@@ -16,6 +16,9 @@ ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行�
 
 ```sh
 # 全局安装 Node >= 4
+# mac/linux
+$ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npm.taobao.org
+# windows
 $ npm install -g elf-cli --registry=https://registry.npm.taobao.org --SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ --PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/
 
 # 初始化项目

@@ -40,6 +40,14 @@ const baseConfig = {
       test: zeptoPath,
       loader: 'exports?window.$!script'
     }, {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['es2015'],
+        plugins: ['transform-runtime']
+      }
+    }, {
       test: /\.(mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
       exclude: /node_modules/,
       loader: 'file-loader?' + JSON.stringify(config.audioLoaderQuery),

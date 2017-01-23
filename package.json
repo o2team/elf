@@ -28,6 +28,7 @@
   "author": "o2team",
   "dependencies": {
     "autoprefixer": "^6.6.1",
+    "babel-runtime": "^6.22.0",
     "chalk": "1.1.3",
     "commander": "2.9.0",
     "config": "1.24.0",
@@ -40,7 +41,7 @@
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
     "image-webpack-loader": "3.0.0",
-    "ip": "1.1.4",
+    "internal-ip": "^1.2.0",
     "less": "2.7.1",
     "less-loader": "2.2.3",
     "lodash": "4.17.2",
@@ -62,9 +63,14 @@
     "zepto": "1.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
     "commitizen": "2.9.2",
     "conventional-changelog": "1.1.0",
-    "cz-conventional-changelog": "1.2.0"
+    "cz-conventional-changelog": "1.2.0",
+    "webpack": "^1.13.3"
   },
   "config": {
     "commitizen": {

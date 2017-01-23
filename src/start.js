@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'development'
 
 const chalk = require('chalk')
 const internalIp = require('internal-ip')
+const qrcode = require('qrcode-terminal')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const clearConsole = require('react-dev-utils/clearConsole')
@@ -49,6 +50,11 @@ function setupCompiler(host, port) {
       console.log('')
       console.log(chalk.cyan('  http://' + host + ':' + port + '/'))
       console.log('')
+      qrcode.generate('http://' + host + ':' + port + '/', {
+        small: true
+      }, function (qrcode) {
+        console.log(qrcode)
+      })
     }
 
     isFirstRun = false

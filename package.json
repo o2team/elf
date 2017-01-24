@@ -27,7 +27,7 @@
   ],
   "author": "o2team",
   "dependencies": {
-    "autoprefixer": "6.5.3",
+    "autoprefixer": "^6.6.1",
     "chalk": "1.1.3",
     "commander": "2.9.0",
     "config": "1.24.0",
@@ -40,7 +40,7 @@
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.1",
     "image-webpack-loader": "3.0.0",
-    "ip": "1.1.4",
+    "internal-ip": "^1.2.0",
     "less": "2.7.1",
     "less-loader": "2.2.3",
     "lodash": "4.17.2",
@@ -49,6 +49,7 @@
     "postcss-loader": "1.1.1",
     "postcss-plugin-px2rem": "0.6.0",
     "postcss-sprites": "4.0.0",
+    "qrcode-terminal": "^0.11.0",
     "react-dev-utils": "0.4.2",
     "sass-loader": "4.0.2",
     "script-loader": "0.7.0",
@@ -64,7 +65,9 @@
   "devDependencies": {
     "commitizen": "2.9.2",
     "conventional-changelog": "1.1.0",
-    "cz-conventional-changelog": "1.2.0"
+    "cz-conventional-changelog": "1.2.0",
+    "transform-runtime": "0.0.0",
+    "webpack": "^1.13.3"
   },
   "config": {
     "commitizen": {

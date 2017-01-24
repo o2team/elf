@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'development'
 
 const chalk = require('chalk')
-const ip = require('ip')
+const internalIp = require('internal-ip')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const clearConsole = require('react-dev-utils/clearConsole')
@@ -73,7 +73,7 @@ function runDevServer(host, port) {
 }
 
 function run(port) {
-  const host = ip.address()
+  const host = internalIp.v4()
   setupCompiler(host, port)
   runDevServer(host, port)
 }

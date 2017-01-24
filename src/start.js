@@ -2,11 +2,14 @@ process.env.NODE_ENV = 'development'
 
 const chalk = require('chalk')
 const internalIp = require('internal-ip')
+const qrcode = require('qrcode-terminal')
+
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const clearConsole = require('react-dev-utils/clearConsole')
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 const openBrowser = require('react-dev-utils/openBrowser')
+const allConfig = require('../config/index.js')
 
 const webpackConfig = require('../webpack/webpack.config.dev.js')
 const isInteractive = process.stdout.isTTY
@@ -49,6 +52,13 @@ function setupCompiler(host, port) {
       console.log('')
       console.log(chalk.cyan('  http://' + host + ':' + port + '/'))
       console.log('')
+      if (allConfig.DEVELOPMENT.enableDisplayQR) {
+        qrcode.generate('http://' + host + ':' + port + '/', {
+          small: true
+        }, function (qrcode) {
+          console.log(qrcode)
+        })
+      }
     }
 
     isFirstRun = false

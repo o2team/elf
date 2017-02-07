@@ -57,7 +57,8 @@ module.exports = {
     spritesmith: {
       algorithm: 'left-right',
       padding: 2
-    }
+    },
+    verbose: false
   },
 
   // postcss-plugin-px2rem 的配置，详细描述参考：https://github.com/ant-tool/postcss-plugin-px2rem

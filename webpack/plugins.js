@@ -9,10 +9,13 @@ const headJavascript = `
       tid,
       hasRem = ${allConfig.enableREM},
       hasZoom = ${allConfig.enableZoom},
-      designWidth = ${allConfig.designLayoutWidth};
+      zoomRuler = '${allConfig.baseZoomRuler}',
+      designWidth = ${allConfig.designLayoutWidth},
+      designHeight = ${allConfig.designLayoutHeight};
 
     function refresh() {
-      var width = docEl.getBoundingClientRect().width;
+      var width = docEl.clientWidth;
+      var height = docEl.clientHeight;
       if (width > 768) { width = 768 }
       if (hasRem) {
         var rem = width / ${allConfig.baseSize};
@@ -30,7 +33,11 @@ const headJavascript = `
           style = document.createElement('style')
           style.id = 'J__style'
         }
-        style.innerHTML = '.__z{zoom:' + width / designWidth + '}'
+        if (zoomRuler === 'height') {
+          style.innerHTML = '.__z{zoom:' + height / designHeight + '}'
+        } else {
+          style.innerHTML = '.__z{zoom:' + width / designWidth + '}'
+        }
         document.getElementsByTagName('head')[0].appendChild(style)
       }
     }

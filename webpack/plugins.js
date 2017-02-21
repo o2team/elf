@@ -10,8 +10,8 @@ const headJavascript = `
       hasRem = ${allConfig.enableREM},
       hasZoom = ${allConfig.enableZoom},
       zoomRuler = '${allConfig.baseZoomRuler}',
-      designWidth = ${allConfig.designLayoutWidth} / 2,
-      designHeight = ${allConfig.designLayoutHeight} / 2;
+      designWidth = ${allConfig.designLayoutWidth},
+      designHeight = ${allConfig.designLayoutHeight};
 
     function refresh() {
       var width = docEl.clientWidth;

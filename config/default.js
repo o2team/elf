@@ -1,7 +1,9 @@
 module.exports = {
   devPort: '8000', // dev server 运行的端口
 
-  designLayoutWidth: 750, // 设计稿的宽度 默认750,如果开启 Zoom 则直接按照设计稿和屏幕宽度进行缩放
+  designLayoutWidth: 750, // 设计稿的宽度 | 默认750，如果开启 Zoom 则直接按照设计稿宽度和屏幕宽度进行缩放
+  designLayoutHeight: 1206, // 设计稿的高度 | 默认1206，如果开启 Zoom 则直接按照设计稿高度和屏幕高度进行缩放
+  baseZoomRuler: 'width', // Zoom 缩放的基准 | 默认为 'width'，以屏幕的宽度进行缩放
   baseSize: 10, // 计算 rem 的基数，通常不用修改
   enableREM: true, // 是否用 rem 做适配
   enableZoom: true, // 是否用 zoom 做适配
@@ -67,7 +69,7 @@ module.exports = {
     unitPrecision: 5,
     propWhiteList: [],
     propBlackList: [],
-    selectorBlackList: ['ignore'],
+    selectorBlackList: [/.ignore-rem/],
     ignoreIdentifier: false,
     replace: true,
     mediaQuery: false,

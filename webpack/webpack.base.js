@@ -20,11 +20,9 @@ const config = _.merge(allConfig, allConfig[NODE_ENV.toUpperCase()])
 const zeptoPath = resolveOwn('../node_modules/zepto/dist/zepto.js')
 
 const baseConfig = {
-  output: {
-    path: resolveApp(config.output.path),
-    publicPath: config.output.publicPath,
-    filename: config.output.filename
-  },
+  output: _.merge(config.output, {
+    path: resolveApp(config.output.path)
+  }),
   resolve: {
     extensions: ['', '.js', '.css', '.scss', '.less', '.styl'],
     alias: {

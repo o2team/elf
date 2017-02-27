@@ -60,7 +60,7 @@
     "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2",
     "webpack-merge": "0.17.0",
-    "zepto": "1.2.0"
+    "webpack-zepto": "0.0.1"
   },
   "devDependencies": {
     "commitizen": "2.9.2",

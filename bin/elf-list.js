@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
 const request = require('request')
+const ora = require('ora')
 
+const spinner = ora('Loading template list').start()
 request({
   url: 'https://api.github.com/users/elf-templates/repos',
   headers: {
     'User-Agent': 'elf-cli'
   }
 }, function (err, res, body) {
+  spinner.stop()
   if (err) return console.error(err)
 
   const requestBody = JSON.parse(body)

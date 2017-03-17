@@ -1,18 +1,30 @@
 #!/usr/bin/env node
 
-const fs = require('fs-extra')
-const path = require('path')
-const program = require('commander')
-const templatesRootPath = path.join(__dirname, '../templates')
+const request = require('request')
+const ora = require('ora')
 
-const dirs = fs.readdirSync(templatesRootPath)
+const spinner = ora('Loading template list').start()
+request({
+  url: 'https://api.github.com/users/elf-templates/repos',
+  headers: {
+    'User-Agent': 'elf-cli'
+  }
+}, function (err, res, body) {
+  spinner.stop()
+  if (err) return console.error(err)
 
-console.log()
-console.log('  All templates:')
-console.log()
-dirs.forEach(dir => console.log('      - ' + dir))
-console.log()
-console.log('  You can base on template init project:')
-console.log()
-console.log('      elf init -t ' + dirs[0])
-console.log()
+  const requestBody = JSON.parse(body)
+  if (Array.isArray(requestBody)) {
+    console.log()
+    console.log('  All templates:')
+    console.log()
+    requestBody.forEach(repo => console.log('      - ' + repo.name + '  ' + repo.description))
+    console.log()
+    console.log('  You can base on template init project:')
+    console.log()
+    console.log('      elf init -t ' + requestBody[0].name)
+    console.log()
+  } else {
+    console.error(requestBody.message)
+  }
+})

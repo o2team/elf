@@ -7,6 +7,7 @@ const program = require('commander')
 const download = require('download-git-repo')
 const inquirer = require('inquirer')
 const ora = require('ora')
+const { CONFIG_FILENAME } = require('../config/const.js')
 
 program
   .option('-t, --template <template>', 'set template when init')
@@ -19,7 +20,8 @@ destPath = path.resolve(destPath)
 
 let template = 'base' // default use `base` template
 if (program.template) template = program.template
-if (!~template.indexOf('/')) template = `elf-templates/${template}`
+let isUseDefault = !~template.indexOf('/')
+if (isUseDefault) template = `elf-templates/${template}`
 
 const clone = program.clone || false
 
@@ -46,6 +48,13 @@ function init(from, to) {
       console.log('  Failed to download repo ' + chalk.red(template) + ': ' + err.message.trim())
       console.log('')
     } else {
+      // copy default config file
+      if (isUseDefault) {
+        const defualtConfigPath = path.join(__dirname, '../config/default.js')
+        const destConfigPath = path.join(to, CONFIG_FILENAME)
+        fs.copySync(defualtConfigPath, destConfigPath)
+      }
+
       console.log('')
       console.log('  Base on ' + chalk.green(template) + ' init project success')
       console.log('')

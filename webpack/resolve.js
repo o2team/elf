@@ -7,5 +7,5 @@ exports.resolveApp = function resolveApp(relativePath) {
   return path.resolve(appDirectory, relativePath)
 }
 exports.resolveOwn = function resolveOwn(relativePath) {
-  return path.resolve(__dirname, relativePath);
+  return path.resolve(__dirname, '..', relativePath);
 }

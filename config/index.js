@@ -13,7 +13,7 @@ function resolveApp(relativePath) {
   return path.resolve(appDirectory, relativePath)
 }
 function resolveOwn(relativePath) {
-  return path.resolve(__dirname, relativePath);
+  return path.resolve(__dirname, '..', relativePath);
 }
 
 const configPath = resolveApp(CONFIG_FILENAME)

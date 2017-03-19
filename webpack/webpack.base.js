@@ -31,7 +31,7 @@ const baseConfig = {
   },
   resolveLoader: {
     // moduleTemplates: ['*-loader', '*'],
-    root: resolveOwn('../node_modules')
+    root: resolveOwn('node_modules')
   },
   module: {
     loaders: [{

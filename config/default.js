@@ -82,8 +82,8 @@ module.exports = {
    * 只作用于 development 模式，会覆盖 base config 中相同的配置项
    **/
   DEVELOPMENT: {
-    // 配置是否在Terminal显示测试链接二维码
-    enableDisplayQR: true
+    // 配置是否在 Terminal 显示测试链接二维码
+    enableDisplayQR: false
   },
 
   /**

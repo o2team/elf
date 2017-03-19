@@ -17,7 +17,7 @@ const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge(allConfig, allConfig[NODE_ENV.toUpperCase()])
 
-const zeptoPath = resolveOwn('../node_modules/zepto/dist/zepto.js')
+const zeptoPath = require.resolve('zepto')
 
 const baseConfig = {
   output: _.merge(config.output, {

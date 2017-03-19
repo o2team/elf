@@ -3,10 +3,14 @@
 const fs = require('fs')
 const path = require('path')
 const program = require('commander')
-const package = require('../package.json')
+const updateNotifier = require('update-notifier')
+const pkg = require('../package.json')
+
+// new version update notification
+updateNotifier({ pkg, updateCheckInterval: 0 }).notify()
 
 program
-  .version(package.version)
+  .version(pkg.version)
   .command('init', 'init project')
   .command('list', 'list all templates')
   .command('start', 'run on develpoment mode')

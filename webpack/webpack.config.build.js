@@ -7,7 +7,7 @@ const merge = require('webpack-merge')
 const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
 
-const config = _.merge(allConfig, allConfig.PRODUCTION)
+const config = _.merge({}, allConfig, allConfig.PRODUCTION)
 
 const cssExtractQuery = {
   publicPath: config.outputCssPublicPath || config.output.publicPath

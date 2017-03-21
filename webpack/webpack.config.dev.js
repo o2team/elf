@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
 
-const config = _.merge(allConfig, allConfig.DEVELOPMENT)
+const config = _.merge({}, allConfig, allConfig.DEVELOPMENT)
 
 module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-source-map',

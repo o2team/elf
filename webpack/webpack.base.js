@@ -15,12 +15,12 @@ const {
 const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
 const NODE_ENV = process.env.NODE_ENV || ''
-const config = _.merge(allConfig, allConfig[NODE_ENV.toUpperCase()])
+const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])
 
 const zeptoPath = require.resolve('zepto')
 
 const baseConfig = {
-  output: _.merge(config.output, {
+  output: _.merge({}, config.output, {
     path: resolveApp(config.output.path)
   }),
   resolve: {
@@ -53,9 +53,7 @@ const baseConfig = {
       Zepto: zeptoPath,
       'window.Zepto': zeptoPath
     }),
-    new HtmlWebpackPlugin(_.merge(config.htmlWebpackPluginOptions, {
-      template: resolveApp(config.htmlWebpackPluginOptions.template)
-    })),
+    new HtmlWebpackPlugin(config.htmlWebpackPluginOptions),
     // new webpack.DefinePlugin({}),
     new HeadJavascriptInjectPlugin()
   ],
@@ -63,36 +61,19 @@ const baseConfig = {
 }
 
 /*********** postcss plugin ***********/
-let __postcss_plugins = []
+let postcssPlugins = []
 
 // assets
-__postcss_plugins.push(assets(config.assetsOptions))
+postcssPlugins.push(assets(config.assetsOptions))
 
 // sprites
-let _spritesObj = _.merge(config.spritesOptions, {
-  stylesheetPath: resolveApp('src/css/'),
-  spritePath: resolveApp('src/img/'),
-  groupBy: function (image) {
-    let g = /img\/([a-z A-Z _\- 0-9]+)\/[a-z A-Z _\- 0-9]+\.png/.exec(image.url)
-    let g_name = g ? g[1] : g
-    if (!g) {
-      return Promise.reject()
-    }
-    return Promise.resolve(g_name)
-  },
-  filterBy: function (image) {
-    if (!/img\/[a-z A-Z _\- 0-9]+\/[a-z A-Z _\- 0-9]+\.png/.test(image.url)) {
-      return Promise.reject()
-    }
-    return Promise.resolve()
-  }
-})
+let spritesOptions = config.spritesOptions
 
 // 如果通过rem来做缩放配置雪碧图的rem
 if (config.enableREM) {
   const updateRule = require('postcss-sprites/lib/core').updateRule
 
-  _spritesObj.hooks = {
+  spritesOptions.hooks = {
     onUpdateRule: function (rule, token, image) {
       updateRule(rule, token, image)
 
@@ -104,21 +85,21 @@ if (config.enableREM) {
   }
 }
 if (config.enableSpritesOnDev || NODE_ENV === 'production') {
-  __postcss_plugins.push(sprites(_spritesObj))
+  postcssPlugins.push(sprites(spritesOptions))
 }
 
 if (config.enableREM) {
   const px2rem = require('postcss-plugin-px2rem')
-  __postcss_plugins.push(px2rem(_.assign(config.px2remOptions, {
+  postcssPlugins.push(px2rem(_.assign(config.px2remOptions, {
     rootValue: config.designLayoutWidth / config.baseSize,
   })))
 }
 
 // autoprefixer
-__postcss_plugins.push(autoprefixer(config.autoprefixerOptions))
+postcssPlugins.push(autoprefixer(config.autoprefixerOptions))
 
 baseConfig.postcss = function () {
-  return __postcss_plugins
+  return postcssPlugins
 }
 
 module.exports = baseConfig

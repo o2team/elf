@@ -1,9 +1,5 @@
 const _ = require('lodash')
 const webpack = require('webpack')
-const postcss = require('postcss')
-const autoprefixer = require('autoprefixer')
-const sprites = require('postcss-sprites')
-const assets = require('postcss-assets')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
   resolveApp,
@@ -24,27 +20,32 @@ const baseConfig = {
     path: resolveApp(config.output.path)
   }),
   resolve: {
-    extensions: ['', '.js', '.css', '.scss', '.less', '.styl'],
+    extensions: ['.js', '.css', '.scss', '.less', '.styl'],
     alias: {
       src: resolveApp('src')
     }
   },
   resolveLoader: {
-    // moduleTemplates: ['*-loader', '*'],
-    root: resolveOwn('node_modules')
+    // moduleExtensions: ['-loader'],
+    modules: [resolveOwn('node_modules')]
   },
   module: {
-    loaders: [{
+    rules: [{
       test: zeptoPath,
-      loader: 'exports?window.$!script'
+      use: [{
+        loader: 'exports-loader',
+        options: 'window.$'
+      },
+      'script-loader']
     }, {
       test: /\.(mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
-      exclude: /node_modules/,
-      loader: 'file-loader?' + JSON.stringify(config.audioLoaderQuery),
+      use: [{
+        loader: 'file-loader',
+        options: config.audioLoaderQuery
+      }]
     }, {
       test: /\.html$/,
-      exclude: /node_modules/,
-      loader: 'html'
+      use: ['html-loader']
     }]
   },
   plugins: [
@@ -58,48 +59,6 @@ const baseConfig = {
     new HeadJavascriptInjectPlugin()
   ],
   externals: config.externals || {}
-}
-
-/*********** postcss plugin ***********/
-let postcssPlugins = []
-
-// assets
-postcssPlugins.push(assets(config.assetsOptions))
-
-// sprites
-let spritesOptions = config.spritesOptions
-
-// 如果通过rem来做缩放配置雪碧图的rem
-if (config.enableREM) {
-  const updateRule = require('postcss-sprites/lib/core').updateRule
-
-  spritesOptions.hooks = {
-    onUpdateRule: function (rule, token, image) {
-      updateRule(rule, token, image)
-
-      rule.insertAfter(rule.last, postcss.decl({
-        prop: 'background-size',
-        value: image.spriteWidth / image.ratio + 'px ' + image.spriteHeight / image.ratio + 'px;'
-      }))
-    }
-  }
-}
-if (config.enableSpritesOnDev || NODE_ENV === 'production') {
-  postcssPlugins.push(sprites(spritesOptions))
-}
-
-if (config.enableREM) {
-  const px2rem = require('postcss-plugin-px2rem')
-  postcssPlugins.push(px2rem(_.assign(config.px2remOptions, {
-    rootValue: config.designLayoutWidth / config.baseSize,
-  })))
-}
-
-// autoprefixer
-postcssPlugins.push(autoprefixer(config.autoprefixerOptions))
-
-baseConfig.postcss = function () {
-  return postcssPlugins
 }
 
 module.exports = baseConfig

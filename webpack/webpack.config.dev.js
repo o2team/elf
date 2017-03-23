@@ -2,9 +2,11 @@ const path = require('path')
 const _ = require('lodash')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 
 const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
+const postcssPlugins = require('./postcss.config.js')
 
 const config = _.merge({}, allConfig, allConfig.DEVELOPMENT)
 
@@ -15,35 +17,55 @@ module.exports = merge(baseWebpackConfig, {
     require.resolve('webpack/hot/dev-server'),
   ], config.entry),
   module: {
-    loaders: [{
+    rules: [{
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: [/node_modules/].concat(config.imgToBase64Dir),
-      loaders: [
-        'url-loader?' + JSON.stringify(config.imgLoaderQuery)
-      ]
+      use: [{
+        loader: 'url-loader',
+        options: config.imgLoaderQuery
+      }]
     }, {
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: /node_modules/,
       include: config.imgToBase64Dir,
-      loaders: [
-        'url-loader?limit=10000000'
-      ]
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: '10000000'
+        }
+      }]
     }, {
       test: /\.css$/,
-      // exclude: /node_modules/,
-      loaders: ['style', 'css', 'postcss']
+      use: ['style-loader', 'css-loader', {
+        loader: 'postcss-loader',
+        options: {
+          plugins: postcssPlugins
+        }
+      }]
     }, {
       test: /\.scss$/,
-      // exclude: /node_modules/,
-      loaders: ['style', 'css', 'postcss', 'sass']
+      use: ['style-loader', 'css-loader', {
+        loader: 'postcss-loader',
+        options: {
+          plugins: postcssPlugins
+        }
+      }, 'sass-loader']
     }, {
       test: /\.less$/,
-      // exclude: /node_modules/,
-      loaders: ['style', 'css', 'postcss', 'less']
+      use: ['style-loader', 'css-loader', {
+        loader: 'postcss-loader',
+        options: {
+          plugins: postcssPlugins
+        }
+      }, 'less-loader']
     }, {
       test: /\.styl$/,
-      // exclude: /node_modules/,
-      loaders: ['style', 'css', 'postcss', 'stylus']
+      use: ['style-loader', 'css-loader', {
+        loader: 'postcss-loader',
+        options: {
+          plugins: postcssPlugins
+        }
+      }, 'stylus-loader']
     }]
   },
   plugins: [

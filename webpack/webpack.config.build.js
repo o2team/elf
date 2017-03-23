@@ -6,57 +6,105 @@ const merge = require('webpack-merge')
 
 const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
+const postcssPlugins = require('./postcss.config.js')
 
 const config = _.merge({}, allConfig, allConfig.PRODUCTION)
 
-const cssExtractQuery = {
-  publicPath: config.outputCssPublicPath || config.output.publicPath
+let imageLoaders = [{
+  loader: 'url-loader',
+  options: config.imgLoaderQuery
+}]
+let imageToBase64Loaders = [{
+  loader: 'url-loader',
+  options: {
+    limit: '10000000'
+  }
+}]
+let imageWebpackLoader = {
+  loader: 'image-webpack-loader',
+  options: config.imageWebpackLoader
 }
 
-let imageLoaders = ['url-loader?' + JSON.stringify(config.imgLoaderQuery)]
-let imageToBase64Loaders = ['url-loader?limit=10000000']
-config.enableImageMin && imageLoaders.push('image-webpack')
-config.enableImageMin && imageToBase64Loaders.push('image-webpack')
+config.enableImageMin && imageLoaders.push(imageWebpackLoader)
+config.enableImageMin && imageToBase64Loaders.push(imageWebpackLoader)
 
 module.exports = merge(baseWebpackConfig, {
   entry: config.entry,
   module: {
-    loaders: [{
+    rules: [{
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: [/node_modules/].concat(config.imgToBase64Dir),
-      loaders: imageLoaders
+      use: imageLoaders
     }, {
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,
       exclude: /node_modules/,
       include: config.imgToBase64Dir,
-      loaders: imageToBase64Loaders
+      use: imageToBase64Loaders
     }, {
       test: /\.css$/,
-      // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader'], cssExtractQuery)
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: postcssPlugins
+          }
+        }],
+        publicPath: config.outputCssPublicPath || config.output.publicPath
+      })
     }, {
       test: /\.scss$/,
-      // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'], cssExtractQuery)
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: postcssPlugins
+          }
+        }, 'sass-loader'],
+        publicPath: config.outputCssPublicPath || config.output.publicPath
+      })
     }, {
       test: /\.less$/,
-      // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'less-loader'], cssExtractQuery)
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: postcssPlugins
+          }
+        }, 'less-loader'],
+        publicPath: config.outputCssPublicPath || config.output.publicPath
+      })
     }, {
       test: /\.styl$/,
-      // exclude: /node_modules/,
-      loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'stylus-loader'], cssExtractQuery)
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins: postcssPlugins
+          }
+        }, 'stylus-loader'],
+        publicPath: config.outputCssPublicPath || config.output.publicPath
+      })
     }]
   },
   plugins: [
-    new ExtractTextPlugin(config.outputCss, {
+    new ExtractTextPlugin({
+      filename: config.outputCss,
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      // options: {
+      //   context: __dirname
+      // },
+      minimize: true
     })
-  ],
-  imageWebpackLoader: config.imageWebpackLoader
+  ]
 })

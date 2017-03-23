@@ -126,14 +126,11 @@ module.exports = {
     // image-webpack-loader 的配置，详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
     enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
     imageWebpackLoader: {
-      progressive: true,
-      optimizationLevel: 7,
-      interlaced: false,
       mozjpeg: {
         quality: 65
       },
       pngquant: {
-        quality: '65-90',
+        quality: "65-90",
         speed: 4
       },
       svgo: {
@@ -142,6 +139,14 @@ module.exports = {
         }, {
           removeEmptyAttrs: false
         }]
+      },
+      gifsicle: {
+        optimizationLevel: 7,
+        interlaced: false
+      },
+      optipng: {
+        optimizationLevel: 7,
+        interlaced: false
       }
     }
   }

@@ -9,8 +9,8 @@ const WebpackDevServer = require('webpack-dev-server')
 const clearConsole = require('react-dev-utils/clearConsole')
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 const openBrowser = require('react-dev-utils/openBrowser')
-const allConfig = require('../config/index.js')
 
+const allConfig = require('../config/index.js')
 const webpackConfig = require('../webpack/webpack.config.dev.js')
 const isInteractive = process.stdout.isTTY
 

@@ -2,7 +2,7 @@ const path = require('path')
 const _ = require('lodash')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
-var autoprefixer = require('autoprefixer')
+const NpmInstallPlugin = require('npm-install-webpack-plugin')
 
 const allConfig = require('../config/index.js')
 const baseWebpackConfig = require('./webpack.base.js')
@@ -69,6 +69,11 @@ module.exports = merge(baseWebpackConfig, {
     }]
   },
   plugins: [
+    new NpmInstallPlugin({
+      dev: false,
+      peerDependencies: true,
+      quiet: false
+    }),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {

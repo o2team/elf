@@ -37,69 +37,69 @@ module.exports = {
    * html-webpack-plugin 默认配置
    * 详细描述参考：https://github.com/ampedandwired/html-webpack-plugin
    */
-  htmlWebpackPluginOptions: {
-    template: 'src/index.html'
-  },
+  // htmlWebpackPluginOptions: {
+  //   template: 'src/index.html'
+  // },
 
   /**
    * autoprefixer 默认配置
    * 详细描述参考：https://github.com/postcss/autoprefixer
    */
-  autoprefixerOptions: {
-    browsers: ['iOS >= 5', 'Android >= 2.3'],
-    cascade: false
-  },
+  // autoprefixerOptions: {
+  //   browsers: ['iOS >= 5', 'Android >= 2.3'],
+  //   cascade: false
+  // },
 
   /**
    * postcss-assets 默认配置
    * 详细描述参考：https://github.com/assetsjs/postcss-assets
    */
-  assetsOptions: {
-    loadPaths: ['src/img/']
-  },
+  // assetsOptions: {
+  //   loadPaths: ['src/img/']
+  // },
 
   /**
    * postcss-sprites 默认配置
    * 详细描述参考：https://github.com/2createStudio/postcss-sprites
    */
-  enableSpritesOnDev: false, // 是否在 dev 时合成雪碧图
-  spritesOptions: {
-    stylesheetPath: 'src/css/',
-    spritePath: 'src/img/',
-    retina: true,
-    relativeTo: 'rule',
-    spritesmith: {
-      algorithm: 'left-right',
-      padding: 2
-    },
-    verbose: false,
-    // 将 img 目录下的子目录作为分组，子目录下的 png 图片会合成雪碧图
-    groupBy: function (image) {
-      var reg = /img\/(\S+)\/\S+\.png$/.exec(image.url)
-      var groupName = reg ? reg[1] : reg
-      return groupName ? Promise.resolve(groupName) : Promise.reject()
-    },
-    // 非 img 子目录下面的 png 不合
-    filterBy: function (image) {
-      return /img\/\S+\/\S+\.png$/.test(image.url) ? Promise.resolve() : Promise.reject()
-    }
-  },
+  // enableSpritesOnDev: false, // 是否在 dev 时合成雪碧图
+  // spritesOptions: {
+  //   stylesheetPath: 'src/css/',
+  //   spritePath: 'src/img/',
+  //   retina: true,
+  //   relativeTo: 'rule',
+  //   spritesmith: {
+  //     algorithm: 'left-right',
+  //     padding: 2
+  //   },
+  //   verbose: false,
+  //   // 将 img 目录下的子目录作为分组，子目录下的 png 图片会合成雪碧图
+  //   groupBy: function (image) {
+  //     var reg = /img\/(\S+)\/\S+\.png$/.exec(image.url)
+  //     var groupName = reg ? reg[1] : reg
+  //     return groupName ? Promise.resolve(groupName) : Promise.reject()
+  //   },
+  //   // 非 img 子目录下面的 png 不合
+  //   filterBy: function (image) {
+  //     return /img\/\S+\/\S+\.png$/.test(image.url) ? Promise.resolve() : Promise.reject()
+  //   }
+  // },
 
   /**
    * postcss-plugin-px2rem 默认配置
    * 详细描述参考：https://github.com/ant-tool/postcss-plugin-px2rem
    */
-  px2remOptions: {
-    // rootValue 由 config.designLayoutWidth / config.baseSize 而来，不用配置
-    unitPrecision: 5,
-    propWhiteList: [],
-    propBlackList: [],
-    selectorBlackList: [/.ignore-rem/],
-    ignoreIdentifier: false,
-    replace: true,
-    mediaQuery: false,
-    minPixelValue: 0
-  },
+  // px2remOptions: {
+  //   // rootValue 由 config.designLayoutWidth / config.baseSize 而来，不用配置
+  //   unitPrecision: 5,
+  //   propWhiteList: [],
+  //   propBlackList: [],
+  //   selectorBlackList: [/.ignore-rem/],
+  //   ignoreIdentifier: false,
+  //   replace: true,
+  //   mediaQuery: false,
+  //   minPixelValue: 0
+  // },
 
   /**
    * webpack development config
@@ -125,49 +125,49 @@ module.exports = {
      * html-webpack-plugin 默认配置
      * 详细描述参考：https://github.com/jantimon/html-webpack-plugin#configuration
      */
-    htmlWebpackPluginOptions: {
-      minify: {
-        removeAttributeQuotes: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true
-      }
-    },
+    // htmlWebpackPluginOptions: {
+    //   minify: {
+    //     removeAttributeQuotes: true,
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeRedundantAttributes: true,
+    //     useShortDoctype: true,
+    //     removeEmptyAttributes: true,
+    //     removeStyleLinkTypeAttributes: true,
+    //     keepClosingSlash: true,
+    //     minifyJS: true,
+    //     minifyCSS: true
+    //   }
+    // },
 
     /**
      * image-webpack-loader 默认配置
      * 详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
      */
-    enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
-    imageWebpackLoader: {
-      mozjpeg: {
-        quality: 65
-      },
-      pngquant: {
-        quality: "65-90",
-        speed: 4
-      },
-      svgo: {
-        plugins: [{
-          removeViewBox: false
-        }, {
-          removeEmptyAttrs: false
-        }]
-      },
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false
-      },
-      optipng: {
-        optimizationLevel: 7,
-        interlaced: false
-      }
-    }
+    // enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
+    // imageWebpackLoader: {
+    //   mozjpeg: {
+    //     quality: 65
+    //   },
+    //   pngquant: {
+    //     quality: "65-90",
+    //     speed: 4
+    //   },
+    //   svgo: {
+    //     plugins: [{
+    //       removeViewBox: false
+    //     }, {
+    //       removeEmptyAttrs: false
+    //     }]
+    //   },
+    //   gifsicle: {
+    //     optimizationLevel: 7,
+    //     interlaced: false
+    //   },
+    //   optipng: {
+    //     optimizationLevel: 7,
+    //     interlaced: false
+    //   }
+    // }
   }
 }

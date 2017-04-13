@@ -50,7 +50,7 @@ function init(from, to) {
     } else {
       // copy default config file
       if (isUseDefault) {
-        const defualtConfigPath = path.join(__dirname, '../config/default.js')
+        const defualtConfigPath = path.join(__dirname, '../config/default.out.js')
         const destConfigPath = path.join(to, CONFIG_FILENAME)
         fs.copySync(defualtConfigPath, destConfigPath)
       }

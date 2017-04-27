@@ -1,4 +1,7 @@
 const allConfig = require('../config/index.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const zeptoPath = require.resolve('zepto')
 
 const headJavascript = `
 <!-- begin REM Zoom 计算 -->
@@ -95,4 +98,37 @@ HeadJavascriptInjectPlugin.prototype.apply = function (compiler) {
   })
 }
 
+var addZeptoPlugin = function(plugins, config) {
+    plugins.push(new webpack.ProvidePlugin({
+        $: zeptoPath,
+        Zepto: zeptoPath,
+        'window.Zepto': zeptoPath
+    }))
+}
+
+var addHtmlWebpackPlugins = function(plugins, config) {
+    if (Array.isArray(config)) {
+        Array.prototype.push.apply(plugins, config.map(function (c) {
+            return new HtmlWebpackPlugin(c)
+        }))
+    } else {
+        plugins.push(new HtmlWebpackPlugin(config))
+    }
+    return plugins
+}
+
+var addHeadJsInjectPlugin = function(plugins, config) {
+    plugins.push(new HeadJavascriptInjectPlugin())
+}
+
+var getPlugins = function (config) {
+    var plugins = []
+
+    addZeptoPlugin(plugins, config)
+    addHtmlWebpackPlugins(plugins, config.htmlWebpackPluginOptions)
+    addHeadJsInjectPlugin(plugins, config)
+    return plugins
+}
+
 exports.HeadJavascriptInjectPlugin = HeadJavascriptInjectPlugin
+exports.getPlugins = getPlugins

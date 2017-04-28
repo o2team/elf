@@ -16,9 +16,9 @@ module.exports = {
   /**
    * webpack base config
    */
-  entry: [
-    'src/js/main.js'
-  ],
+  entry: {
+    main: 'src/js/main.js'
+  },
   output: {
     path: 'dist',
     publicPath: './',

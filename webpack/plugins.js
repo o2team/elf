@@ -1,4 +1,8 @@
 const allConfig = require('../config/index.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const zeptoPath = require.resolve('zepto')
+const _ = require('lodash')
 
 const headJavascript = `
 <!-- begin REM Zoom 计算 -->
@@ -95,4 +99,42 @@ HeadJavascriptInjectPlugin.prototype.apply = function (compiler) {
   })
 }
 
+var addOneOrMorePlugins = _.curry(function(pluginClass, plugins, config) {
+    if (_.isArray(config)) {
+        Array.prototype.push.apply(plugins, config.map(function (c) {
+            return new pluginClass(c)
+        }))
+    } else {
+        plugins.push(new pluginClass(config))
+    }
+    return plugins
+})
+
+var addZeptoPlugin = function(plugins, config) {
+    plugins.push(new webpack.ProvidePlugin({
+        $: zeptoPath,
+        Zepto: zeptoPath,
+        'window.Zepto': zeptoPath
+    }))
+}
+
+var addHtmlWebpackPlugins = addOneOrMorePlugins(HtmlWebpackPlugin)
+
+var addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkPlugin)
+
+var addHeadJsInjectPlugin = function(plugins, config) {
+    plugins.push(new HeadJavascriptInjectPlugin())
+}
+
+var getPlugins = function (config) {
+    var plugins = []
+
+    addZeptoPlugin(plugins, config)
+    addHtmlWebpackPlugins(plugins, config.htmlWebpackPluginOptions)
+    addCommonChunkPlugins(plugins, config.commonsChunkPluginOptions)
+    addHeadJsInjectPlugin(plugins, config)
+    return plugins
+}
+
 exports.HeadJavascriptInjectPlugin = HeadJavascriptInjectPlugin
+exports.getPlugins = getPlugins

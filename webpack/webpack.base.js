@@ -1,12 +1,10 @@
 const _ = require('lodash')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
   resolveApp,
   resolveOwn
 } = require('./resolve.js')
 const {
-  HeadJavascriptInjectPlugin
+  getPlugins
 } = require('./plugins.js')
 const allConfig = require('../config/index.js')
 const ROOT = process.cwd()
@@ -48,16 +46,7 @@ const baseConfig = {
       use: ['html-loader']
     }]
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: zeptoPath,
-      Zepto: zeptoPath,
-      'window.Zepto': zeptoPath
-    }),
-    new HtmlWebpackPlugin(config.htmlWebpackPluginOptions),
-    // new webpack.DefinePlugin({}),
-    new HeadJavascriptInjectPlugin()
-  ],
+  plugins: getPlugins(config),
   externals: config.externals || {}
 }
 

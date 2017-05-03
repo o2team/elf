@@ -10,12 +10,39 @@ const postcssPlugins = require('./postcss.config.js')
 
 const config = _.merge({}, allConfig, allConfig.DEVELOPMENT)
 
-module.exports = merge(baseWebpackConfig, {
-  devtool: '#cheap-module-source-map',
-  entry: [].concat([
+const devEntries = [
     require.resolve('webpack-dev-server/client') + '?/',
     require.resolve('webpack/hot/dev-server'),
-  ], config.entry),
+]
+
+function prependDevEntries(entry) {
+    if (_.isArray(entry) || _.isString(entry)) {
+        return _.concat(devEntries, entry)
+    } else if (_.isObject(entry))
+    {
+        // advanced usage, save HMR entries into a seperated chunk, pages shall include it manually.
+        let key = config.hmrChunkName || 'main'
+        entry = _.clone(entry)
+        entry[key] = _.concat(devEntries, entry[key] || [])
+        return entry
+    } else {
+        throw "invalid entry setting, check https://webpack.js.org/concepts/entry-points/ for more"
+    }
+}
+
+function wrapEntry(entry) {
+    if (_.isFunction(entry)) {
+        return function() {
+            return prependDevEntries(entry())
+        }
+    } else {
+        return prependDevEntries(entry)
+    }
+}
+
+module.exports = merge(baseWebpackConfig, {
+  devtool: '#cheap-module-source-map',
+  entry: wrapEntry(config.entry),
   module: {
     rules: [{
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|jpg|gif)(\?\S*)?$/,

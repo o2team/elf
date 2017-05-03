@@ -16,9 +16,9 @@ module.exports = {
   /**
    * webpack base config
    */
-  entry: [
-    'src/js/main.js'
-  ],
+  entry: {
+    main: 'src/js/main.js'
+  },
   output: {
     path: 'dist',
     publicPath: './',
@@ -42,6 +42,12 @@ module.exports = {
   // htmlWebpackPluginOptions: {
   //   template: 'src/index.html'
   // },
+
+  /**
+   * CommonsChunkPlugin 默认配置
+   * 详细描述参考：https://webpack.js.org/plugins/commons-chunk-plugin/
+   */
+  // commonsChunkPluginOptions: [],
 
   /**
    * autoprefixer 默认配置

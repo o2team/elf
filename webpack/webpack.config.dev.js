@@ -20,8 +20,10 @@ function prependDevEntries(entry) {
         return _.concat(devEntries, entry)
     } else if (_.isObject(entry))
     {
+        // advanced usage, save HMR entries into a seperated chunk, pages shall include it manually.
+        let key = config.hmrChunkName || 'main'
         entry = _.clone(entry)
-        entry['main'] = _.concat(devEntries, entry['main'] || [])
+        entry[key] = _.concat(devEntries, entry[key] || [])
         return entry
     } else {
         throw "invalid entry setting, check https://webpack.js.org/concepts/entry-points/ for more"

@@ -64,7 +64,7 @@
     "stylus-loader": "3.0.1",
     "update-notifier": "2.1.0",
     "url-loader": "0.5.8",
-    "webpack": "2.3.0",
+    "webpack": "2.4.1",
     "webpack-dev-server": "2.4.2",
     "webpack-merge": "4.1.0",
     "zepto": "1.2.0"

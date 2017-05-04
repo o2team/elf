@@ -7,7 +7,7 @@ const {
   getPlugins
 } = require('./plugins.js')
 const allConfig = require('../config/index.js')
-const ROOT = process.cwd()
+
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])
 
@@ -33,8 +33,7 @@ const baseConfig = {
       use: [{
         loader: 'exports-loader',
         options: 'window.$'
-      },
-      'script-loader']
+      }, 'script-loader']
     }, {
       test: /\.(mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
       use: [{

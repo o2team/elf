@@ -10,34 +10,33 @@ const postcssPlugins = require('./postcss.config.js')
 
 const config = _.merge({}, allConfig, allConfig.DEVELOPMENT)
 
-const devEntries = [
-    require.resolve('webpack-dev-server/client') + '?/',
-    require.resolve('webpack/hot/dev-server'),
+const devMiddlewareEntries = [
+  require.resolve('webpack-dev-server/client') + '?/',
+  require.resolve('webpack/hot/dev-server'),
 ]
 
 function prependDevEntries(entry) {
-    if (_.isArray(entry) || _.isString(entry)) {
-        return _.concat(devEntries, entry)
-    } else if (_.isObject(entry))
-    {
-        // advanced usage, save HMR entries into a seperated chunk, pages shall include it manually.
-        let key = config.hmrChunkName || 'main'
-        entry = _.clone(entry)
-        entry[key] = _.concat(devEntries, entry[key] || [])
-        return entry
-    } else {
-        throw "invalid entry setting, check https://webpack.js.org/concepts/entry-points/ for more"
-    }
+  if (_.isArray(entry) || _.isString(entry)) {
+    return _.concat(devMiddlewareEntries, entry)
+  } else if (_.isObject(entry)) {
+    const newEntry = {}
+    Object.keys(entry).forEach(function (name) {
+      newEntry[name] = _.concat(devMiddlewareEntries, entry[name])
+    })
+    return newEntry
+  } else {
+    return entry
+  }
 }
 
 function wrapEntry(entry) {
-    if (_.isFunction(entry)) {
-        return function() {
-            return prependDevEntries(entry())
-        }
-    } else {
-        return prependDevEntries(entry)
+  if (_.isFunction(entry)) {
+    return function () {
+      return prependDevEntries(entry())
     }
+  } else {
+    return prependDevEntries(entry)
+  }
 }
 
 module.exports = merge(baseWebpackConfig, {

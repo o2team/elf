@@ -128,6 +128,16 @@ module.exports = {
     outputCssPublicPath: '../',
 
     /**
+     * uglifyjs-webpack-plugin 默认配置
+     * 详细描述参考：https://github.com/webpack-contrib/uglifyjs-webpack-plugin#options
+     */
+    // uglifyjsPluginOptions: {
+    //   compress: {
+    //     warnings: false
+    //   }
+    // },
+
+    /**
      * html-webpack-plugin 默认配置
      * 详细描述参考：https://github.com/jantimon/html-webpack-plugin#configuration
      */

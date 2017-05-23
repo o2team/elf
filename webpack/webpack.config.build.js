@@ -95,11 +95,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: config.outputCss,
       allChunks: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    }),
+    new webpack.optimize.UglifyJsPlugin(config.uglifyjsPluginOptions),
     new webpack.LoaderOptionsPlugin({
       // options: {
       //   context: __dirname

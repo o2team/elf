@@ -1,4 +1,4 @@
-// elf-cli version 1.5.2
+// elf-cli version 1.6.1
 
 module.exports = {
   devPort: '8000', // dev server 运行的端口

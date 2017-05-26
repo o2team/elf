@@ -49,4 +49,25 @@ const baseConfig = {
   externals: config.externals || {}
 }
 
+if (config.enableBabel) {
+  baseConfig.module.rules.push(
+    {
+      // Skip any files outside of your project's `src` directory
+      include: /src/,
+      exclude: /(node_modules|bower_components)/,
+
+      // Only run `.js` and `.jsx` files through Babel
+      test: /\.jsx?$/,
+
+      use: [{
+        loader: "babel-loader",
+        options: {
+          cacheDirectory: true,
+          babelrc: true,
+        }
+      }]
+    }
+  )
+}
+
 module.exports = baseConfig

@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'development'
 
 const chalk = require('chalk')
-const internalIp = require('internal-ip')
+const ip = require('ip')
 const qrcode = require('qrcode-terminal')
 
 const webpack = require('webpack')
@@ -83,7 +83,7 @@ function runDevServer(host, port) {
 }
 
 function run(port) {
-  const host = internalIp.v4()
+  const host = ip.address()
   setupCompiler(host, port)
   runDevServer(host, port)
 }

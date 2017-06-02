@@ -18,14 +18,14 @@ module.exports = {
   output: {
     path: 'dist',
     publicPath: './',
-    filename: 'js/bundle.js?[hash:6]'
+    filename: 'js/bundle.js'
   },
   imgLoaderQuery: {
     limit: 1000,
-    name: 'img/[name].[ext]?[hash:6]'
+    name: 'img/[name].[ext]'
   },
   audioLoaderQuery: {
-    name: 'plugin/[name].[ext]?[hash:6]'
+    name: 'plugin/[name].[ext]'
   },
   // 该目录下的的图片默认被转成 base64
   imgToBase64Dir: /src\/img-base64/,
@@ -33,7 +33,7 @@ module.exports = {
 
   /**
    * html-webpack-plugin 默认配置
-   * 详细描述参考：https://github.com/ampedandwired/html-webpack-plugin
+   * 详细描述参考：https://github.com/jantimon/html-webpack-plugin#configuration
    */
   htmlWebpackPluginOptions: {
     template: 'src/index.html'
@@ -43,7 +43,7 @@ module.exports = {
    * CommonsChunkPlugin 默认配置
    * 详细描述参考：https://webpack.js.org/plugins/commons-chunk-plugin/
    */
-  // commonsChunkPluginOptions: {},
+  commonsChunkPluginOptions: null,
 
   /**
    * autoprefixer 默认配置
@@ -122,43 +122,20 @@ module.exports = {
    **/
   PRODUCTION: {
     // 生成的 css 文件路径
-    outputCss: 'css/app.css?[hash:6]',
+    outputCss: 'css/app.css',
     outputCssPublicPath: '../',
 
     /**
      * uglifyjs-webpack-plugin 默认配置
      * 详细描述参考：https://github.com/webpack-contrib/uglifyjs-webpack-plugin#options
      */
-    uglifyjsPluginOptions: {
-      compress: {
-        warnings: false
-      }
-    },
-
-    /**
-     * html-webpack-plugin 默认配置
-     * 详细描述参考：https://github.com/jantimon/html-webpack-plugin#configuration
-     */
-    htmlWebpackPluginOptions: {
-      minify: {
-        removeAttributeQuotes: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true
-      }
-    },
+    uglifyjsPluginOptions: {},
 
     /**
      * image-webpack-loader 默认配置
      * 详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
      */
-    enableImageMin: true, // 是否启用 image-webpack-loader 对图片进行压缩
+    enableImageMin: false, // 是否启用 image-webpack-loader 对图片进行压缩
     imageWebpackLoader: {
       mozjpeg: {
         quality: 65

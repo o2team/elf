@@ -42,7 +42,12 @@ const baseConfig = {
       }]
     }, {
       test: /\.html$/,
-      use: ['html-loader']
+      use: [{
+        loader: 'html-loader',
+        options: {
+          minimize: config.enableHTMLCompress
+        }
+      }]
     }]
   },
   plugins: getPlugins(config),

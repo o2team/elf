@@ -10,23 +10,48 @@ const postcssPlugins = require('./postcss.config.js')
 
 const config = _.merge({}, allConfig, allConfig.PRODUCTION)
 
-let imageLoaders = [{
+const imageLoaders = [{
   loader: 'url-loader',
   options: config.imgLoaderQuery
 }]
-let imageToBase64Loaders = [{
+const imageToBase64Loaders = [{
   loader: 'url-loader',
   options: {
     limit: '10000000'
   }
 }]
-let imageWebpackLoader = {
+const imageWebpackLoader = {
   loader: 'image-webpack-loader',
   options: config.imageWebpackLoader
 }
-
 config.enableImageMin && imageLoaders.push(imageWebpackLoader)
 config.enableImageMin && imageToBase64Loaders.push(imageWebpackLoader)
+
+const cssLoader = [{
+  loader: 'css-loader',
+  options: {
+    minimize: config.enableCSSCompress
+  }
+}, {
+  loader: 'postcss-loader',
+  options: {
+    plugins: postcssPlugins
+  }
+}]
+
+const publicPath = config.outputCssPublicPath || config.output.publicPath
+
+const plugins = [
+  new ExtractTextPlugin({
+    filename: config.outputCss,
+    allChunks: true
+  }),
+  new webpack.LoaderOptionsPlugin({
+    // minimize: true
+  })
+]
+config.enableJSCompress && plugins.push(new webpack.optimize.UglifyJsPlugin(config.uglifyjsPluginOptions))
+
 
 module.exports = merge(baseWebpackConfig, {
   entry: config.entry,
@@ -44,63 +69,31 @@ module.exports = merge(baseWebpackConfig, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            plugins: postcssPlugins
-          }
-        }],
-        publicPath: config.outputCssPublicPath || config.output.publicPath
+        use: cssLoader,
+        publicPath: publicPath
       })
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            plugins: postcssPlugins
-          }
-        }, 'sass-loader'],
-        publicPath: config.outputCssPublicPath || config.output.publicPath
+        use: cssLoader.concat('sass-loader'),
+        publicPath: publicPath
       })
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            plugins: postcssPlugins
-          }
-        }, 'less-loader'],
-        publicPath: config.outputCssPublicPath || config.output.publicPath
+        use: cssLoader.concat('less-loader'),
+        publicPath: publicPath
       })
     }, {
       test: /\.styl$/,
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            plugins: postcssPlugins
-          }
-        }, 'stylus-loader'],
-        publicPath: config.outputCssPublicPath || config.output.publicPath
+        use: cssLoader.concat('stylus-loader'),
+        publicPath: publicPath
       })
     }]
   },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: config.outputCss,
-      allChunks: true
-    }),
-    new webpack.optimize.UglifyJsPlugin(config.uglifyjsPluginOptions),
-    new webpack.LoaderOptionsPlugin({
-      // options: {
-      //   context: __dirname
-      // },
-      minimize: true
-    })
-  ]
+  plugins: plugins
 })

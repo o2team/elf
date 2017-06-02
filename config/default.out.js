@@ -127,6 +127,12 @@ module.exports = {
     outputCss: 'css/app.css',
     outputCssPublicPath: '../',
 
+    // 是否进行压缩
+    enableJSCompress: true,
+    enableCSSCompress: true,
+    enableHTMLCompress: false, // 注意：可能会与 htmlWebpackPluginOptions.minify 冲突
+    // enableImageMin: false, // 用 image-webpack-loader 对图片进行压缩
+
     /**
      * uglifyjs-webpack-plugin 默认配置
      * 详细描述参考：https://github.com/webpack-contrib/uglifyjs-webpack-plugin#options
@@ -137,7 +143,6 @@ module.exports = {
      * image-webpack-loader 默认配置
      * 详细描述参考：https://github.com/tcoopman/image-webpack-loader#usage
      */
-    // enableImageMin: false, // 是否启用 image-webpack-loader 对图片进行压缩
     // imageWebpackLoader: {
     //   mozjpeg: {
     //     quality: 65

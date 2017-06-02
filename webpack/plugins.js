@@ -104,7 +104,7 @@ var addOneOrMorePlugins = _.curry(function (pluginClass, plugins, options) {
     Array.prototype.push.apply(plugins, options.map(function (c) {
       return new pluginClass(c)
     }))
-  } else {
+  } else if (options) {
     plugins.push(new pluginClass(options))
   }
   return plugins

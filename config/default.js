@@ -43,7 +43,7 @@ module.exports = {
    * CommonsChunkPlugin 默认配置
    * 详细描述参考：https://webpack.js.org/plugins/commons-chunk-plugin/
    */
-  commonsChunkPluginOptions: {},
+  // commonsChunkPluginOptions: {},
 
   /**
    * autoprefixer 默认配置

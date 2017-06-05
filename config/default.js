@@ -30,6 +30,7 @@ module.exports = {
   // 该目录下的的图片默认被转成 base64
   imgToBase64Dir: /src\/img-base64/,
   externals: {},
+  rules: [],
 
   /**
    * webpack.CommonsChunkPlugin 默认配置

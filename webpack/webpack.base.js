@@ -25,7 +25,7 @@ const baseConfig = {
   },
   resolveLoader: {
     // moduleExtensions: ['-loader'],
-    modules: [resolveOwn('node_modules')]
+    modules: [resolveApp('node_modules'), resolveOwn('node_modules')]
   },
   module: {
     rules: [{
@@ -48,7 +48,7 @@ const baseConfig = {
           minimize: config.enableHTMLCompress
         }
       }]
-    }]
+    }].concat(config.rules)
   },
   plugins: getPlugins(config),
   externals: config.externals || {}

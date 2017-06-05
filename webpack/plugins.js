@@ -1,5 +1,6 @@
 const allConfig = require('../config/index.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Visualizer = require('webpack-visualizer-plugin')
 const webpack = require('webpack')
 const zeptoPath = require.resolve('zepto')
 const _ = require('lodash')
@@ -124,6 +125,10 @@ var getPlugins = function (config) {
     Zepto: zeptoPath,
     'window.Zepto': zeptoPath
   }))
+  config.enableWebpackVisualizer && plugins.push(new Visualizer({
+    filename: './webpack-stats.html'
+  }))
+
   addHtmlWebpackPlugins(plugins, config.htmlWebpackPluginOptions)
   addCommonChunkPlugins(plugins, config.commonsChunkPluginOptions)
 

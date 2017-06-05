@@ -121,6 +121,12 @@ module.exports = {
   // },
 
   /**
+   * webpack-visualizer 默认配置
+   * 详细描述参考：https://github.com/chrisbateman/webpack-visualizer
+   */
+  // enableWebpackVisualizer: false, 
+
+  /**
    * webpack development config
    *
    * 只作用于 development 模式，会覆盖 base config 中相同的配置项

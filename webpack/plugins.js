@@ -110,29 +110,23 @@ var addOneOrMorePlugins = _.curry(function (pluginClass, plugins, options) {
   return plugins
 })
 
-var addZeptoPlugin = function (plugins, config) {
+var addHtmlWebpackPlugins = addOneOrMorePlugins(HtmlWebpackPlugin)
+
+var addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkPlugin)
+
+var getPlugins = function (config) {
+  var plugins = []
+
+  plugins.push(new webpack.DefinePlugin(config.definePluginOptions))
+  plugins.push(new HeadJavascriptInjectPlugin())
   plugins.push(new webpack.ProvidePlugin({
     $: zeptoPath,
     Zepto: zeptoPath,
     'window.Zepto': zeptoPath
   }))
-}
-
-var addHtmlWebpackPlugins = addOneOrMorePlugins(HtmlWebpackPlugin)
-
-var addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkPlugin)
-
-var addHeadJsInjectPlugin = function (plugins, config) {
-  plugins.push(new HeadJavascriptInjectPlugin())
-}
-
-var getPlugins = function (config) {
-  var plugins = []
-
-  addZeptoPlugin(plugins, config)
   addHtmlWebpackPlugins(plugins, config.htmlWebpackPluginOptions)
   addCommonChunkPlugins(plugins, config.commonsChunkPluginOptions)
-  addHeadJsInjectPlugin(plugins, config)
+
   return plugins
 }
 

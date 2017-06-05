@@ -32,6 +32,18 @@ module.exports = {
   externals: {},
 
   /**
+   * webpack.CommonsChunkPlugin 默认配置
+   * 详细描述参考：https://webpack.js.org/plugins/commons-chunk-plugin/
+   */
+  commonsChunkPluginOptions: null,
+
+  /**
+   * webpack.DefinePlugin 默认配置
+   * 详细描述参考：https://webpack.js.org/plugins/define-plugin
+   */
+  definePluginOptions: {},
+
+  /**
    * css-loader 默认配置
    * 详细描述参考：https://github.com/webpack-contrib/css-loader#options
    */
@@ -45,13 +57,7 @@ module.exports = {
     template: 'src/index.html'
   },
 
-  /**
-   * CommonsChunkPlugin 默认配置
-   * 详细描述参考：https://webpack.js.org/plugins/commons-chunk-plugin/
-   */
-  commonsChunkPluginOptions: null,
-
-  /**
+  /**s
    * autoprefixer 默认配置
    * 详细描述参考：https://github.com/postcss/autoprefixer
    */

@@ -29,9 +29,9 @@ config.enableImageMin && imageToBase64Loaders.push(imageWebpackLoader)
 
 const cssLoader = [{
   loader: 'css-loader',
-  options: {
+  options: _.merge({}, config.cssLoaderOptions, {
     minimize: config.enableCSSCompress
-  }
+  })
 }, {
   loader: 'postcss-loader',
   options: {

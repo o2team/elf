@@ -39,6 +39,16 @@ function wrapEntry(entry) {
   }
 }
 
+const cssLoader = [{
+  loader: 'css-loader',
+  options: config.cssLoaderOptions
+}, {
+  loader: 'postcss-loader',
+  options: {
+    plugins: postcssPlugins
+  }
+}]
+
 module.exports = merge(baseWebpackConfig, {
   devtool: '#cheap-module-source-map',
   entry: wrapEntry(config.entry),
@@ -62,36 +72,16 @@ module.exports = merge(baseWebpackConfig, {
       }]
     }, {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader', {
-        loader: 'postcss-loader',
-        options: {
-          plugins: postcssPlugins
-        }
-      }]
+      use: ['style-loader'].concat(cssLoader)
     }, {
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader', {
-        loader: 'postcss-loader',
-        options: {
-          plugins: postcssPlugins
-        }
-      }, 'sass-loader']
+      use: ['style-loader'].concat(cssLoader, 'sass-loader')
     }, {
       test: /\.less$/,
-      use: ['style-loader', 'css-loader', {
-        loader: 'postcss-loader',
-        options: {
-          plugins: postcssPlugins
-        }
-      }, 'less-loader']
+      use: ['style-loader'].concat(cssLoader, 'less-loader')
     }, {
       test: /\.styl$/,
-      use: ['style-loader', 'css-loader', {
-        loader: 'postcss-loader',
-        options: {
-          plugins: postcssPlugins
-        }
-      }, 'stylus-loader']
+      use: ['style-loader'].concat(cssLoader, 'stylus-loader')
     }]
   },
   plugins: [

@@ -34,6 +34,12 @@ module.exports = {
   externals: {},
 
   /**
+   * css-loader 默认配置
+   * 详细描述参考：https://github.com/webpack-contrib/css-loader#options
+   */
+  // cssLoaderOptions: {},
+
+  /**
    * html-webpack-plugin 默认配置
    * 详细描述参考：https://github.com/jantimon/html-webpack-plugin#configuration
    */

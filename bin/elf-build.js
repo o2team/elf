@@ -3,10 +3,15 @@
 const spawn = require('cross-spawn')
 const program = require('commander')
 
-program.parse(process.argv)
+program
+  .option('-d, --debug <key>', 'print `key` corresponding configuration')
+  .parse(process.argv)
 
 const result = spawn.sync(
-  'node', [require.resolve('../src/build')].concat(program.args), {
+  'node', [
+    require.resolve('../src/build'), 
+    program.debug ? program.debug : ''
+  ].concat(program.args), {
     stdio: 'inherit'
   }
 )

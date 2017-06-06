@@ -35,7 +35,7 @@ const baseConfig = {
         options: 'window.$'
       }, 'script-loader']
     }, {
-      test: /\.(mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
+      test: /\.(aac|mp3|mp4|webm|mov|ogg|ogv)(\?\S*)?$/,
       use: [{
         loader: 'file-loader',
         options: config.audioLoaderQuery

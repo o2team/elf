@@ -100,7 +100,7 @@ HeadJavascriptInjectPlugin.prototype.apply = function (compiler) {
   })
 }
 
-var addOneOrMorePlugins = _.curry(function (pluginClass, plugins, options) {
+const addOneOrMorePlugins = _.curry(function (pluginClass, plugins, options) {
   if (_.isArray(options)) {
     Array.prototype.push.apply(plugins, options.map(function (c) {
       return new pluginClass(c)
@@ -111,12 +111,12 @@ var addOneOrMorePlugins = _.curry(function (pluginClass, plugins, options) {
   return plugins
 })
 
-var addHtmlWebpackPlugins = addOneOrMorePlugins(HtmlWebpackPlugin)
+const addHtmlWebpackPlugins = addOneOrMorePlugins(HtmlWebpackPlugin)
 
-var addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkPlugin)
+const addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkPlugin)
 
-var getPlugins = function (config) {
-  var plugins = []
+const getPlugins = function (config) {
+  var plugins = [].concat(config.plugins)
 
   plugins.push(new webpack.DefinePlugin(config.definePluginOptions))
   plugins.push(new HeadJavascriptInjectPlugin())

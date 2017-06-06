@@ -9,13 +9,13 @@ const allConfig = require('../config/index.js')
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])
 
-let postcssPlugins = []
+const postcssPlugins = [].concat(allConfig.postcssPlugins)
 
 // assets
 postcssPlugins.push(assets(config.assetsOptions))
 
 // sprites
-let spritesOptions = config.spritesOptions
+const spritesOptions = config.spritesOptions
 if (config.enableREM) {
   const updateRule = require('postcss-sprites/lib/core').updateRule
 

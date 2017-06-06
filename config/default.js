@@ -31,6 +31,8 @@ module.exports = {
   imgToBase64Dir: /src\/img-base64/,
   externals: {},
   rules: [],
+  plugins: [],
+  postcssPlugins: [],
 
   /**
    * webpack.CommonsChunkPlugin 默认配置

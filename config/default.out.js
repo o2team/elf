@@ -10,6 +10,8 @@ module.exports = {
   enableREM: true, // 是否用 rem 做适配
   enableZoom: true, // 是否用 zoom 做适配
 
+  enableBabel: false, // 是否使用babel，如果开启则项目中应该包括.babelrc配置文件并安装所需presets/plugins
+
 
   /* 如果不了解 webpack 的配置，请不要修改下面的配置项 */
 

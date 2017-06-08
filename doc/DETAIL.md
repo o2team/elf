@@ -93,3 +93,31 @@ imgToBase64Dir: /src\/img-base64/
 ```
 
 该目录下的的图片（limit=10000000）默认被转成 base64。
+
+## Babel
+
+默认未打开`babel-loader`，可以配置`enableBabel`为`true`启用babel。
+
+elf没有设置或安装任何presets或plugins，用户应当在项目中添加`.babelrc`文件，在其中配置所需presets/plugins，并在项目中安装相应依赖。
+
+例如在项目根目录下添加`.babelrc`如下：
+
+```js
+{
+  "presets": [
+    "babel-preset-es2015",
+    "babel-preset-stage-0"
+  ],
+  "plugins": [
+    "babel-plugin-transform-runtime"
+  ]
+}
+```
+
+同时在项目中安装对应依赖：
+
+```sh
+npm install --save-dev babel-core babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-0
+```
+
+更多配置请参阅[babel配置文档](https://babeljs.io/docs/usage/api/#options)。

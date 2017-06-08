@@ -6,7 +6,7 @@
 
 ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行工具 elf（基于 Webpack），**无需构建配置文件并可进行开发**，可用来制作各种 HTML5 场景营销活动页面，也可自由的通过模板和组件的组合来快速定制开发。
 
-## 安装 [![NPM version][npm-version-image]][npm-version-url]
+## 安装 [![NPM version][npm-version-image]][npm-version-url] [![Join the chat at https://gitter.im/o2team/elf](https://badges.gitter.im/o2team/elf.svg)](https://gitter.im/o2team/elf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > **`提醒`**
 由于依赖的包比较多，第一次安装耗时很长很长，请稍微耐心等待一下。

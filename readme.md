@@ -6,6 +6,9 @@
 
 ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行工具 elf（基于 Webpack），**无需构建配置文件并可进行开发**，可用来制作各种 HTML5 场景营销活动页面，也可自由的通过模板和组件的组合来快速定制开发。
 
+[**配置说明**](https://github.com/o2team/elf/blob/master/doc/CONFIGURATION.md)
+[**功能描述**](https://github.com/o2team/elf/blob/master/doc/DETAIL.md)
+
 ## 安装 [![NPM version][npm-version-image]][npm-version-url] [![Join the chat at https://gitter.im/o2team/elf](https://badges.gitter.im/o2team/elf.svg)](https://gitter.im/o2team/elf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > **`提醒`**
@@ -20,51 +23,22 @@ ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行�
 $ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npm.taobao.org
 # windows
 $ npm install -g elf-cli --registry=https://registry.npm.taobao.org --SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ --PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/
+```
 
+## 使用
+
+```sh
 # 初始化项目
 $ elf init demo
 
 # 安装依赖
 $ cd demo && npm install
 
-# 运行
+# 开发运行
 $ elf start
-```
 
-```sh
 # 查看 help
 $ elf --help
-
-  Usage: elf [options] [command]
-
-
-  Commands:
-
-    init        init project
-    list        list all templates
-    start       run on develpoment mode
-    build       build for production
-    help [cmd]  display help for [cmd]
-
-  Options:
-
-    -h, --help     output usage information
-    -V, --version  output the version number
-
-  Examples:
-
-    # Init project
-    $ elf init
-
-    # Base on template init project
-    $ elf init -t panorama
-
-    # List all templates
-    $ elf list
-
-    # See subcommand help
-    $ elf help init
-
 ```
 
 ## 介绍
@@ -82,9 +56,7 @@ $ elf --help
 
 ### 相关组件依赖
 
-- [Zepto](http://zeptojs.com/)
-
-  默认引入，其他可根据项目需求引入
+- [Zepto](http://zeptojs.com/) 默认引入
 
 ### 基础目录结构
 
@@ -102,8 +74,6 @@ $ elf --help
     └── js
         └── main.js                 # 入口 js 文件
 ```
-
-[**查看更详细的说明**](https://github.com/o2team/elf/blob/master/doc/DETAIL.md)
 
 ## 感谢
 

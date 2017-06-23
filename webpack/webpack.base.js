@@ -11,7 +11,7 @@ const allConfig = require('../config/index.js')
 const NODE_ENV = process.env.NODE_ENV || ''
 const config = _.merge({}, allConfig, allConfig[NODE_ENV.toUpperCase()])
 
-const zeptoPath = require.resolve('zepto')
+const zeptoPath = require.resolve('zepto/dist/zepto.min.js')
 
 const baseConfig = {
   output: _.merge({}, config.output, {

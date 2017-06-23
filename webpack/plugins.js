@@ -2,7 +2,7 @@ const allConfig = require('../config/index.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Visualizer = require('webpack-visualizer-plugin')
 const webpack = require('webpack')
-const zeptoPath = require.resolve('zepto')
+const zeptoPath = require.resolve('zepto/dist/zepto.min.js')
 const _ = require('lodash')
 
 const headJavascript = `

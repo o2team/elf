@@ -26,6 +26,49 @@ module.exports = {
 
 
 
+* [基本配置](#基本配置)
+  * [devPort](#devport)
+  * [designLayoutWidth](#designlayoutwidth)
+  * [designLayoutHeight](#designlayoutheight)
+  * [baseZoomRuler](#basezoomruler)
+  * [baseSize](#basesize)
+  * [enableREM](#enablerem)
+  * [enableZoom](#enablezoom)
+  * [enableDisplayQR](#enabledisplayqr)
+* [Webpack 基本配置](#webpack-基本配置)
+  * [entry](#entry)
+  * [output](#output)
+  * [outputCss](#outputcss)
+  * [outputCssPublicPath](#outputcsspublicpath)
+  * [externals](#externals)
+* [Webpack Loader 相关配置](webpack-loader-相关配置)
+  * [imgLoaderQuery](#imgloaderquery)
+  * [audioLoaderQuery](#audioloaderquery)
+  * [imgToBase64Dir](#imgtobase64dir)
+  * [rules](#rules)
+* [Webpack plugins 相关配置](#webpack-plugins-相关配置)
+  * [commonsChunkPluginOptions](#commonschunkpluginoptions)
+  * [definePluginOptions](#definepluginoptions)
+  * [cssLoaderOptions](#cssloaderoptions)
+  * [htmlWebpackPluginOptions](#htmlwebpackpluginoptions)
+  * [enableWebpackVisualizer](#enablewebpackvisualizer)
+  * [plugins](#plugins)
+* [Postcss plugins 相关配置](#postcss-plugins-相关配置)
+  * [autoprefixerOptions](#autoprefixeroptions)
+  * [postcss-assets](#postcss-assets)
+  * [enableSpritesOnDev](#enablespritesondev)
+  * [spritesOptions](#spritesoptions)
+  * [px2remOptions](#px2remoptions)
+  * [imageWebpackLoader](#imagewebpackloader)
+  * [postcssPlugins](#postcssplugins)
+* [Webpack 压缩文件相关配置](#webpack-压缩文件相关配置)
+  * [enableJSCompress](#enablejscompress)
+  * [enableCSSCompress](#enablecsscompress)
+  * [enableHTMLCompress](#enablehtmlcompress)
+  * [enableImageMin](#enableimagemin)
+
+
+
 
 ## 基本配置
 

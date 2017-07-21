@@ -29,6 +29,7 @@
   ],
   "author": "o2team",
   "dependencies": {
+    "archiver": "2.0.0",
     "autoprefixer": "7.1.2",
     "chalk": "2.0.1",
     "commander": "2.11.0",

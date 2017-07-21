@@ -93,6 +93,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
+    disableHostCheck: true,
     port: config.devPort,
     // host: '0.0.0.0',
     // contentBase: '',

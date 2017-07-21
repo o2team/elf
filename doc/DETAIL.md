@@ -112,4 +112,12 @@ elf build -d '.' # 查看整个配置
 
 设置 `enableWebpackVisualizer` 为 `true`，执行构建命令 `elf build` 后，会在 `output.path` 目录中会生成文件 `webpack-stats.html`，用浏览器直接打开，可以查看分析构建文件的组成。
 
+## 生成构建文件压缩包
 
+执行 `elf build` 时，支持参数 `-a, --archive [name]`，可将构建输出的文件打包。例如
+
+```sh
+elf build -a # 生成 dist.zip
+
+elf build -a build.tar # 生成 build.tar
+```

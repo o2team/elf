@@ -71,7 +71,8 @@ module.exports = {
    * 详细描述参考：https://github.com/assetsjs/postcss-assets
    */
   assetsOptions: {
-    loadPaths: ['src/img/']
+    loadPaths: ['src/img/'],
+    cache: true
   },
 
   /**
@@ -116,7 +117,7 @@ module.exports = {
     ignoreIdentifier: false,
     replace: true,
     mediaQuery: false,
-    minPixelValue: 0
+    minPixelValue: 2
   },
 
   /**

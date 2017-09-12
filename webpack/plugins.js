@@ -21,7 +21,7 @@ const headJavascript = `
     function refresh() {
       var width = docEl.clientWidth;
       var height = docEl.clientHeight;
-      if (width > 768) { width = 768 }
+      if (width > 768) width = 768;
       if (hasRem) {
         var rem = width / ${allConfig.baseSize};
         docEl.style.fontSize = rem + "px";
@@ -29,21 +29,27 @@ const headJavascript = `
         var actualSize = parseFloat(window.getComputedStyle(document.documentElement)["font-size"]);
         if (actualSize !== rem && actualSize > 0 && Math.abs(actualSize - rem) > 1) {
           var remScaled = rem * rem / actualSize;
-          docEl.style.fontSize = remScaled + "px"
+          docEl.style.fontSize = remScaled + "px";
         }
       }
       if (hasZoom) {
-        var style = document.getElementById('J__style')
+        var style = document.getElementById('J__style');
         if (!style) {
-          style = document.createElement('style')
-          style.id = 'J__style'
+          style = document.createElement('style');
+          style.id = 'J__style';
         }
+        var r,s;
         if (zoomRuler === 'height') {
-          style.innerHTML = '.__z{zoom:' + height / designHeight + '}'
+          r = height / designHeight;
         } else {
-          style.innerHTML = '.__z{zoom:' + width / designWidth + '}'
+          r = width / designWidth;
         }
-        document.getElementsByTagName('head')[0].appendChild(style)
+        r.toFixed && (r = r.toFixed(5));
+        s = '.__z{zoom:' + r + '} ';
+        s += '.__s{-webkit-transform: scale(' + r + ');transform: scale(' + r + ')}';
+
+        style.innerHTML = s;
+        document.getElementsByTagName('head')[0].appendChild(style);
       }
     }
 
@@ -57,7 +63,7 @@ const headJavascript = `
 
     win.addEventListener("pageshow", function (e) {
       if (e.persisted) {
-        dbcRefresh()
+        dbcRefresh();
       }
     }, false);
     refresh();
@@ -66,18 +72,18 @@ const headJavascript = `
       remCalc.rem2px = function (d) {
         var val = parseFloat(d) * this.rem;
         if (typeof d === "string" && d.match(/rem$/)) {
-          val += "px"
+          val += "px";
         }
-        return val
+        return val;
       };
       remCalc.px2rem = function (d) {
         var val = parseFloat(d) / this.rem;
         if (typeof d === "string" && d.match(/px$/)) {
-          val += "rem"
+          val += "rem";
         }
-        return val
+        return val;
       };
-      win.remCalc = remCalc
+      win.remCalc = remCalc;
     }
   })(window);
 

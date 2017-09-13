@@ -124,7 +124,9 @@ const addCommonChunkPlugins = addOneOrMorePlugins(webpack.optimize.CommonsChunkP
 const getPlugins = function (config) {
   var plugins = [].concat(config.plugins)
 
-  plugins.push(new webpack.DefinePlugin(config.definePluginOptions))
+  plugins.push(new webpack.DefinePlugin(_.extend({
+    ELF_ENV: JSON.stringify(config.ELF_ENV)
+  }, config.definePluginOptions)))
   plugins.push(new HeadJavascriptInjectPlugin())
   plugins.push(new webpack.ProvidePlugin({
     $: zeptoPath,

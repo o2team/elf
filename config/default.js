@@ -132,6 +132,7 @@ module.exports = {
    * 只作用于 development 模式，会覆盖 base config 中相同的配置项
    **/
   DEVELOPMENT: {
+    ELF_ENV: 'development',
     // 配置是否在 Terminal 显示测试链接二维码
     enableDisplayQR: false
   },
@@ -142,6 +143,7 @@ module.exports = {
    * 只作用于 production 模式，会覆盖 base config 中相同的配置项
    **/
   PRODUCTION: {
+    ELF_ENV: 'production',
     // 是否进行压缩
     enableJSCompress: true,
     enableCSSCompress: true,

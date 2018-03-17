@@ -48,10 +48,10 @@ function init(from, to) {
       console.log('  Failed to download repo ' + chalk.red(template) + ': ' + err.message.trim())
       console.log('')
     } else {
-      // copy default config file
-      if (isUseDefault) {
+      const destConfigPath = path.join(to, CONFIG_FILENAME)
+      // 当模板中不存在配置文件时，则使用默认的配置文件
+      if (!fs.existsSync(destConfigPath)) {
         const defualtConfigPath = path.join(__dirname, '../config/default.out.js')
-        const destConfigPath = path.join(to, CONFIG_FILENAME)
         fs.copySync(defualtConfigPath, destConfigPath)
       }
 

@@ -1,6 +1,6 @@
 {
   "name": "elf-cli",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "HTML5 boilerplate and build tool",
   "scripts": {
     "commit": "git-cz"

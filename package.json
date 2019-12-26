@@ -49,7 +49,6 @@
     "less-loader": "4.0.5",
     "lodash": "4.17.4",
     "node-sass": "4.5.3",
-    "npm-install-webpack-plugin": "github:webpack-contrib/npm-install-webpack-plugin",
     "ora": "1.3.0",
     "postcss-assets": "4.2.0",
     "postcss-loader": "2.0.6",

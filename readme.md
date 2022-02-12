@@ -13,16 +13,16 @@ ELF - 面向开发者的灵活可扩展的 HTML5 构建工具，提供命令行�
 
 > **`提醒`**
 由于依赖的包比较多，第一次安装耗时很长很长，请稍微耐心等待一下。
-推荐使用淘宝的 npm 镜像进行安装，执行 npm 安装命令时带上 `--registry=https://registry.npm.taobao.org`。
-另外 `node-sass` 和 `phantomjs` 这两个包需要编译，可以设置 `SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/`
-和 `PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/`，安装已经编译好的版本。
+推荐使用淘宝的 npm 镜像进行安装，执行 npm 安装命令时带上 `--registry=https://registry.npmmirror.com`。
+另外 `node-sass` 和 `phantomjs` 这两个包需要编译，可以设置 `SASS_BINARY_SITE=https://npmmirror.com/mirrors/node-sass/`
+和 `PHANTOMJS_CDNURL=https://npmmirror.com/mirrors/phantomjs/`，安装已经编译好的版本。
 
 ```sh
 # 全局安装 Node >= 6
 # mac/linux
-$ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npm.taobao.org
+$ SASS_BINARY_SITE=https://npmmirror.com/mirrors/node-sass/ PHANTOMJS_CDNURL=https://npmmirror.com/mirrors/phantomjs/ npm install -g elf-cli --registry=https://registry.npmmirror.com
 # windows
-$ npm install -g elf-cli --registry=https://registry.npm.taobao.org --SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ --PHANTOMJS_CDNURL=https://npm.taobao.org/mirrors/phantomjs/
+$ npm install -g elf-cli --registry=https://registry.npmmirror.com --SASS_BINARY_SITE=https://npmmirror.com/mirrors/node-sass/ --PHANTOMJS_CDNURL=https://npmmirror.com/mirrors/phantomjs/
 ```
 
 ## 使用
